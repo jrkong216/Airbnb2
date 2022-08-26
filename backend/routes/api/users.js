@@ -21,6 +21,14 @@ const router = express.Router();
       .not()
       .isEmail()
       .withMessage('Username cannot be an email.'),
+      check('firstname')
+      .exists({ checkFalsy: true })
+      .isLength({ min: 1 })
+      .withMessage('Please provide a longer firstname'),
+      check('lastname')
+      .exists({ checkFalsy: true })
+      .isLength({ min: 1 })
+      .withMessage('Please provide a longer lastname'),
     check('password')
       .exists({ checkFalsy: true })
       .isLength({ min: 6 })
@@ -33,8 +41,8 @@ router.post(
   '/',
   validateSignup,
   async (req, res) => {
-    const { email, password, username } = req.body;
-    const user = await User.signup({ email, username, password });
+    const { email, password, username, firstname, lastname } = req.body;
+    const user = await User.signup({ email, username, password, firstname, lastname });
 
     await setTokenCookie(res, user);
 
