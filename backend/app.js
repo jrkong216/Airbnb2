@@ -1,3 +1,5 @@
+//backend/app.js
+
 const express = require('express');
 require('express-async-errors');
 const morgan = require('morgan');
@@ -50,13 +52,6 @@ app.use(routes); // Connect all the routes
 // backend/app.js
 // .....
 
-app.use((_req, _res, next) => {
-    const err = new Error("The requested resource couldn't be found.");
-    err.title = "Resource Not Found";
-    err.errors = ["The requested resource couldn't be found."];
-    err.status = 404;
-    next(err);
-  });
 
   // requires VALIDATIONERROR model
   const { ValidationError } = require('sequelize');
@@ -83,5 +78,19 @@ app.use((err, _req, res, _next) => {
       stack: isProduction ? null : err.stack
     });
   });
+
+
+
+
+
+app.use((_req, _res, next) => {
+    const err = new Error("The requested resource couldn't be found.");
+    err.title = "Resource Not Found";
+    err.errors = ["The requested resource couldn't be found."];
+    err.status = 404;
+    next(err);
+  });
+
+
 
 module.exports = app;
