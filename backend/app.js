@@ -10,6 +10,8 @@ const cookieParser = require('cookie-parser');
 
 const { environment } = require('./config');
 const isProduction = environment === 'production';
+  // requires VALIDATIONERROR model
+  const { ValidationError } = require('sequelize');
 
 const app = express();
 
@@ -53,8 +55,14 @@ app.use(routes); // Connect all the routes
 // .....
 
 
-  // requires VALIDATIONERROR model
-  const { ValidationError } = require('sequelize');
+app.use((_req, _res, next) => {
+  const err = new Error("The requested resource couldn't be found.");
+  err.title = "Resource Not Found";
+  err.errors = ["The requested resource couldn't be found."];
+  err.status = 404;
+  next(err);
+});
+
 
 
 // Process sequelize errors
@@ -83,13 +91,6 @@ app.use((err, _req, res, _next) => {
 
 
 
-app.use((_req, _res, next) => {
-    const err = new Error("The requested resource couldn't be found.");
-    err.title = "Resource Not Found";
-    err.errors = ["The requested resource couldn't be found."];
-    err.status = 404;
-    next(err);
-  });
 
 
 
