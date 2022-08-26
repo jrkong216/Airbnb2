@@ -48,7 +48,7 @@ const routes = require('./routes');
 app.use(routes); // Connect all the routes
 
 // backend/app.js
-// ....
+// .....
 
 app.use((_req, _res, next) => {
     const err = new Error("The requested resource couldn't be found.");
