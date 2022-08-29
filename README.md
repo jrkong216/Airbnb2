@@ -1,10 +1,10 @@
-# AirBnb
-First proj front/back clone AirBnb
+# AirBnB Clone
+
 ## Database Schema Design
 
-![image](https://drive.google.com/uc?export=view&id=1PKybVg66HL4eR_l6ifVCcnbbv3bJXVHv)
+![airbnb-dbdiagram]
 
-
+[airbnb-dbdiagram]: ../assets/airbnb_dbdiagram.png
 
 ## API Documentation
 
@@ -54,7 +54,7 @@ Returns the information about the current user that is logged in.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /API/SESSION
+  * URL: /api/session
   * Body: none
 
 * Successful Response
@@ -349,7 +349,13 @@ Returns the details of a spot specified by its id.
       "SpotImages": [
         {
           "id": 1,
-          "url": "image url"
+          "url": "image url",
+          "preview": true
+        },
+        {
+          "id": 2,
+          "url": "image url",
+          "preview": false
         }
       ],
       "Owner": {
@@ -462,7 +468,8 @@ Create and return a new image for a spot specified by id.
 
     ```json
     {
-      "url": "image url"
+      "url": "image url",
+      "preview": true
     }
     ```
 
@@ -476,6 +483,7 @@ Create and return a new image for a spot specified by id.
     {
       "id": 1,
       "url": "image url",
+      "preview": true
     }
     ```
 
@@ -588,7 +596,7 @@ Deletes an existing spot.
 * Require proper authorization: Spot must belong to the current user
 * Request
   * Method: DELETE
-  * URL: api/spots/:spotId
+  * URL: /api/spots/:spotId
   * Body: none
 
 * Successful Response
@@ -661,14 +669,15 @@ Returns all the reviews written by the current user.
             "lat": 37.7645358,
             "lng": -122.4730327,
             "name": "App Academy",
-            "price": 123
+            "price": 123,
+            "previewImage": "image url"
           },
-          "SpotImages": [
+          "ReviewImages": [
             {
               "id": 1,
               "url": "image url"
             }
-          ],
+          ]
         }
       ]
     }
@@ -838,7 +847,7 @@ Create and return a new image for a review specified by id.
     ```json
     {
       "id": 1,
-      "url": "image url",
+      "url": "image url"
     }
     ```
 
@@ -1329,7 +1338,7 @@ Delete an existing image for a Spot.
 * Require proper authorization: Spot must belong to the current user
 * Request
   * Method: DELETE
-  * URL: /api/images/:imageId
+  * URL: /api/spot-images/:imageId
   * Body: none
 
 * Successful Response
@@ -1366,7 +1375,7 @@ Delete an existing image for a Review.
 * Require proper authorization: Review must belong to the current user
 * Request
   * Method: DELETE
-  * URL: /api/images/:imageId
+  * URL: /api/review-images/:imageId
   * Body: none
 
 * Successful Response
