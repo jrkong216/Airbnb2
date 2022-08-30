@@ -5,7 +5,7 @@ const { Spot } = require('../../db/models');
 
 
 router.get('/', async (req, res) => {
-    // res.send('HELLO WORLD')
+
 
 const allSpots = await Spot.findAll({})
 
