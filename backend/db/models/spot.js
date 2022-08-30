@@ -14,9 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Spot.init({
-    id: {
-      type: DataTypes.INTEGER,
-    },
     ownerId:
     {
       type: DataTypes.INTEGER,
@@ -56,12 +53,6 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: {
       type: DataTypes.STRING,
     },
-    avgRating: {
-      type: DataTypes.FLOAT,
-    },
-    previewImage:{
-      type: DataTypes.STRING
-    }
   }, {
     sequelize,
     modelName: 'Spot',
