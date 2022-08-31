@@ -20,7 +20,9 @@ module.exports = (sequelize, DataTypes) => {
         {foreignKey: 'spotId'}
       )
 
-      Review.hasMany(models.ReviewImage, { foreignKey: 'reviewId', onDelete: "CASCADE", hooks: true})
+      Review.hasMany(models.ReviewImage,
+      { foreignKey: 'reviewId', onDelete: "CASCADE", hooks: true}
+      )
 
     }
   }
@@ -29,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    userID: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
