@@ -57,12 +57,6 @@ module.exports = (sequelize, DataTypes) => {
     price: {
       type: DataTypes.INTEGER,
     },
-    createdAt: {
-      type: DataTypes.STRING,
-    },
-    updatedAt: {
-      type: DataTypes.STRING,
-    },
   }, {
     sequelize,
     modelName: 'Spot',

@@ -21,11 +21,11 @@ const router = express.Router();
       .not()
       .isEmail()
       .withMessage('Username cannot be an email.'),
-      check('firstname')
+      check('firstName')
       .exists({ checkFalsy: true })
       .isLength({ min: 1 })
       .withMessage('Please provide a longer firstname'),
-      check('lastname')
+      check('lastName')
       .exists({ checkFalsy: true })
       .isLength({ min: 1 })
       .withMessage('Please provide a longer lastname'),

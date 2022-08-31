@@ -20,11 +20,9 @@ module.exports = {
       },
       firstname:{
         type: Sequelize.STRING(30),
-        allowNull: false,
       },
       lastname:{
         type: Sequelize.STRING(30),
-        allowNull: false,
       },
       hashedPassword: {
         type: Sequelize.STRING.BINARY,
