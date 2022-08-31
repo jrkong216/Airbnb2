@@ -13,7 +13,6 @@ module.exports = {
     */
    await queryInterface.bulkInsert('Spots', [
     {
-      // id: 1,
       ownerId: 1,
       address: "123 Disney Lane",
       city: "San Francisco",
@@ -28,7 +27,6 @@ module.exports = {
       updatedAt: "2021-11-19 20:39:36",
     },
     {
-      // id: 2,
       ownerId: 2,
       address: "1234 Disney Lane",
       city: "San Jose",
@@ -43,7 +41,6 @@ module.exports = {
       updatedAt: "2021-11-19 20:39:36",
     },
     {
-      // id: 3,
       ownerId: 3,
       address: "1235 Disney Lane",
       city: "San Mateo",

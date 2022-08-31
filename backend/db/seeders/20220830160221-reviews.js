@@ -35,7 +35,15 @@ module.exports = {
         stars: 1,
         createdAt: "2021-11-19 20:39:36",
         updatedAt: "2021-11-19 20:39:36",
-      }
+      },
+      {
+        spotId: 1,
+        userId: 2,
+        review: "APP ACADEMY IS THE WORST average stars should be 3",
+        stars: 1,
+        createdAt: "2021-11-19 20:39:36",
+        updatedAt: "2021-11-19 20:39:36",
+      },
     ], {});
   },
 
