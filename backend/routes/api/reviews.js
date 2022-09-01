@@ -14,7 +14,7 @@ router.get('/current', requireAuth, async (req, res) => {
         include:
           [{model: Spot, attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "price"]},
           {model: ReviewImage, attributes: ['id','url'] }],
-        group:['Spot.id'],
+        group:['Spot.id', 'Review.id'],
         raw: true
     })
 
@@ -98,14 +98,42 @@ router.put('/:reviewId', requireAuth, restoreUser, async (req, res) => {
     })
   }
 
-  // edit review
+
   if (editReview) {
     editReview.set({ review, stars });
     await editReview.save()
 
-    // Successful Response
+
     res.status(200)
     res.json(editReview)
   }
 })
+
+
+//* --------------------------Edit a Review----------------------------- */
+
+router.delete('/:spotId', async(req, res) => {
+
+  const spotId = req.params.spotId
+  const currentSpot = await Spot.findByPk(spotId)
+
+  if(!currentSpot){
+      res.status(404)
+      res.json({
+          message: "Spot couldn't be found",
+          statusCode: 404
+      })
+  }
+
+  await currentSpot.destroy()
+
+  res.status(200)
+  res.json({
+      message: "Successfully deleted",
+      statusCode: 200
+  })
+})
+
+
+
 module.exports = router;
