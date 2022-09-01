@@ -112,10 +112,10 @@ router.put('/:reviewId', requireAuth, restoreUser, async (req, res) => {
 
 //* --------------------------Edit a Review----------------------------- */
 
-router.delete('/:spotId', async(req, res) => {
+router.delete('/:reviewId', async(req, res) => {
 
-  const spotId = req.params.spotId
-  const currentSpot = await Spot.findByPk(spotId)
+  const reviewId = req.params.reviewId
+  const currentSpot = await Spot.findByPk(reviewId)
 
   if(!currentSpot){
       res.status(404)
