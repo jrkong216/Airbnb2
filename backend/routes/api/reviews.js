@@ -52,16 +52,18 @@ const findReview = await Review.findByPk(reviewId)
   if (!findReview){
     res.status(404)
         return res.json({
-            "message": "Spot couldn't be found", //shouldn't this be review couldnt be found
+            "message": "Review couldn't be found",
             "statusCode": 404
         })
       }
 
     const image = await ReviewImage.create({
-      url
+      url,
+      
     })
 
     image.url = url
+
 
     res.status = 200
   return res.json({image})

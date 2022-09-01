@@ -200,7 +200,7 @@ const image = await SpotImage.create({
 image.url = url
 image.preview = preview
 image.spotId = spotId
-
+console.log(image)
 res.status = 200
 return res.json({image})
 
@@ -350,6 +350,55 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
         })
     }
 })
+//* --------------------------Get all Bookings for a Spot based on the Spots Id----------------------------- */
+router.get('/:spotId/bookings', requireAuth, async (req, res) => {
+    let { spotId } = req.params
+
+    const findSpot = await Spot.findByPk(spotId)
+    // console.log(findSpot)
+    const currentUserId = req.user.id
+    // console.log(currentUserId)
+    const owner = await Spot.findOne({
+        where: { id: spotId }
+    })
+    // console.log(owner)
+    const allBookings = await Booking.findAll({
+        where: { spotId },
+        include: [
+            { model: User, attributes: ['id', 'firstName', 'lastName'] },
+        ]
+    })
+    // console.log(allBookings)
+    // Error response: Couldn't find a Spot with the specified id
+    if (!findSpot) {
+        res.status(404)
+        res.json({
+            message: "Spot couldn't be found",
+            statusCode: 404,
+        })
+    }
+
+    if (findSpot) {
+        // Successful Response: If you ARE NOT the owner of the spot.
+        if (owner.id === currentUserId) {
+            res.status(200)
+            res.json({ allBookings })
+
+        } else {
+            console.log("Is it reaching here")
+            // Successful Response: If you ARE the owner of the spot.
+            const allBookings = await Booking.findAll({
+                // where: { spotId }, // THIS WHERE ITS NOT WORKING
+                attributes: ['spotId', 'startDate', 'endDate']
+            })
+            console.log(allBookings)
+            // Successful Response
+            res.status(200)
+            res.json({ allBookings })
+        }
+    }
+})
+
 
 //* --------------------------Delete a Spot----------------------------- */
 router.delete('/:spotId', async(req, res) => {
