@@ -100,7 +100,7 @@ router.put('/:bookingId', async (req, res) =>{
 
 })
 
-//* --------------------------Edit a Booking----------------------------- */
+//* --------------------------Delete a Booking----------------------------- */
 
 router.delete("/:bookingId", requireAuth, restoreUser, async (req, res) => {
     const { bookingId } = req.params;

@@ -117,7 +117,7 @@ const details = spotInfo.toJSON()
 details.numReviews = numReviews
 details.avgStarRating = averageRating.avgStarRating
 details.SpotImages  = SpotImages
-details.owner = owner
+details.Owner = owner
 
 return res.json(details)
 
@@ -192,17 +192,20 @@ router.post('/:spotId/images', requireAuth, async(req, res)=>{
             }
 
 const image = await SpotImage.create({
+    spotId: parseInt(req.params.spotId),
     url,
-    preview,
-    spotId
+    preview
 })
 
-image.url = url
-image.preview = preview
-image.spotId = spotId
-console.log(image)
+const object = {}
+
+object.id = image.id
+object.url = image.url
+object.preview = image.preview
+
+
 res.status = 200
-return res.json({image})
+return res.json(object)
 
 })
 

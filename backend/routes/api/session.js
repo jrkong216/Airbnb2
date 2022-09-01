@@ -39,12 +39,20 @@ router.post(
       return next(err);
     }
 
-    await setTokenCookie(res, user);
+    const jwtToken = await setTokenCookie(res, user);
+
+    const userData = {};
+    userData.id = user.id;
+    userData.firstName = user.firstName;
+    userData.lastName = user.lastName;
+    userData.email = user.email;
+    userData.username = user.username;
+    userData.token = jwtToken;
 
     return res.json({
-      user
+        ...userData
     });
-  }
+}
 );
 
   // Log out
@@ -68,7 +76,10 @@ router.get(
       return res.json({
         user: user.toSafeObject()
       });
-    } else return res.json({});
+    } else return res.status(401).res.json({
+      message: "Authentication required",
+      statusCode: 401
+      });
   }
 );
 
