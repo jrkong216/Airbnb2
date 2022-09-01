@@ -18,10 +18,10 @@ module.exports = {
         allowNull: false,
         unique: true
       },
-      firstname:{
+      firstName:{
         type: Sequelize.STRING(30),
       },
-      lastname:{
+      lastName:{
         type: Sequelize.STRING(30),
       },
       hashedPassword: {
