@@ -24,11 +24,11 @@ const router = express.Router();
       check('firstName')
       .exists({ checkFalsy: true })
       .isLength({ min: 1 })
-      .withMessage('Please provide a longer firstname'),
+      .withMessage('Please provide a longer firstName'),
       check('lastName')
       .exists({ checkFalsy: true })
       .isLength({ min: 1 })
-      .withMessage('Please provide a longer lastname'),
+      .withMessage('Please provide a longer lastName'),
     check('password')
       .exists({ checkFalsy: true })
       .isLength({ min: 6 })

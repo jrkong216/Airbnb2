@@ -14,7 +14,7 @@ router.get('/current', requireAuth, async (req, res) => {
         include:
           [{model: Spot, attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "price"]},
           {model: ReviewImage, attributes: ['id','url'] }],
-        group:['Review.id'],
+        group:['Spot.id'],
         raw: true
     })
 
@@ -59,7 +59,7 @@ const findReview = await Review.findByPk(reviewId)
 
     const image = await ReviewImage.create({
       url,
-      
+
     })
 
     image.url = url
