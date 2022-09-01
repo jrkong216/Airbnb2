@@ -59,14 +59,17 @@ const findReview = await Review.findByPk(reviewId)
 
     const image = await ReviewImage.create({
       url,
-
+      reviewId: parseInt(req.params.reviewId)
     })
 
-    image.url = url
+    const object = {}
+
+    object.id = image.id
+    object.url = image.url
 
 
     res.status = 200
-  return res.json({image})
+  return res.json(object)
 
 })
 //* --------------------------Edit a Review----------------------------- */
