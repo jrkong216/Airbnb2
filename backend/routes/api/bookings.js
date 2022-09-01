@@ -9,11 +9,11 @@ const { Op } = require("sequelize");
 //* --------------------------Get all of the Current User's Bookings----------------------------- */
 
 router.get('/current', requireAuth, async (req, res) => {
-    const userIdReq = req.user.id
+    const userId = req.user.id
 
     const allBooking = await Booking.findAll({
-    //   where: {userId: userIdReq},
-      include: [{ model: Spot,  attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "price"] }]
+      where: {userId},
+      // include: [{ model: Spot,  attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "price"] }]
     })
 
     console.log(allBooking)

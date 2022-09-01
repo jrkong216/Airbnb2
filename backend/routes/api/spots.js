@@ -401,6 +401,73 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
         }
     }
 })
+//* --------------------------Create a Booking for a Spot based on the Spot Id----------------------------- */
+
+router.post('/:spotId/bookings', requireAuth, async (req, res)=>{
+    const { startDate, endDate } = req.body
+
+    const { spotId } = req.params
+    const findSpot = await Spot.findByPk(spotId)
+
+    const { user } = req
+    const userId = user.dataValues.id
+
+    const allBoookings = await Booking.findAll({
+        include: [
+            { model: Spot, where: { id: spotId } }
+        ]
+    })
+    if (findSpot) {
+        //  check if a booking for a spot has already been made by userId
+        let booked;
+        for (let booking of allBoookings) {
+            if (booking.userId === userId) {
+                booked = true
+            }
+        }
+
+        if (booked) {
+            //* Error response: Booking already exists for the Spot
+            res.status(403)
+            res.json({
+                message: "Sorry, this spot is already booked for the specified dates",
+                statusCode: 403,
+                errors: {
+                    startDate: "Start date conflicts with an existing booking",
+                    endDate: "End date conflicts with an existing booking"
+                }
+            })
+        } else if (endDate < startDate) {
+            //* Error Booking: Body validation errors
+            res.status(400)
+            res.json({
+                message: "Validation error",
+                statusCode: 400,
+                errors: {
+                    "endDate": "endDate cannot be on or before startDate"
+                }
+            })
+        } else {
+            // Create Booking
+            const spotBooking = await Booking.create({
+                spotId, userId, startDate, endDate
+            })
+            // Successful Response
+            res.status(200)
+            res.json(spotBooking)
+        }
+    } else {
+        //* Error response: Couldn't find a Spot with the specified id
+        res.status(404)
+        res.json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        })
+    }
+
+
+
+})
 
 
 //* --------------------------Delete a Spot----------------------------- */

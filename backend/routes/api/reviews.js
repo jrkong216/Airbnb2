@@ -14,7 +14,7 @@ router.get('/current', requireAuth, async (req, res) => {
         include:
           [{model: Spot, attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "price"]},
           {model: ReviewImage, attributes: ['id','url'] }],
-        group:['Spot.id', 'Review.id'],
+        group:['Review.id'],
         raw: true
     })
 
@@ -113,7 +113,7 @@ router.put('/:reviewId', requireAuth, restoreUser, async (req, res) => {
 })
 
 
-//* --------------------------Edit a Review----------------------------- */
+//* --------------------------Delete a Review----------------------------- */
 
 router.delete('/:reviewId', async(req, res) => {
 

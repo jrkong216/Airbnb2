@@ -36,25 +36,21 @@ const router = express.Router();
     handleValidationErrors
   ];
 
-  // Sign up
-  router.post(
-    '/',
-    validateSignup,
-    async (req, res) => {
-      const { email, password, username, firstName, lastName } = req.body;
-      const user = await User.signup({ email, username, password, firstName, lastName });
-
-          const existingEmail = await User.findOne({ where: { email } });
-          const existingUsername = await User.findOne({ where: { username } });
+// Sign up
+router.post(
+  '/',
+  validateSignup,
+  async (req, res) => {
+      const { firstName, lastName, email, password, username } = req.body;
+      const user = await User.signup({ firstName, lastName, email, username, password });
 
       await setTokenCookie(res, user);
 
       return res.json({
-        user,
+          user,
       });
-    }
-  );
-
+  }
+);
 
 
 module.exports = router;
