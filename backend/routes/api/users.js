@@ -37,20 +37,77 @@ const router = express.Router();
   ];
 
 // Sign up
+
 router.post(
   '/',
   validateSignup,
   async (req, res) => {
-      const { firstName, lastName, email, password, username } = req.body;
-      const user = await User.signup({ firstName, lastName, email, username, password });
+    const { email, password, username, firstName, lastName } = req.body;
 
-      await setTokenCookie(res, user);
-
+    if(!username || !email){
+      res.status(400);
       return res.json({
-          user,
-      });
+          "message": "Validation error",
+          "statusCode": 400,
+          "errors": {
+            "email": "Invalid email",
+            "username": "Username is required",
+            "firstName": "First Name is required",
+            "lastName": "Last Name is required"
+          }
+      })
+    }
+    const emailExisted = await User.findOne({where: {email}});
+
+    if(emailExisted){
+      res.status(403);
+      res.json({
+
+        "message": "User already exists",
+        "statusCode": 403,
+        "errors": {
+          "email": "User with that email already exists"
+        }
+      })
+    }
+    const userExisted = await User.findOne({where: {username}});
+    if(userExisted){
+      res.status(403);
+      res.json({
+
+        "message": "User already exists",
+        "statusCode": 403,
+        "errors": {
+          "email": "User with that email already exists"
+        }
+      })
+    }
+    const user = await User.signup({ firstName, lastName, email, username, password });
+    let token = await setTokenCookie(res, user);
+    let newUser = user.toJSON()
+    newUser.token = token;
+    return res.json(newUser);
   }
+
 );
+
+
+
+
+// router.post(
+//   '/',
+//   validateSignup,
+//   async (req, res) => {
+//       const { firstName, lastName, email, password, username } = req.body;
+//       const user = await User.signup({ firstName, lastName, email, username, password });
+
+//       await setTokenCookie(res, user);
+
+//       return res.json({
+//           user,
+//       });
+//   }
+// );
 
 
 module.exports = router;

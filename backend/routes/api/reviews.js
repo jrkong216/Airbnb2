@@ -6,38 +6,34 @@ const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth')
 
 //* --------------------------Get all Reviews of the Current User----------------------------- */
 
-router.get('/current', requireAuth, async (req, res) => {
-    const userId = req.user.id
+router.get(
+  '/current', requireAuth, async(req, res, next) => {
 
-    const allReviews = await Review.findAll({
-        where:{userId: userId},
-        include:
-          [{model: Spot, attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "price"]},
-          {model: ReviewImage, attributes: ['id','url'] }],
-        group:['Review.id'],
-        raw: true
-    })
-
-    for (let review of allReviews) {
-      const spotImage = await SpotImage.findOne({
-          attributes: ['url'],
+      const allReviews = await Review.findAll({
           where: {
-              preview: true,
-              spotId: review.id
+              userId:  req.user.id
           },
-          raw: true
-      })
-      if (spotImage) {
-        review.previewImage = spotImage.url
-    } else {
-        review.previewImage = null
-    }
-}
 
-      res.status(200)
-    return res.json({ Reviews: allReviews })
-
+          include:[{
+              model: User,
+              attributes: ['id', 'firstName', 'lastName']
+          },
+          {
+              model: Spot,
+              attributes: {
+                  exclude: ['description', 'createdAt', 'updatedAt']
+              },
+          },
+          {
+              model: ReviewImage,
+              attributes: ['id', 'url']
+          }
+      ]
   })
+  console.log(allReviews)
+
+return res.json(allReviews)
+})
 
 //* --------------------------Add an Image to a Review based on the Review's id----------------------------- */
 router.post('/:reviewId/images', requireAuth, async (req, res) => {
