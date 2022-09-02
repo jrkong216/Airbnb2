@@ -494,6 +494,7 @@ router.get('/', async (req, res) => {
     if (minLat) {
         where.minLat = minLat
     }
+    // ADD ELSE IF STATEMENTS IF THE MINLAT AND REST ARE INVALID
     if (maxLat) {
         where.maxLat = maxLat
     }

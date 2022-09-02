@@ -6,35 +6,48 @@ const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth')
 
 //* --------------------------Get all Reviews of the Current User----------------------------- */
 
-router.get(
-  '/current', requireAuth, async(req, res) => {
-      const allspots = await Spot.findAll({})
-      const allReviews = await Review.findAll({
-          // where: {
-          //     userId:  req.user.id
-          // },
+router.get("/current", requireAuth, async (req, res, next) => {
+        let reviewObj;
+        let newArr = [];
+        const allReviews = await Review.findAll({
+            where: {
+                userId:  req.user.id
+            },
 
-          // include:[{
-          //     model: User,
-          //     attributes: ['id', 'firstName', 'lastName']
-          // },
-          // {
-          //     model: Spot,
-          //     attributes: {
-          //         exclude: ['description', 'createdAt', 'updatedAt']
-          //     },
-          // },
-          // {
-          //     model: ReviewImage,
-          //     attributes: ['id', 'url']
-          // }
-      // ]
-  })
-// const allReviews = await ReviewImage.findAll({})
-console.log(allReviews)
-console.log(allspots)
-return res.json({Reviews: allReviews})
+            include:[{
+                model: User,
+                attributes: ['id', 'firstName', 'lastName']
+            },
+            {
+                model: Spot,
+                attributes: {
+                    exclude: ['description', 'createdAt', 'updatedAt']
+                },
+            },
+            {
+                model: ReviewImage,
+                attributes: ['id', 'url']
+            }
+        ]
+    })
+
+    for (let i = 0; i< allReviews.length; i++){
+        reviewObj = allReviews[i].toJSON();
+        const image = await SpotImage.findByPk(allReviews[i].id, {
+            where: { preview: true },
+            attributes: ['url'],
+            raw: true
+        })
+
+        reviewObj.Spot.previewImage = !image ? '' : image.url;
+
+        newArr.push(reviewObj)
+    }
+    return res.json({
+        Reviews: newArr})
 })
+
+
 
 //* --------------------------Add an Image to a Review based on the Review's id----------------------------- */
 router.post('/:reviewId/images', requireAuth, async (req, res) => {
