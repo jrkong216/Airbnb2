@@ -403,7 +403,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 })
 //* --------------------------Create a Booking for a Spot based on the Spot Id----------------------------- */
 
-router.post('/:spotId/bookings', requireAuth, async (req, res)=>{
+router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     const { startDate, endDate } = req.body
 
     const { spotId } = req.params
@@ -417,6 +417,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res)=>{
             { model: Spot, where: { id: spotId } }
         ]
     })
+
     if (findSpot) {
         //  check if a booking for a spot has already been made by userId
         let booked;
@@ -464,10 +465,135 @@ router.post('/:spotId/bookings', requireAuth, async (req, res)=>{
             statusCode: 404
         })
     }
-
-
-
 })
+
+//* --------------------------GET SPOTS PAGINATION QUERY----------------------------- */
+
+router.get('/', async (req, res) => {
+    let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query
+
+    let where = {};
+
+    if (minLat) {
+        where.minLat = minLat
+    }
+    if (maxLat) {
+        where.maxLat = maxLat
+    }
+    if (minLng) {
+        where.minLng = minLng
+    }
+    if (maxLng) {
+        where.maxLng = maxLng
+    }
+    if (minPrice) {
+        where.minPrice = minPrice
+    }
+    if (maxPrice) {
+        where.maxPrice = maxPrice
+    }
+
+    page = parseInt(page);
+    size = parseInt(size);
+
+    if (Number.isNaN(page) || !page) page = 1;
+    if (Number.isNaN(size) || !size) size = 20;
+
+    if ((page < 1 || page > 10) || (size < 1 || size > 20)) {
+        res.status(400)
+        res.json({
+            message: "Validation Error",
+            statusCode: 400,
+            errors: {
+                page: "Page must be greater than or equal to 1",
+                size: "Size must be greater than or equal to 1"
+            }
+        })
+    }
+
+    // Return data for GET all Spots if there is a pagination
+    if (req.query.page && req.query.size) {
+
+        const allSpots = await Spot.findAll({
+            where: { ...where },
+
+            // pagination
+            limit: size,
+            offset: size * (page - 1),
+
+            group: ['Spot.id'],
+            raw: true,
+        })
+
+        for (let spot of allSpots) {
+            const spotImage = await SpotImage.findOne({
+                attributes: ['url'],
+                where: {
+                    preview: true,
+                    spotId: spot.id
+                },
+                raw: true
+            })
+            // if true, then set the new keyvaluepair in that object.
+
+            if (spotImage) {
+                spot.previewImage = spotImage.url
+            } else {
+                spot.previewImage = null
+            }
+        }
+        // Successful Response
+        res.status(200)
+        res.json({ allSpots, page, size });
+
+    } else {
+        // Return data for GET all Spots if there is  NO pagination
+
+        // Get spot all
+        const allSpots = await Spot.findAll({
+            attributes: {
+                include: [
+                    [sequelize.fn("AVG", sequelize.col("Reviews.stars")), "avgRating"]  //AvgRating Column Added using sequelize functions in the stars column
+                ]
+            },
+
+            include: [
+                { model: Review, attributes: [] }  //Provide access to Review model from associations
+            ],
+
+            group: ['Spot.id'],   // needed in order to return all spots
+            raw: true   // method to convert out from findByPk && findOne into raw data aka JS object... otherise data will resemble console.log(req)
+
+        })
+
+        // Associate previewImage with Spots
+        // Iterate through each spot in allSpots variable
+        for (let spot of allSpots) {
+            const spotImage = await SpotImage.findOne({
+                attributes: ['url'],
+                where: {
+                    preview: true,
+                    spotId: spot.id
+                },
+                raw: true
+            })
+
+            //Determine if image contains a url link
+            // if image exists, set the url of the image equal to the value of previewImage
+            if (spotImage) {
+                spot.previewImage = spotImage.url
+            } else {
+                spot.previewImage = null
+            }
+        }
+
+        // Successful Response
+        res.status(200)
+        res.json({ allSpots })
+    }
+})
+
+
 
 
 //* --------------------------Delete a Spot----------------------------- */
