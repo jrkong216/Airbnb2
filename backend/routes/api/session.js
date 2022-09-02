@@ -38,13 +38,21 @@ router.post(
       err.errors = ['The provided credentials were invalid.'];
       return next(err);
     }
+// Need to understand how to access user's current password and see if it mataches
+    if (!user) {
+      res.status(401)
+      return res.json({
+        message: "Invalid credntials",
+        statusCode: 401
+    })
+    }
 
     // if(user.password !== password) {
-    //   const err = new Error('Invalid');
-    //   err.status = 401;
-    //   err.title = 'Login failed';
-    //   err.errors = ['The provided credentials were invalid.'];
-    //   return next(err);
+    //   res.status(401)
+    //   return res.json({
+    //     message: "Invalid credntials",
+    //     statusCode: 401
+    // })
     // }
 
     const jwtToken = await setTokenCookie(res, user);
