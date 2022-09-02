@@ -406,9 +406,9 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
     const currentUserId = req.user.id
 
     const owner = await Spot.findOne({
-        where: { id: spotId }
+        where: { ownerId: currentUserId }
     })
-
+    
     const allBookings = await Booking.findAll({
         where: { spotId },
         include: [
@@ -416,7 +416,6 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
         ]
     })
 
-    // Error response: Couldn't find a Spot with the specified id
     if (!findSpot) {
         res.status(404)
         res.json({
@@ -426,17 +425,17 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
     }
 
     if (findSpot) {
-        // Successful Response: If you ARE NOT the owner of the spot.
+
         if (owner.id === currentUserId) {
             res.status(200)
             res.json({ allBookings })
         } else {
-            // Successful Response: If you ARE the owner of the spot.
+
             const allBookings = await Booking.findAll({
                 where: { spotId },
                 attributes: ['spotId', 'startDate', 'endDate']
             })
-            // Successful Response
+
             res.status(200)
             res.json({ Bookings: allBookings })
         }
