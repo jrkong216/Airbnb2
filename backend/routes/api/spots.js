@@ -273,7 +273,7 @@ router.get('/:spotId/reviews', async (req, res) => {
         where: { spotId },
         include: [
             { model: User, attributes: ['id', 'firstName', 'lastName'] },
-            { model: ReviewImage }
+            { model: ReviewImage, attributes: ['id', 'url'] }
         ]
     })
 
@@ -289,7 +289,7 @@ router.get('/:spotId/reviews', async (req, res) => {
     // Successful Response
     if (findSpot) {
         res.status(200)
-        res.json({ allReviews })
+        res.json({ Reviews: allReviews })
     }
 
 })
@@ -418,6 +418,52 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
         }
     }
 })
+
+//* --------------------------Get all Bookings for a spot by Id----------------------------- */
+router.get('/:spotId/bookings', requireAuth, async (req, res) => {
+    let { spotId } = req.params
+    const findSpot = await Spot.findByPk(spotId)
+
+    const currentUserId = req.user.id
+
+    const owner = await Spot.findOne({
+        where: { id: spotId }
+    })
+
+    const allBookings = await Booking.findAll({
+        where: { spotId },
+        include: [
+            { model: User, attributes: ['id', 'firstName', 'lastName'] },
+        ]
+    })
+
+    // Error response: Couldn't find a Spot with the specified id
+    if (!findSpot) {
+        res.status(404)
+        res.json({
+            message: "Spot couldn't be found",
+            statusCode: 404,
+        })
+    }
+
+    if (findSpot) {
+        // Successful Response: If you ARE NOT the owner of the spot.
+        if (owner.id === currentUserId) {
+            res.status(200)
+            res.json({ allBookings })
+        } else {
+            // Successful Response: If you ARE the owner of the spot.
+            const allBookings = await Booking.findAll({
+                where: { spotId },
+                attributes: ['spotId', 'startDate', 'endDate']
+            })
+            // Successful Response
+            res.status(200)
+            res.json({ allBookings })
+        }
+    }
+})
+
 //* --------------------------Create a Booking for a Spot based on the Spot Id----------------------------- */
 
 router.post('/:spotId/bookings', requireAuth, async (req, res) => {
@@ -483,6 +529,8 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         })
     }
 })
+
+
 
 //* --------------------------GET SPOTS PAGINATION QUERY----------------------------- */
 
