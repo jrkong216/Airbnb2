@@ -10,16 +10,29 @@ const { Op } = require("sequelize");
 
 router.get('/current', requireAuth, async (req, res) => {
     const userId = req.user.id
+    let bookingsObj;
+    let newArr = [];
 
     const allBooking = await Booking.findAll({
       where: {userId},
       include: [{ model: Spot,  attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "price"] }]
     })
 
-    console.log(allBooking)
+    for (let i = 0; i< allBooking.length; i++){
+      bookingsObj = allBooking[i].toJSON();
+      const previewImageUrl = await SpotImage.findByPk(allBooking[i].id, {
+          where: { preview: true },
+          attributes: ['url'],
+          raw: true
+      })
+
+      bookingsObj.Spot.previewImage = !previewImageUrl ? '' : previewImageUrl.url;
+      newArr.push(bookingsObj)
+  }
+
 
     res.status(200)
-    res.json({ allBooking })
+    res.json({ Bookings: newArr })
   })
 //* --------------------------Edit a Booking----------------------------- */
 
