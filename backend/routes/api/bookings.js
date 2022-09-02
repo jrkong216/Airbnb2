@@ -53,7 +53,7 @@ router.put('/:bookingId', async (req, res) =>{
             statusCode: 404
         })
     }
-    // error for start date after end date
+    // if THE START DATE is GREATER THAN THE END DATE
     if (startDate > endDate) {
         res.status(400)
         res.json({
@@ -64,43 +64,36 @@ router.put('/:bookingId', async (req, res) =>{
           }
         })
       }
-      // todays date is greater than the start date (ie cant book in past)
-        let now = Date.now()
-        let bookingDate = new Date(editBooking.endDate)
 
-    if (now > bookingDate) {
-        res.status(403)
-        res.json({
-            message: "Past bookings can't be modified",
-            statusCode: 403
-        })
-    }
+      // error for trying to bookin in the past???
+      
+
     // booking conflict
     const spotId = editBooking.spotId
 
-    const currentBookings = await Booking.findAll({
-      where: {
-        spotId: spotId,
-        [Op.and]: [
-          { endDate: { [Op.gte]: startDate } },
-          { startDate: { [Op.lte]: endDate } },
-        ],
-      },
-    });
+    // const currentBookings = await Booking.findAll({
+    //   where: {
+    //     spotId: spotId,
+    //     [Op.and]: [
+    //       { endDate: { [Op.gte]: startDate } },
+    //       { startDate: { [Op.lte]: endDate } },
+    //     ],
+    //   },
+    // });
 
-    if (currentBookings.length) {
-        res.status(403)
-        res.json({
-          message: "Sorry, this spot is already booked for the specified dates",
-          statusCode: 403,
-          errors: {
-            startDate: "Start date conflicts with an existing booking",
-            endDate: "End date conflicts with an existing booking"
-          }
-        })
-      }
+    // if (currentBookings.length) {
+    //     res.status(403)
+    //     res.json({
+    //       message: "Sorry, this spot is already booked for the specified dates",
+    //       statusCode: 403,
+    //       errors: {
+    //         startDate: "Start date conflicts with an existing booking",
+    //         endDate: "End date conflicts with an existing booking"
+    //       }
+    //     })
+    //   }
 
-// do i need to ensure that the editBooking.userId matches the req.user.id as well?
+
           if (editBooking.userId === req.user.id) {
               editBooking.startDate = startDate,
               editBooking.endDate = endDate,
