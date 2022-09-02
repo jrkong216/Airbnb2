@@ -78,6 +78,7 @@ router.get('/current', requireAuth, async (req, res) => {
             spot.previewImage = null
         }
     }
+    console.log(allSpots)
     res.status(200)
     return res.json({Spots: allSpots})
     })
@@ -296,9 +297,10 @@ router.get('/:spotId/reviews', async (req, res) => {
 router.post('/:spotId/reviews', requireAuth, async (req, res) => {
     const { review, stars } = req.body;
 
-    const { spotId } = req.params
+    // const { spotId } = req.params
+    let spotId = parseInt(req.params.spotId)
     const findSpot = await Spot.findByPk(spotId)
-
+    // console.log("!!!!!BNAAN", req)
     const { user } = req
     const userId = user.id
 
@@ -340,9 +342,24 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
             const spotReview = await Review.create({
                 userId, spotId, review, stars
             })
+            if(spotReview){
+                res.status(200)
+                return res.json(spotReview)
+            }
             // Successful Response
-            res.status(200)
-            res.json(spotReview)
+            // res.status(200)
+            // return res.json(spotReview)
+            else {
+                res.status(400)
+                return res.json({
+                    message: "Validation error",
+                    statusCode: 400,
+                    errors: {
+                        review: "reviews requiroed or can be empty",
+                        stars: "star can be empty"
+                    }
+                })
+            }
         }
     } else {
         //* Error response: Couldn't find a Spot with the specified id
@@ -449,7 +466,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
                 }
             })
         } else {
-            // Create Booking
+            // Create Booking WHY ISBNT THIS WORKING WHY DOES IT NOT GIVE THE "id"
             const spotBooking = await Booking.create({
                 spotId, userId, startDate, endDate
             })

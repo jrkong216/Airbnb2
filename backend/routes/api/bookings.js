@@ -13,7 +13,7 @@ router.get('/current', requireAuth, async (req, res) => {
 
     const allBooking = await Booking.findAll({
       where: {userId},
-      // include: [{ model: Spot,  attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "price"] }]
+      include: [{ model: Spot,  attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "price"] }]
     })
 
     console.log(allBooking)
@@ -88,15 +88,16 @@ router.put('/:bookingId', async (req, res) =>{
       }
 
 // do i need to ensure that the editBooking.userId matches the req.user.id as well?
-    if (editBooking) {
-        res.status(200)
-        editBooking.set({ startDate, endDate });
+          if (editBooking.userId === req.user.id) {
+              editBooking.startDate = startDate,
+              editBooking.endDate = endDate,
 
-        await editBooking.save()
+              await editBooking.save()
 
-        res.status(200)
-        return res.json(editBooking)
-    }
+  // Successful Response
+  res.status(200)
+  res.json(editBooking)
+}
 
 })
 

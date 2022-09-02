@@ -39,6 +39,14 @@ router.post(
       return next(err);
     }
 
+    // if(user.password !== password) {
+    //   const err = new Error('Invalid');
+    //   err.status = 401;
+    //   err.title = 'Login failed';
+    //   err.errors = ['The provided credentials were invalid.'];
+    //   return next(err);
+    // }
+
     const jwtToken = await setTokenCookie(res, user);
 
     const userData = {};
@@ -73,9 +81,9 @@ router.get(
   (req, res) => {
     const { user } = req;
     if (user) {
-      return res.json({
-        user: user.toSafeObject()
-      });
+      return res.json(
+        user.toSafeObject()
+      );
     } else return res.status(401).res.json({
       message: "Authentication required",
       statusCode: 401
