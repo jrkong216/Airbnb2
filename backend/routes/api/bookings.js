@@ -18,18 +18,42 @@ router.get('/current', requireAuth, async (req, res) => {
       include: [{ model: Spot,  attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "price"] }]
     })
 
+//     for (let spot of allBooking) {
+//       const spotImage = await SpotImage.findOne({
+//           attributes: ['url'],
+//           where: {
+//               preview: true,
+//               spotId: spot.id
+//           },
+//           raw: true
+//       })
+//       // if true, then set the new keyvaluepair in that object.
+
+//       if (spotImage) {
+//           spot.previewImage = spotImage.url
+//       } else {
+//           spot.previewImage = null
+//       }
+//   }
+//   res.status(200)
+//   return res.json({Bookings: allBooking})
+// })
     for (let i = 0; i< allBooking.length; i++){
       bookingsObj = allBooking[i].toJSON();
-      const previewImageUrl = await SpotImage.findByPk(allBooking[i].id, {
+      const previewImage = await SpotImage.findByPk(allBooking[i].id, {
           where: { preview: true },
           attributes: ['url'],
           raw: true
       })
 
-      bookingsObj.Spot.previewImage = !previewImageUrl ? '' : previewImageUrl.url;
-      newArr.push(bookingsObj)
-  }
+      if (previewImage){
+        bookingsObj.Spot.previewImage = previewImage.url
+        newArr.push(bookingsObj)
+      } else {
+        bookingsObj.Spot.previewImage = null
+      }
 
+  }
 
     res.status(200)
     res.json({ Bookings: newArr })
@@ -54,7 +78,9 @@ router.put('/:bookingId', async (req, res) =>{
         })
     }
     // if THE START DATE is GREATER THAN THE END DATE
+    // date.now and then parse that
     if (startDate > endDate) {
+      //
         res.status(400)
         res.json({
           message: "Validation error",
@@ -66,32 +92,16 @@ router.put('/:bookingId', async (req, res) =>{
       }
 
       // error for trying to bookin in the past???
-      
+      // need how to get todays date and then end of booking date
 
-    // booking conflict
-    const spotId = editBooking.spotId
-
-    // const currentBookings = await Booking.findAll({
-    //   where: {
-    //     spotId: spotId,
-    //     [Op.and]: [
-    //       { endDate: { [Op.gte]: startDate } },
-    //       { startDate: { [Op.lte]: endDate } },
-    //     ],
-    //   },
-    // });
-
-    // if (currentBookings.length) {
-    //     res.status(403)
-    //     res.json({
-    //       message: "Sorry, this spot is already booked for the specified dates",
-    //       statusCode: 403,
-    //       errors: {
-    //         startDate: "Start date conflicts with an existing booking",
-    //         endDate: "End date conflicts with an existing booking"
-    //       }
-    //     })
-    //   }
+    if (now > "bookingDate") {
+        res.status(403)
+        res.json({
+            message: "Past bookings can't be modified",
+            statusCode: 403
+        })
+    }
+    // booking conflict???
 
 
           if (editBooking.userId === req.user.id) {

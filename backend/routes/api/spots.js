@@ -78,7 +78,7 @@ router.get('/current', requireAuth, async (req, res) => {
             spot.previewImage = null
         }
     }
-    console.log(allSpots)
+    // console.log(allSpots)
     res.status(200)
     return res.json({Spots: allSpots})
     })
@@ -382,7 +382,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
             { model: User, attributes: ['id', 'firstName', 'lastName'] },
         ]
     })
-    
+
     if (!findSpot) {
         res.status(404)
         res.json({
@@ -438,7 +438,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
             })
             // Successful Response
             res.status(200)
-            res.json({ allBookings })
+            res.json({ Bookings: allBookings })
         }
     }
 })
@@ -493,7 +493,10 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         } else {
             // Create Booking WHY ISBNT THIS WORKING WHY DOES IT NOT GIVE THE "id"
             const spotBooking = await Booking.create({
-                spotId, userId, startDate, endDate
+                spotId: parseInt(req.params.spotId),
+                userId,
+                startDate,
+                endDate
             })
             // Successful Response
             res.status(200)

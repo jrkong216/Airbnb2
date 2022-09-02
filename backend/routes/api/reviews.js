@@ -31,20 +31,42 @@ router.get("/current", requireAuth, async (req, res, next) => {
         ]
     })
 
+  // for (let spot of allReviews) {
+  //     const spotImage = await SpotImage.findOne({
+  //         attributes: ['url'],
+  //         where: {
+  //             preview: true,
+  //             spotId: spot.id
+  //         },
+  //         raw: true
+  //     })
+  //     // if true, then set the new keyvaluepair in that object.
+
+  //     if (spotImage) {
+  //         spot.previewImage = spotImage.url
+  //     } else {
+  //         spot.previewImage = null
+  //     }
+  // }
+  // res.status(200)
+  // return res.json({Reviews: allReviews})
+
     for (let i = 0; i< allReviews.length; i++){
         reviewObj = allReviews[i].toJSON();
-        const image = await SpotImage.findByPk(allReviews[i].id, {
+        const previewImage = await SpotImage.findByPk(allReviews[i].id, {
             where: { preview: true },
             attributes: ['url'],
             raw: true
         })
 
-        reviewObj.Spot.previewImage = !image ? '' : image.url;
-
+        reviewObj.Spot.previewImage = !previewImage ? '' : previewImage.url;
         newArr.push(reviewObj)
+
+
+
     }
-    return res.json({
-        Reviews: newArr})
+    res.status(200)
+    res.json({ Reviews: newArr})
 })
 
 
