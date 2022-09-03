@@ -408,7 +408,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
     const owner = await Spot.findOne({
         where: { ownerId: currentUserId }
     })
-    
+    // console.log(owner)
     const allBookings = await Booking.findAll({
         where: { spotId },
         include: [
