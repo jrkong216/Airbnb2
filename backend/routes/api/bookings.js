@@ -66,22 +66,24 @@ router.put('/:bookingId', async (req, res) =>{
             endDate
             } = req.body
 
-    // const bookingId = req.params.bookingId
+        useableStartDate = new Date(startDate)
+        console.log("USEABLESTART DATE",useableStartDate)
+        useableEndDate = new Date(endDate)
+        console.log("USEABLESTART END",useableStartDate)
+    const bookingId = req.params.bookingId
 
-    // const editBooking = await Spot.findByPk(bookingId)
+    const editBooking = await Booking.findByPk(bookingId)
 
-    // if (!editBooking) {
-    //     res.status(404)
-    //     res.json({
-    //         message: "Booking couldn't be found",
-    //         statusCode: 404
-    //     })
-    // }
+    if (!editBooking) {
+        res.status(404)
+        res.json({
+            message: "Booking couldn't be found",
+            statusCode: 404
+        })
+    }
     // if THE START DATE is GREATER THAN THE END DATE
     // date.now and then parse that
-    if ("2024-12-26" > "2024-12-27") {
-      //
-      console.log("BANNNNNNNANANANA", startDate>endDate)
+    if (useableStartDate  > useableEndDate ) {
         res.status(400)
         res.json({
           message: "Validation error",
@@ -91,30 +93,50 @@ router.put('/:bookingId', async (req, res) =>{
           }
         })
       }
-
       // error for trying to bookin in the past???
       // need how to get todays date and then end of booking date
+      // userableStartDate covers both cases of the start and end date is "before" now
+let presentDate = new Date()
+    if ( presentDate > useableStartDate ) {
+        res.status(403)
+        res.json({
+            message: "Past bookings can't be modified",
+            statusCode: 403
+        })
+    }
 
-    // if (now > "bookingDate") {
-    //     res.status(403)
-    //     res.json({
-    //         message: "Past bookings can't be modified",
-    //         statusCode: 403
-    //     })
-    // }
     // booking conflict???
 
+    const currentBookings = await Booking.findAll({
+      where: {spotId: editBooking.spotId},
+      [Op.and]: [
+        { useableEndDate: { [Op.gte]: useableStartDate } },
+        { useableStartDate: { [Op.lte]: useableEndDate } },
+      ],
+    })
 
-//           if (editBooking.userId === req.user.id) {
-//               editBooking.startDate = startDate,
-//               editBooking.endDate = endDate,
+    if (currentBookings.length) {
+      res.status(403)
+      res.json({
+        message: "Sorry, this spot is already booked for the specified dates",
+        statusCode: 403,
+        errors: {
+          startDate: "Start date conflicts with an existing booking",
+          endDate: "End date conflicts with an existing booking"
+        }
+      })
+    }
 
-//               await editBooking.save()
+          if (editBooking.userId === req.user.id) {
+              editBooking.startDate = startDate,
+              editBooking.endDate = endDate,
 
-//   // Successful Response
-//   res.status(200)
-//   res.json(editBooking)
-// }
+              await editBooking.save()
+
+  // Successful Response
+  res.status(200)
+  res.json(editBooking)
+}
 
 })
 

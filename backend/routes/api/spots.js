@@ -4,44 +4,44 @@ const router = express.Router();
 const { Spot, sequelize, Review, SpotImage, User, Booking, ReviewImage} = require('../../db/models');
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth')
 
-//          GET ALL SPOTS with averageRting and previewImage
-router.get('/', async (req, res) => {
+// //          GET ALL SPOTS with averageRting and previewImage
+// router.get('/', async (req, res) => {
 
-const allSpots = await Spot.findAll({
-    include:
-        {
-            model: Review, attributes: []
-        },
-    attributes:{
-        include: [[
-            sequelize.fn('ROUND',sequelize.fn("AVG", sequelize.col("stars")),2), "avgRating"
-        ]]
-    },
+// const allSpots = await Spot.findAll({
+//     include:
+//         {
+//             model: Review, attributes: []
+//         },
+//     attributes:{
+//         include: [[
+//             sequelize.fn('ROUND',sequelize.fn("AVG", sequelize.col("stars")),2), "avgRating"
+//         ]]
+//     },
 
-    group: ['Spot.id'], // THIS IS TO RETURN ALL THE SPOTS, and not just One
-    raw: true // sequelize says set this tot true if you dont have a model definition in your query
-})
-// go through each Spot and see if they have an associated image
-for (let spot of allSpots) {
-    const spotImage = await SpotImage.findOne({
-        attributes: ['url'],
-        where: {
-            preview: true,
-            spotId: spot.id
-        },
-        raw: true
-    })
-    // if true, then set the new keyvaluepair in that object.
+//     group: ['Spot.id'], // THIS IS TO RETURN ALL THE SPOTS, and not just One
+//     raw: true // sequelize says set this tot true if you dont have a model definition in your query
+// })
+// // go through each Spot and see if they have an associated image
+// for (let spot of allSpots) {
+//     const spotImage = await SpotImage.findOne({
+//         attributes: ['url'],
+//         where: {
+//             preview: true,
+//             spotId: spot.id
+//         },
+//         raw: true
+//     })
+//     // if true, then set the new keyvaluepair in that object.
 
-    if (spotImage) {
-        spot.previewImage = spotImage.url
-    } else {
-        spot.previewImage = null
-    }
-}
-res.status(200)
-return res.json({Spots: allSpots})
-})
+//     if (spotImage) {
+//         spot.previewImage = spotImage.url
+//     } else {
+//         spot.previewImage = null
+//     }
+// }
+// res.status(200)
+// return res.json({Spots: allSpots})
+// })
 
 //Get All Spots For the current User
 
@@ -408,7 +408,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
     const owner = await Spot.findOne({
         where: { ownerId: currentUserId }
     })
-    // console.log(owner)
+
     const allBookings = await Booking.findAll({
         where: { spotId },
         include: [
@@ -591,7 +591,7 @@ router.get('/', async (req, res) => {
         }
         // Successful Response
         res.status(200)
-        res.json({ allSpots, page, size });
+        res.json({ Spots: allSpots, page, size });
 
     } else {
         // Return data for GET all Spots if there is  NO pagination
@@ -600,7 +600,7 @@ router.get('/', async (req, res) => {
         const allSpots = await Spot.findAll({
             attributes: {
                 include: [
-                    [sequelize.fn("AVG", sequelize.col("Reviews.stars")), "avgRating"]  //AvgRating Column Added using sequelize functions in the stars column
+                    [sequelize.fn('ROUND',sequelize.fn("AVG", sequelize.col("stars")),2), "avgRating"]  //AvgRating Column Added using sequelize functions in the stars column
                 ]
             },
 
@@ -636,7 +636,7 @@ router.get('/', async (req, res) => {
 
         // Successful Response
         res.status(200)
-        res.json({ allSpots })
+        res.json({ Spots: allSpots })
     }
 })
 
