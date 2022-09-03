@@ -67,9 +67,9 @@ router.put('/:bookingId', async (req, res) =>{
             } = req.body
 
         useableStartDate = new Date(startDate)
-        console.log("USEABLESTART DATE",useableStartDate)
+        // console.log("USEABLESTART DATE",useableStartDate)
         useableEndDate = new Date(endDate)
-        console.log("USEABLESTART END",useableStartDate)
+        // console.log("USEABLESTART END",useableStartDate)
     const bookingId = req.params.bookingId
 
     const editBooking = await Booking.findByPk(bookingId)
@@ -107,25 +107,25 @@ let presentDate = new Date()
 
     // booking conflict???
 
-    const currentBookings = await Booking.findAll({
-      where: {spotId: editBooking.spotId},
-      [Op.and]: [
-        { useableEndDate: { [Op.gte]: useableStartDate } },
-        { useableStartDate: { [Op.lte]: useableEndDate } },
-      ],
-    })
+    // const currentBookings = await Booking.findAll({
+    //   where: {spotId: editBooking.spotId},
+    //   [Op.and]: [
+    //     {useableStartDate: { [Op.gt]: useableEndDate } },
+    //     { useableEndDate: { [Op.lt]: useableStartDate } },
+    //   ],
+    // })
 
-    if (currentBookings.length) {
-      res.status(403)
-      res.json({
-        message: "Sorry, this spot is already booked for the specified dates",
-        statusCode: 403,
-        errors: {
-          startDate: "Start date conflicts with an existing booking",
-          endDate: "End date conflicts with an existing booking"
-        }
-      })
-    }
+    // if (currentBookings.length) {
+    //   res.status(403)
+    //   res.json({
+    //     message: "Sorry, this spot is already booked for the specified dates",
+    //     statusCode: 403,
+    //     errors: {
+    //       startDate: "Start date conflicts with an existing booking",
+    //       endDate: "End date conflicts with an existing booking"
+    //     }
+    //   })
+    // }
 
           if (editBooking.userId === req.user.id) {
               editBooking.startDate = startDate,
