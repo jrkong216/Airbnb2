@@ -14,7 +14,7 @@ const allSpots = await Spot.findAll({
         },
     attributes:{
         include: [[
-            sequelize.fn("AVG", sequelize.col("stars")), "avgRating"
+            sequelize.fn(("AVG", sequelize.col("stars")),2), "avgRating"
         ]]
     },
 
