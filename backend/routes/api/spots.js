@@ -91,6 +91,7 @@ router.get('/:spotId', async(req, res, next) => {
     const spotInfo = await Spot.findByPk(spotId)
 
     if (!spotInfo){
+        res.status(404)
         res.json({
             message: "Spot couldn't be found",
             statusCode: 404
