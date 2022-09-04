@@ -31,11 +31,11 @@ router.post(
 
     const user = await User.login({ credential, password });
 
-    
+
     if (!user) {
       res.status(401)
       return res.json({
-        message: "Invalid credntials",
+        message: "Invalid credentials",
         statusCode: 401
     })
     }
