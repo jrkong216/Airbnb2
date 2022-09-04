@@ -4,7 +4,7 @@ const router = express.Router();
 const { Spot, sequelize, Review, SpotImage, User, Booking, ReviewImage} = require('../../db/models');
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth')
 
-// //          GET ALL SPOTS with averageRting and previewImage
+// //          GET ALL SPOTS with averageRting and previewImage THIS WILL BE TAKEN OVER BY PAGINATION ENTRY
 // router.get('/', async (req, res) => {
 
 // const allSpots = await Spot.findAll({
@@ -43,7 +43,7 @@ const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth')
 // return res.json({Spots: allSpots})
 // })
 
-//Get All Spots For the current User
+//* -----------------------------Get all spots for the current owner----------------------------- */
 
 router.get('/current', requireAuth, async (req, res) => {
  const userId = req.user.id
@@ -58,7 +58,7 @@ router.get('/current', requireAuth, async (req, res) => {
             ]]
         },
         group: ['Spot.id'], // THIS IS TO RETURN ALL THE SPOTS, and not just One
-        raw: true // sequelize says set this tot true if you dont have a model definition in your query
+        raw: true // sequelize says set this to true if you dont have a model definition in your query.
     })
     // go through each Spot and see if they have an associated image
     for (let spot of allSpots) {
@@ -109,7 +109,7 @@ router.get('/:spotId', async(req, res, next) => {
         where: {spotId: spotId}
     })
     const averageRating = await Review.findOne({
-        attributes: [[sequelize.fn("AVG", sequelize.col("stars")), "avgStarRating"]],
+        attributes: [[sequelize.fn('ROUND',sequelize.fn("AVG", sequelize.col("stars")),2), "avgRating"]],
         where: {spotId: spotId},
         raw: true
     })
@@ -356,7 +356,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
                     message: "Validation error",
                     statusCode: 400,
                     errors: {
-                        review: "reviews requiroed or can be empty",
+                        review: "reviews required or can be empty",
                         stars: "star can be empty"
                     }
                 })
@@ -610,7 +610,7 @@ router.get('/', async (req, res) => {
             ],
 
             group: ['Spot.id'],   // needed in order to return all spots
-            raw: true   // method to convert out from findByPk && findOne into raw data aka JS object... otherise data will resemble console.log(req)
+            raw: true  
 
         })
 

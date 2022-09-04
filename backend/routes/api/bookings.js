@@ -105,7 +105,7 @@ let presentDate = new Date()
         })
     }
 
-    // booking conflict???
+    // booking conflict??? not working line 110-115 not doing as intended need to re-review
 
     // const currentBookings = await Booking.findAll({
     //   where: {spotId: editBooking.spotId},
