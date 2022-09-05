@@ -59,10 +59,15 @@ router.get("/current", requireAuth, async (req, res, next) => {
             raw: true
         })
 
-        reviewObj.Spot.previewImage = !previewImage ? '' : previewImage.url;
-        newArr.push(reviewObj)
+        // reviewObj.Spot.previewImage = !previewImage ? '' : previewImage.url;
+        // newArr.push(reviewObj)
 
-
+        if (previewImage){
+          reviewObj.Spot.previewImage = previewImage.url
+          newArr.push(reviewObj)
+        } else {
+          reviewObj.Spot.previewImage = null
+        }
 
     }
     res.status(200)
