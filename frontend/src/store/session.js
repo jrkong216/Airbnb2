@@ -35,6 +35,26 @@ export const login = (user) => async (dispatch) => {
 export const restoreUser = () => async dispatch => {
   const response = await csrfFetch('/api/session');
   const data = await response.json();
+  if(response.ok){
+    dispatch(setUser(data));
+    return response;
+  }
+};
+
+export const signup = (user) => async (dispatch) => {
+  const { username, email, password, firstName, lastName } = user;
+  const response = await csrfFetch("/api/users", {
+    method: "POST",
+    body: JSON.stringify({
+      username,
+      email,
+      password,
+      firstName,
+      lastName
+    }),
+  });
+  const data = await response.json();
+  console.log("this is information from the server", data)
   dispatch(setUser(data));
   return response;
 };
@@ -59,3 +79,11 @@ const sessionReducer = (state = initialState, action) => {
 };
 
 export default sessionReducer;
+
+// window.store.dispatch(window.sessionActions.signup({
+//   email: 'new@user.io',
+//   password: 'password',
+//   username: 'NewUser',
+// firstName: 'Jason',
+// lastName:'kong'
+// }));
