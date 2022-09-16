@@ -26,11 +26,19 @@ export const login = (user) => async (dispatch) => {
       password,
     }),
   });
-  console.log("this is the response from our server", response)
+  // console.log("this is the response from our server", response)
   const data = await response.json();
   dispatch(setUser(data));
   return response;
 };
+
+export const restoreUser = () => async dispatch => {
+  const response = await csrfFetch('/api/session');
+  const data = await response.json();
+  dispatch(setUser(data));
+  return response;
+};
+
 
 const initialState = { user: null };
 
