@@ -79,10 +79,8 @@ router.get(
       return res.json(
         user.toSafeObject()
       );
-    } else return res.status(401).res.json({
-      message: "Authentication required",
-      statusCode: 401
-      });
+    } else return res.json(null)
+
   }
 );
 
