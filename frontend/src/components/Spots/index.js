@@ -15,7 +15,7 @@ const GetAllSpots = () => {
 
     const allSpots = useSelector(state => state.spots)
     const allSpotsArray = Object.values(allSpots)
-    console.log("this is allspots array", allSpotsArray)
+    // console.log("this is allspots array", allSpotsArray)
     if (!isLoaded){
     return (<div>Loading...</div>)
     }

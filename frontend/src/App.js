@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 
 import Spots from "./components/Spots"
 
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
