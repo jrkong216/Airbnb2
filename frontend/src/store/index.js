@@ -2,6 +2,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import sessionReducer from './session.js'
+import spotsReducer from "./spotsReducer"
 
 
 // `combineReducers` combines all the reducer functions into one big reducer
@@ -10,6 +11,7 @@ import sessionReducer from './session.js'
 // components.
 const rootReducer = combineReducers({
   session: sessionReducer,
+  spots: spotsReducer
 });
 
 // `enhancer` allows you to alter the store and add functionality such as the
