@@ -31,8 +31,6 @@ const GetAllSpots = () => {
                         <div className= "spotAddress"> {spot.address}</div>
                         <div className= "spotCountry"> {spot.country}</div>
                         <div className= "spotPrice"> {spot.price}</div>
-
-
                     </NavLink>
                 )})
                 }

@@ -32,10 +32,10 @@ export const get = (list) => {
           list
         }}
 
-    export const remove = (list) => {
+    export const remove = (id) => {
          return {
              type: DELETE,
-             list
+             id
             }}
 
 export const getAllSpots = () => async (dispatch) => {
@@ -107,8 +107,9 @@ export const DeleteSpot = (payload) => async (dispatch) => {
     if (response.ok) {
         // console.log("DID MY CODE REACH HERE FOR RESPONSE TO BEE OK")
         const info = await response.json()
-        dispatch(remove(info))
-        console.log("THIS IS THE RESPONSE TO KEY INTO", response)
+        console.log("THIS IS INFO", info)
+        dispatch(remove(payload.id))
+        // console.log("THIS IS THE RESPONSE TO KEY INTO", response)
         return response
     }
 
@@ -145,7 +146,7 @@ const spotsReducer = (state = initialState, action) => {
             return newState
         case DELETE:
             newState = {...state}
-            delete newState[action.list.id]
+            delete newState[action.id]
             return newState
             default:
                 return state;
