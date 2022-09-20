@@ -23,24 +23,30 @@ const GetAllSpots = () => {
     return (
         <div>
             <h1>AIRBNB SPLASH PAGE</h1>
+<>
+            {allSpotsArray.map(spot =>
+                {return (
+                    <NavLink key={spot.id} to={`/spots/${spot.id}`}>
+                        <div className= "spotName"> {spot.name}</div>
+                        <div className= "spotAddress"> {spot.address}</div>
+                        <div className= "spotCountry"> {spot.country}</div>
+                        <div className= "spotPrice"> {spot.price}</div>
 
-            {allSpotsArray.map((spot) => (
-            <NavLink
-            key={spot.id}
-            to={`/spots/${spot.id}`}
-            >
-            {spot.name}
-            </NavLink>
-            ))}
 
+                    </NavLink>
+                )})
+                }
+                <div className = "Creat-a-Spot-button">
+                    <NavLink to="/spots/new">
+                    <button type="submit">CREATE A SPOT</button>
+                    </NavLink>
 
+                </div>
+
+    </>
         </div>
+
     )
-
-
-
-
-
 }
 
 export default GetAllSpots
