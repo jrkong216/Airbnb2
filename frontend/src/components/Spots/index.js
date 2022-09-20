@@ -1,7 +1,7 @@
 import { useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {getAllSpots} from '../../store/spotsReducer'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 const GetAllSpots = () => {
@@ -25,13 +25,17 @@ const GetAllSpots = () => {
             <h1>AIRBNB SPLASH PAGE</h1>
 
             {allSpotsArray.map((spot) =>(
-            <Link
+            <NavLink
             key={spot.id}
             to={`/spots/${spot.id}`}
             >
             {spot.name}
-            </Link>
-        ))}
+            </NavLink>
+
+        
+
+            ))}
+
 
         </div>
     )

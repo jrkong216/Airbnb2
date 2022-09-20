@@ -1,24 +1,35 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux"
-
+import {CreateSpot} from "../../store/spotsReducer"
+import {getAllSpots} from '../../store/spotsReducer'
 
 function SpotForm() {
   const history = useHistory()
+  const dispatch = useDispatch();
   const [name, setName] = useState('')
   const [address, setAddress] = useState('')
   const [city, setCity] = useState('')
   const [state, setState] = useState('')
   const [country, setCountry] = useState('')
-  const [latitude, setLatitude] = useState('')
-  const [longitude, setLongitude] = useState('')
+  const [lat, setLatitude] = useState('')
+  const [lng, setLongitude] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
-  const [imageurl, setImageUrl] = useState('')
+  // const [imageurl, setImageUrl] = useState('')
 
   const [validationErrors, setValidationErrors] = useState([])
-  const dispatch = useDispatch();
+ //GOING TO HAVE TO MAKE SOME SORT OF USER MUST BE LOGGED IN REFERRENCE
 
+  useEffect(() => {
+    dispatch(getAllSpots())
+}, [dispatch])
+
+const allSpots = useSelector(state => state.spots)
+const allSpotsArray = Object.values(allSpots)
+console.log("this is allSpotsArray", allSpotsArray)
+const lastCreated = allSpotsArray.length
+console.log("Is this going to be integer 6", lastCreated)
 
 //   useEffect(() => {
 //     const errors = []
@@ -49,20 +60,21 @@ const submitHandler = async (e) => {
     city,
     state,
     country,
-    latitude,
-    longitude,
+    lat,
+    lng,
     price,
-    description,
-    price,
-    imageurl
+    description
 }
 
-useEffect(() => {
-    dispatch(createSpot(payload))
-}, [dispatch])
-  history.push('/')
+let createdSpot;
 
+createdSpot = dispatch(CreateSpot(payload))
+
+//WHY IS HISTORY NOT WORKING
+  history.push(`/api/spots/${lastCreated}`)
 }
+
+
 
   return (
     <form
@@ -126,7 +138,7 @@ useEffect(() => {
           type="text"
           name="latitude"
           onChange={(e)=> setLatitude(e.target.value)}
-          value={latitude}
+          value={lat}
         />
       </label>
       <label>
@@ -135,7 +147,7 @@ useEffect(() => {
           type="text"
           name="longitude"
           onChange={(e)=> setLongitude(e.target.value)}
-          value={longitude}
+          value={lng}
         />
       </label>
       <label>
@@ -156,7 +168,7 @@ useEffect(() => {
           value={price}
         />
       </label>
-      <label>
+      {/* <label>
       Image Url
         <input
           type="text"
@@ -164,11 +176,11 @@ useEffect(() => {
           onChange={(e)=> setImageUrl(e.target.value)}
           value={imageurl}
         />
-      </label>
+      </label> */}
       <button
         type="submit"
         // disable={setValidationErrors.length > 0 ? true : false}
-          disabled={!!validationErrors.length}
+          // disabled={!!validationErrors.length}
       >
         Create Spot
       </button>

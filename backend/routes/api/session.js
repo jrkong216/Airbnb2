@@ -32,14 +32,21 @@ router.post(
     const user = await User.login({ credential, password });
 
 
-    if (!user) {
-      res.status(401)
-      return res.json({
-        message: "Invalid credentials",
-        statusCode: 401
-    })
-    }
+    // if (!user) {
+    //   res.status(401)
+    //   return res.json({
+    //     message: "Invalid credentials",
+    //     statusCode: 401
+    // })
+    // }
 
+    if (!user){
+      const err = new Error("Login failed")
+      err.status = 401
+      err.title = "Login failed"
+      err.errors = ["The provided credentials were invalid."]
+      return next(err)
+    }
 
 
     const jwtToken = await setTokenCookie(res, user);

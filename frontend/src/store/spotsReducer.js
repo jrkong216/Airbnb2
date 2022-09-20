@@ -4,6 +4,7 @@ const GET = "spots/GET";
 const CREATE = "spots/CREATE";
 
 export const get = (list) => {
+    console.log("This is the action creator with list", list)
     return {
       type: GET,
       list
@@ -29,15 +30,18 @@ return response
 }
 
 export const CreateSpot = (payload) => async dispatch => {
+    // console.log("DID MY CODE REACH HERE")
     const response = await csrfFetch('/api/spots', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     });
-
+    // console.log("WHAT IS IN MY RESPONSE", response)
     if (response.ok) {
+        // console.log("DID MY CODE REACH HERE FOR RESPONSE TO BEE OK")
         const info = await response.json()
         dispatch(create(info))
+
     }
 }
 
@@ -58,7 +62,8 @@ const spotsReducer = (state = initialState, action) => {
             return newState
         case CREATE:
             newState = {...state}
-            newState[action.spot.id] = action.spot
+            console.log("this is the current NewState", newState)
+            newState[action.list.id] = action.list
             return newState
             default:
                 return state;
