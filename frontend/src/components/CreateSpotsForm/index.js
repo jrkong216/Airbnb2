@@ -25,11 +25,11 @@ function SpotForm() {
     dispatch(getAllSpots())
 }, [dispatch])
 
-const allSpots = useSelector(state => state.spots)
-const allSpotsArray = Object.values(allSpots)
-console.log("this is allSpotsArray", allSpotsArray)
-const lastCreated = allSpotsArray.length
-console.log("Is this going to be integer 6", lastCreated)
+// const allSpots = useSelector(state => state.spots)
+// const allSpotsArray = Object.values(allSpots)
+// console.log("this is allSpotsArray", allSpotsArray)
+// const lastCreated = allSpotsArray.length
+// console.log("Is this going to be integer 6", lastCreated)
 
 //   useEffect(() => {
 //     const errors = []
@@ -69,10 +69,12 @@ const submitHandler = async (e) => {
 let createdSpot;
 
 createdSpot = dispatch(CreateSpot(payload))
-
+// console.log("THIS IS OUR CREATED SPOT", createdSpot)
 //WHY IS HISTORY NOT WORKING
-  history.push(`/api/spots/${lastCreated}`)
+  history.push("/")
+  // history.push(`/api/spots/${createdSpot.id}`)
 }
+//return spot from teh THUNK
 
 
 

@@ -11,7 +11,7 @@ const GetAllSpots = () => {
     useEffect(() => {
         dispatch(getAllSpots())
             .then(() => setIsLoaded(true))
-    }, [])
+    }, [dispatch])
 
     const allSpots = useSelector(state => state.spots)
     const allSpotsArray = Object.values(allSpots)
@@ -24,16 +24,13 @@ const GetAllSpots = () => {
         <div>
             <h1>AIRBNB SPLASH PAGE</h1>
 
-            {allSpotsArray.map((spot) =>(
+            {allSpotsArray.map((spot) => (
             <NavLink
             key={spot.id}
             to={`/spots/${spot.id}`}
             >
             {spot.name}
             </NavLink>
-
-        
-
             ))}
 
 
