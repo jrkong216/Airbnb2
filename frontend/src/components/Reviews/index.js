@@ -7,20 +7,21 @@ import {getAllReviews} from '../../store/reviewsReducer'
 
 const GetAllReviews = () => {
     const dispatch = useDispatch()
-    const allReviews = useSelector(state => state.Reviews)
-    const allReviewsArray = Object.values(allReviews)
-    const { spotId } = useParams();
     const [isLoaded, setIsLoaded] = useState(false)
 
 
-     console.log("Is this being read before useEffect")
+
+    const allReviews = useSelector(state => state.Reviews)
+    const allReviewsArray = Object.values(allReviews)
+    const { spotId } = useParams();
+
+
+
+    //  console.log("Is this being read before useEffect")
     useEffect(() => {
         dispatch(getAllReviews(spotId))
             .then(() => setIsLoaded(true))
-    }, [dispatch, spotId])
-
-    console.log("After useEffect passing spotId", spotId)
-
+    }, [dispatch])
 
     if (!isLoaded){
     return (<div>Loading...</div>)

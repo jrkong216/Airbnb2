@@ -1,27 +1,37 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from "react-router-dom"
-import {getOneSpot} from '../../store/spotsReducer'
+// import {getOneSpot} from '../../store/spotsReducer'
 import {getAllSpots} from '../../store/spotsReducer'
 import { NavLink } from 'react-router-dom';
 import {DeleteSpot} from '../../store/spotsReducer'
-import {getAllReviews} from '../../store/reviewsReducer'
+// import {getAllReviews} from '../../store/reviewsReducer'
 
-const GetSpotDetails = () => {
+const GetUserDetails = () => {
 
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
     const { spotId } = useParams()
     const history = useHistory()
-    const spotInfo = useSelector(state => state.spots[spotId])
-    const reviewInfo = useSelector(state => state.reviews)
-    const reviewInfoArray = Object.values(reviewInfo)
-    const reviewsBySpotId = reviewInfoArray.filter(spot => spot.spotId === +spotId)
-    console.log("THIS IS THE STATE FOR SPOT 3 reviewInfo", reviewInfo)
-    console.log("This is the ARRAY OF THE INFO", reviewInfoArray)
-    console.log("THESE ARE THE REVIEWS", reviewsBySpotId)
+    const userId = useSelector(state => state.session.user.id)
+
+    const spotInfo = useSelector(state => state.spots)
+
+    const spotsInfoArray = Object.values(spotInfo)
+    const spotsByUserId = spotsInfoArray.filter(spot => spot.ownerId === +userId)
+    console.log("THIS IS THE STATE FOR SPOTInfo", spotInfo)
+    console.log("This is the ARRAY OF THE stopinfo", spotsInfoArray)
+    console.log("THESE ARE THE spots by user", spotsByUserId)
+
+    // const reviewInfo = useSelector(state => state.reviews)
+    // const reviewInfoArray = Object.values(reviewInfo)
+    // const reviewsBySpotId = reviewInfoArray.filter(spot => spot.spotId === +spotId)
+    // console.log("THIS IS THE STATE FOR SPOT 3 reviewInfo", reviewInfo)
+    // console.log("This is the ARRAY OF THE INFO", reviewInfoArray)
+    // console.log("THESE ARE THE REVIEWS", reviewsBySpotId)
+
     useEffect(() => {
-        dispatch(getAllReviews(spotId))
+        // dispatch(getAllReviews(spotId))
         dispatch(getAllSpots())
             .then(() => setIsLoaded(true))
     }, [dispatch, spotId])
@@ -57,40 +67,33 @@ const GetSpotDetails = () => {
 
     return(
 <div>
-            <h1>SPECIFIC SPOT SPLASH PAGE</h1>
-            <div className= "spotName"> {spotInfo.name}</div>
-                        <div className= "spotAddress"> {spotInfo.address}</div>
-                        <div className= "spotCountry"> {spotInfo.country}</div>
-                        <div className= "spotPrice"> {spotInfo.price}</div>
-                        <div className = "Creat-a-Spot-button">
+            <h1>USERS RICH ASS SPOTS THATS DRIVING HOME PRICES UP</h1>
+            {spotsByUserId.map((spot) =>
+                {return (
+                    <>
+                    <div className= "spotReview"> {spot.address}</div>
+                    <div className= "spotStars"> {spot.city}</div>
+                    <div className= "spotStars"> {spot.state}</div>
+                    <div className= "spotStars"> ${spot.price}</div>
+                    <div className= "spotStars"> Average Rating {spot.avgRating}</div>
                     <NavLink to= {`/spot/${spotId}/edit`}>
                     <button type="submit">EDIT THIS SPOT</button>
                     </NavLink>
-                    <div>
-
                     <form
                      className="spot-form" onSubmit={submitHandler}>
                      <button type="submit">DELETE THIS SPOT</button>
                     </form>
-            <h2>BELOW IS THE REVIEW OF THE SPOT</h2>
-            {reviewsBySpotId.map((spot) =>
-                {return (
-                    <>
-                    <div className= "spotReview"> {spot.review}</div>
-                    <div className= "spotStars"> {spot.stars}</div>
                     </>
                 )})
-                }
 
-            <NavLink to= {`/review/${spotId}/new`}>
-                    <button type="submit">Create a New Review</button>
-                    </NavLink>
+                }
+                    <div>
                     </div>
                 </div>
 
-        </div>
+
 
     )
 }
 
-export default GetSpotDetails
+export default GetUserDetails

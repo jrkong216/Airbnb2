@@ -1,23 +1,71 @@
 import { csrfFetch } from "./csrf";
 
-const GET = "reviews/GET"
+const GETREVIEWS = "reviews/GET"
+const CREATEREVIEW = "reviews/CREATE";
+const DELETEREVIEW = "reviews/DELETE"
 
-
-export const get = (list) => {
+export const getReviews = (list) => {
     return {
-      type: GET,
+      type: GETREVIEWS,
       list
     }
   }
 
+  export const createReview = (list) => {
+    return {
+      type: CREATEREVIEW,
+      list
+    }}
+
+    export const removeReview = (id) => {
+        return {
+            type: DELETEREVIEW,
+            id
+           }}
+
 export const getAllReviews = (spotId) => async (dispatch) => {
-    console.log("IS the code getting here?")
+    // console.log("IS the code getting here?")
     const response = await csrfFetch(`/api/spots/${spotId}/reviews`)
 
     if (response.ok) {
         const reviews = await response.json();
-        dispatch(get(reviews.Reviews))
-        console.log("This is the spots from reducer", reviews)
+        dispatch(getReviews(reviews.Reviews))
+        //NEED TO DOUBLE CHECK IF key is "Reviews"
+        // console.log("This is the spots from reducer", reviews)
+        return response
+    }
+
+}
+
+export const CreateReview = (spotId, payload) => async dispatch => {
+    // console.log("DID MY CODE REACH HERE")
+    const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+    // console.log("WHAT IS IN MY RESPONSE", response)
+    if (response.ok) {
+        // console.log("DID MY CODE REACH HERE FOR RESPONSE TO BEE OK")
+        const info = await response.json()
+        dispatch(createReview(info))
+        // console.log("THIS IS THE RESPONSE TO KEY INTO", response)
+        return response
+    }
+}
+
+export const DeleteReview = (payload) => async (dispatch) => {
+    // console.log("IS the code getting here?")
+    const response = await csrfFetch(`/api/reviews/${payload.id}`, {
+        method: 'delete',
+    });
+
+    if (response.ok) {
+        // console.log("DID MY CODE REACH HERE FOR RESPONSE TO BEE OK")
+        const info = await response.json()
+        console.log("THIS IS INFO", info)
+        dispatch(removeReview(payload.id))
+        // console.log("THIS IS THE RESPONSE TO KEY INTO", response)
         return response
     }
 
@@ -28,7 +76,7 @@ const initialState = {}
 const reviewsReducer = (state = initialState, action) => {
     let newState
     switch(action.type){
-        case GET:
+        case GETREVIEWS:
             newState = {...state}
             // console.log("thisis action list", action.list)
             action.list.forEach(review => {
@@ -37,6 +85,15 @@ const reviewsReducer = (state = initialState, action) => {
                 // console.log("this is spot", spot)
                 // console.log("this is the new newState after adding spot", newState)
             });
+            return newState
+            case CREATEREVIEW:
+            newState = {...state}
+            // console.log("this is the current NewState", newState)
+            newState[action.list.id] = action.list
+            return newState
+        case DELETEREVIEW:
+            newState = {...state}
+            delete newState[action.id]
             return newState
             default:
                 return state;

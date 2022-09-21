@@ -7,7 +7,7 @@ import './SignupForm.css';
 import {useHistory} from "react-router-dom"
 
 function SignupFormPage() {
-  const useHistory = useHistory()
+  // const useHistory = useHistory()
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
@@ -24,9 +24,8 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password, firstName, lastName })).then(()=> {
-        history.push("/")
-      })
+      return dispatch(sessionActions.signup({ email, username, password, firstName, lastName }))
+      // .then(()=> {history.push("/")})
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
