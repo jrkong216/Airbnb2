@@ -67,7 +67,9 @@ router.get("/current", requireAuth, async (req, res, next) => {
           newArr.push(reviewObj)
         } else {
           reviewObj.Spot.previewImage = null
+          newArr.push(reviewObj)
         }
+
 
     }
     res.status(200)

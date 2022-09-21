@@ -5,7 +5,8 @@ import { useParams, useHistory } from "react-router-dom"
 import {getAllSpots} from '../../store/spotsReducer'
 import { NavLink } from 'react-router-dom';
 import {DeleteSpot} from '../../store/spotsReducer'
-// import {getAllReviews} from '../../store/reviewsReducer'
+import {getAllReviews} from '../../store/reviewsReducer'
+import {getUserReviews} from '../../store/reviewsReducer'
 
 const GetUserDetails = () => {
 
@@ -19,19 +20,19 @@ const GetUserDetails = () => {
 
     const spotsInfoArray = Object.values(spotInfo)
     const spotsByUserId = spotsInfoArray.filter(spot => spot.ownerId === +userId)
-    console.log("THIS IS THE STATE FOR SPOTInfo", spotInfo)
-    console.log("This is the ARRAY OF THE stopinfo", spotsInfoArray)
+    // console.log("THIS IS THE STATE FOR SPOTInfo", spotInfo)
+    // console.log("This is the ARRAY OF THE stopinfo", spotsInfoArray)
     console.log("THESE ARE THE spots by user", spotsByUserId)
 
-    // const reviewInfo = useSelector(state => state.reviews)
-    // const reviewInfoArray = Object.values(reviewInfo)
-    // const reviewsBySpotId = reviewInfoArray.filter(spot => spot.spotId === +spotId)
-    // console.log("THIS IS THE STATE FOR SPOT 3 reviewInfo", reviewInfo)
+    const reviewInfo = useSelector(state => state.reviews)
+    const reviewInfoArray = Object.values(reviewInfo)
+    const reviewsBySpotId = reviewInfoArray.filter(review => review.userId === +userId)
+    // console.log("THIS IS THE STATE reviewInfo", reviewInfo)
     // console.log("This is the ARRAY OF THE INFO", reviewInfoArray)
     // console.log("THESE ARE THE REVIEWS", reviewsBySpotId)
 
     useEffect(() => {
-        // dispatch(getAllReviews(spotId))
+        dispatch(getUserReviews())
         dispatch(getAllSpots())
             .then(() => setIsLoaded(true))
     }, [dispatch, spotId])
@@ -70,26 +71,37 @@ const GetUserDetails = () => {
             <h1>USERS RICH ASS SPOTS THATS DRIVING HOME PRICES UP</h1>
             {spotsByUserId.map((spot) =>
                 {return (
-                    <>
+                    <div key= {spot.id}>
                     <div className= "spotReview"> {spot.address}</div>
-                    <div className= "spotStars"> {spot.city}</div>
-                    <div className= "spotStars"> {spot.state}</div>
-                    <div className= "spotStars"> ${spot.price}</div>
-                    <div className= "spotStars"> Average Rating {spot.avgRating}</div>
-                    <NavLink to= {`/spot/${spotId}/edit`}>
+                    <div className= "spotCity"> {spot.city}</div>
+                    <div className= "spotState"> {spot.state}</div>
+                    <div className= "spotPrice"> ${spot.price}</div>
+                    <div className= "spotAvgRating"> Average Rating {spot.avgRating}</div>
+                    <NavLink key="key" to= {`/spot/${spotId}/edit`}>
                     <button type="submit">EDIT THIS SPOT</button>
                     </NavLink>
                     <form
                      className="spot-form" onSubmit={submitHandler}>
                      <button type="submit">DELETE THIS SPOT</button>
                     </form>
+                    </div>
+                )})
+            }
+                    <div>
+                    <h2>USER's KAREN REVIEWS</h2>
+                <div>
+                {reviewsBySpotId.map((spot) =>
+                {return (
+                    <>
+                    <div className= "spotReview"> {spot.review}</div>
+                    <div className= "spotStars"> {spot.stars}</div>
                     </>
                 )})
-
                 }
-                    <div>
-                    </div>
                 </div>
+
+                    </div>
+</div>
 
 
 

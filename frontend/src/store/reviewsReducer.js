@@ -31,11 +31,28 @@ export const getAllReviews = (spotId) => async (dispatch) => {
         const reviews = await response.json();
         dispatch(getReviews(reviews.Reviews))
         //NEED TO DOUBLE CHECK IF key is "Reviews"
+        console.log("This is the spots from reducer", reviews)
+        return response
+    }
+
+}
+
+export const getUserReviews = () => async (dispatch) => {
+    // console.log("IS the code getting here?")
+    const response = await csrfFetch(`/api/reviews/current`);
+console.log("this is my resposnse from getUSersReview", response)
+    if (response.ok) {
+        const reviews = await response.json();
+        console.log("This is review", reviews)
+        dispatch(getReviews(reviews.Reviews))
+        //NEED TO DOUBLE CHECK IF key is "Reviews"
         // console.log("This is the spots from reducer", reviews)
         return response
     }
 
 }
+
+
 
 export const CreateReview = (spotId, payload) => async dispatch => {
     // console.log("DID MY CODE REACH HERE")
