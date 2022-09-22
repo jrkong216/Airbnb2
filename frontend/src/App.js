@@ -12,6 +12,7 @@ import SpotDetails from "./components/SpotDetails"
 import UpdateSpotForm from "./components/UpdateSpotForm"
 import CreateReviewForm from "./components/CreateReviewForm"
 import CurrentUserSpots from "./components/CurrentUserSpots"
+import UpdateReviewForm from "./components/UpdateReviewForm"
 
 function App() {
   const dispatch = useDispatch();
@@ -40,9 +41,12 @@ function App() {
           <Route exact path='/spot/:spotId/edit'>
             <UpdateSpotForm/>
           </Route>
-          <Route path="/review/:spotId/new">
+          <Route path="/review/:reviewId/new">
             <CreateReviewForm/>
           </Route>
+          {/* <Route path="/review/:reviewId/edit">
+            <UpdateReviewForm/>
+          </Route> */}
           <Route path="/current/user">
             <CurrentUserSpots/>
           </Route>

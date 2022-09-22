@@ -14,6 +14,7 @@ const GetAllSpots = () => {
     }, [dispatch])
 
     const allSpots = useSelector(state => state.spots)
+    console.log("this is state of spots", allSpots)
     const allSpotsArray = Object.values(allSpots)
     // console.log("this is allspots array", allSpotsArray)
     if (!isLoaded){
@@ -27,10 +28,11 @@ const GetAllSpots = () => {
             {allSpotsArray.map(spot =>
                 {return (
                     <NavLink key={spot.id} to={`/spots/${spot.id}`}>
+                        {/* <div className= "spotPicture"> {spot.previewImage}</div> */}
                         <div className= "spotName"> {spot.name}</div>
                         <div className= "spotAddress"> {spot.address}</div>
                         <div className= "spotCountry"> {spot.country}</div>
-                        <div className= "spotPrice"> {spot.price}</div>
+                        <div className= "spotPrice"> ${spot.price}</div>
                     </NavLink>
                 )})
                 }

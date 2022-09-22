@@ -27,9 +27,13 @@ const GetUserDetails = () => {
     const reviewInfo = useSelector(state => state.reviews)
     const reviewInfoArray = Object.values(reviewInfo)
     const reviewsBySpotId = reviewInfoArray.filter(review => review.userId === +userId)
+    const reviewByUser = reviewsBySpotId.filter(user => user.userId === +userId)
+    console.log("THIS IS REVIEW BY USER", reviewByUser)
+    const variable = reviewByUser.pop()
+    console.log("This is variable", variable)
     // console.log("THIS IS THE STATE reviewInfo", reviewInfo)
     // console.log("This is the ARRAY OF THE INFO", reviewInfoArray)
-    // console.log("THESE ARE THE REVIEWS", reviewsBySpotId)
+    console.log("THESE ARE THE REVIEWS", reviewsBySpotId)
 
     useEffect(() => {
         dispatch(getUserReviews())
@@ -77,7 +81,7 @@ const GetUserDetails = () => {
                     <div className= "spotState"> {spot.state}</div>
                     <div className= "spotPrice"> ${spot.price}</div>
                     <div className= "spotAvgRating"> Average Rating {spot.avgRating}</div>
-                    <NavLink key="key" to= {`/spot/${spotId}/edit`}>
+                    <NavLink key="key" to= {`/spot/${spot.id}/edit`}>
                     <button type="submit">EDIT THIS SPOT</button>
                     </NavLink>
                     <form
@@ -90,12 +94,18 @@ const GetUserDetails = () => {
                     <div>
                     <h2>USER's KAREN REVIEWS</h2>
                 <div>
-                {reviewsBySpotId.map((spot) =>
+                {reviewsBySpotId.map((item) =>
+
                 {return (
-                    <>
-                    <div className= "spotReview"> {spot.review}</div>
-                    <div className= "spotStars"> {spot.stars}</div>
-                    </>
+                    <div key= {item.id}>
+                    <div className= "spotReview"> {item.review}</div>
+                    <div className= "spotStars"> {item.stars}</div>
+
+                    <form
+                     className="spot-form" onSubmit={submitHandler}>
+                     <button type="submit">DELETE THIS REVIEW</button>
+                    </form>
+                    </div>
                 )})
                 }
                 </div>

@@ -26,7 +26,7 @@ const { spotId } = useParams()
 
   useEffect(() => {
     dispatch(getAllSpots())
-}, [dispatch])
+}, [dispatch, spotId])
 
 // const allSpots = useSelector(state => state.spots)
 // const allSpotsArray = Object.values(allSpots)

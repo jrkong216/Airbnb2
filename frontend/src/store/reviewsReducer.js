@@ -40,10 +40,10 @@ export const getAllReviews = (spotId) => async (dispatch) => {
 export const getUserReviews = () => async (dispatch) => {
     // console.log("IS the code getting here?")
     const response = await csrfFetch(`/api/reviews/current`);
-console.log("this is my resposnse from getUSersReview", response)
+// console.log("this is my resposnse from getUSersReview", response)
     if (response.ok) {
         const reviews = await response.json();
-        console.log("This is review", reviews)
+        // console.log("This is review", reviews)
         dispatch(getReviews(reviews.Reviews))
         //NEED TO DOUBLE CHECK IF key is "Reviews"
         // console.log("This is the spots from reducer", reviews)
@@ -72,7 +72,7 @@ export const CreateReview = (spotId, payload) => async dispatch => {
 }
 
 export const DeleteReview = (payload) => async (dispatch) => {
-    // console.log("IS the code getting here?")
+    console.log("IS the code getting here TO DELETEREVIEW?")
     const response = await csrfFetch(`/api/reviews/${payload.id}`, {
         method: 'delete',
     });
