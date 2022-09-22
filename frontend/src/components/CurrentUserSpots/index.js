@@ -1,3 +1,4 @@
+//component/CURRENT USER/INDEx
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from "react-router-dom"
@@ -28,12 +29,12 @@ const GetUserDetails = () => {
     const reviewInfoArray = Object.values(reviewInfo)
     const reviewsBySpotId = reviewInfoArray.filter(review => review.userId === +userId)
     const reviewByUser = reviewsBySpotId.filter(user => user.userId === +userId)
-    console.log("THIS IS REVIEW BY USER", reviewByUser)
-    const variable = reviewByUser.pop()
-    console.log("This is variable", variable)
+    // console.log("THIS IS REVIEW BY USER", reviewByUser)
+    // const variable = reviewByUser.pop()
+    // console.log("This is variable", variable)
     // console.log("THIS IS THE STATE reviewInfo", reviewInfo)
     // console.log("This is the ARRAY OF THE INFO", reviewInfoArray)
-    console.log("THESE ARE THE REVIEWS", reviewsBySpotId)
+    // console.log("THESE ARE THE REVIEWS", reviewsBySpotId)
 
     useEffect(() => {
         dispatch(getUserReviews())
@@ -67,9 +68,7 @@ const GetUserDetails = () => {
 
 
             //   history.push("/")
-
        }
-
     return(
 <div>
             <h1>USERS RICH ASS SPOTS THATS DRIVING HOME PRICES UP</h1>
@@ -95,7 +94,6 @@ const GetUserDetails = () => {
                     <h2>USER's KAREN REVIEWS</h2>
                 <div>
                 {reviewsBySpotId.map((item) =>
-
                 {return (
                     <div key= {item.id}>
                     <div className= "spotReview"> {item.review}</div>

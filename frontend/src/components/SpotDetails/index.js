@@ -9,20 +9,21 @@ import { getAllReviews } from '../../store/reviewsReducer'
 import { DeleteReview } from '../../store/reviewsReducer'
 
 const GetSpotDetails = () => {
-    const userId = useSelector((state) => state.session.user.id)
+    // const userId = useSelector((state) => state.session.user.id)
     // console.log("this is sessionUser", sessionUser)
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
-    const { spotId } = useParams()
+    let { spotId } = useParams()
+    spotId = parseInt(spotId)
     const history = useHistory()
     const spotInfo = useSelector(state => state.spots[spotId])
     const reviewInfo = useSelector(state => state.reviews)
     const reviewInfoArray = Object.values(reviewInfo)
     const reviewsBySpotId = reviewInfoArray.filter(spot => spot.spotId === +spotId)
-    const reviewByUser = reviewsBySpotId.filter(user => user.userId === +userId)
-    console.log("THIS IS REVIEW BY USER", reviewByUser)
-    const variable = reviewByUser.pop()
-    console.log("This is variable", variable)
+    // const reviewByUser = reviewsBySpotId.filter(user => user.userId === +userId)
+    // console.log("THIS IS REVIEW BY USER", reviewByUser)
+    // const variable = reviewByUser.pop()
+    // console.log("This is variable", variable)
     // console.log("this is keying into variable object", variable.id)
     // console.log("THIS IS THE STATE FOR SPOT 3 reviewInfo", reviewInfo)
     // console.log("This is the ARRAY OF THE INFO", reviewInfoArray)
@@ -57,10 +58,11 @@ const GetSpotDetails = () => {
     }
 
     //NEED TO PUT A GUARD TO WHERE ONLY USERS CAN DELETE THEIR OWN REVIEWS
-    const reviewHandler = async (e) => {
-        e.preventDefault()
+    const reviewHandler = async (id) => {
+        // e.preventDefault()
         const payload = {
-            id: variable.id
+            spotId: spotId,
+            reviewId: id
         }
         let createdSpot;
         createdSpot = dispatch(DeleteReview(payload)).then(() => history.push("/"))
@@ -97,11 +99,11 @@ const GetSpotDetails = () => {
                             <div key={item.id}>
                                 <div className="itemReview"> {item.review}</div>
                                 <div className="itemStars"> {item.stars}</div>
-                                
-                                <form
-                                    className="Delete-Review" onSubmit={reviewHandler}>
-                                    <button type="submit">DELETE THIS Review</button>
-                                </form>
+
+                                {/* <form */}
+                                    {/* className="Delete-Review" onSubmit={reviewHandler}> */}
+                                    <button onClick= {() => reviewHandler(item.id)}>DELETE THIS Review</button>
+                                {/* </form> */}
                                 </div>
                                 )})
                     }

@@ -157,20 +157,20 @@ router.put('/:reviewId', requireAuth, restoreUser, async (req, res) => {
 router.delete('/:reviewId', async(req, res) => {
 
   const reviewId = req.params.reviewId
-  const currentSpot = await Spot.findByPk(reviewId)
+  const currentReview = await Review.findByPk(reviewId)
 
-  if(!currentSpot){
+  if(!currentReview){
       res.status(404)
-      res.json({
+      return res.json({
           message: "Review couldn't be found",
           statusCode: 404
       })
   }
 
-  await currentSpot.destroy()
+  await currentReview.destroy()
 
   res.status(200)
-  res.json({
+  return res.json({
       message: "Successfully deleted",
       statusCode: 200
   })

@@ -12,7 +12,7 @@ function ReviewForm() {
   const [review, setReview] = useState('')
   const [stars, setStars] = useState('')
   const { spotId } = useParams()
-
+console.log("this is spotId", spotId)
   const [validationErrors, setValidationErrors] = useState([])
  //GOING TO HAVE TO MAKE SOME SORT OF USER MUST BE LOGGED IN REFERRENCE
 
@@ -66,7 +66,7 @@ try{
 // console.log("THIS IS OUR CREATED SPOT", createdSpot)
 //WHY IS HISTORY NOT WORKING
 //   history.push("/")
-  history.push(`/api/spots/${spotId}`)
+  history.push(`/spots/${spotId}`)
   // THIS SPOT IS NOT RE-RENDERING
 }
 //return spot from teh THUNK
