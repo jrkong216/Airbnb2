@@ -64,8 +64,8 @@ const GetSpotDetails = () => {
             spotId: spotId,
             reviewId: id
         }
-        let createdSpot;
-        createdSpot = dispatch(DeleteReview(payload)).then(() => history.push("/"))
+        let reviewToDelete;
+        reviewToDelete = dispatch(DeleteReview(payload)).then(() => history.push(`/spots/${spotId}`))
         // console.log("THIS IS OUR CREATED SPOT", createdSpot)
         //WHY IS HISTORY NOT WORKING
         //   history.push("/")

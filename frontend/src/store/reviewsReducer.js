@@ -82,7 +82,7 @@ export const DeleteReview = (payload) => async (dispatch) => {
         // console.log("DID MY CODE REACH HERE FOR RESPONSE TO BEE OK")
         const info = await response.json()
         console.log("THIS IS INFO", info)
-        dispatch(removeReview(payload.id))
+        dispatch(removeReview(payload.reviewId))
         // console.log("THIS IS THE RESPONSE TO KEY INTO", response)
         return response
     }
