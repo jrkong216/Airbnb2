@@ -34,7 +34,6 @@ export const getAllReviews = (spotId) => async (dispatch) => {
         console.log("This is the spots from reducer", reviews)
         return response
     }
-
 }
 
 export const getUserReviews = () => async (dispatch) => {

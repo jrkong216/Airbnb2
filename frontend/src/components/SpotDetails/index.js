@@ -69,7 +69,6 @@ const GetSpotDetails = () => {
         // console.log("THIS IS OUR CREATED SPOT", createdSpot)
         //WHY IS HISTORY NOT WORKING
         //   history.push("/")
-
     }
 
     return (

@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom';
 import {DeleteSpot} from '../../store/spotsReducer'
 import {getAllReviews} from '../../store/reviewsReducer'
 import {getUserReviews} from '../../store/reviewsReducer'
+import { DeleteReview } from '../../store/reviewsReducer'
 
 const GetUserDetails = () => {
 
@@ -52,23 +53,35 @@ const GetUserDetails = () => {
         if (spotInfo === undefined){
             return null
         }
-        const submitHandler = async (e) => {
-            e.preventDefault()
+        const submitHandler = async (spot) => {
+            // e.preventDefault()
 
             const payload = {
-               id: spotId
+               id: spot
             }
 
             let createdSpot;
 
-            createdSpot = dispatch(DeleteSpot(payload)).then(() => history.push("/")
+            createdSpot = dispatch(DeleteSpot(payload)).then(() => history.push("/current/user")
             )
             // console.log("THIS IS OUR CREATED SPOT", createdSpot)
             //WHY IS HISTORY NOT WORKING
-
-
             //   history.push("/")
        }
+       const reviewHandler = async (id) => {
+        // e.preventDefault()
+        const payload = {
+            spotId: spotId,
+            reviewId: id
+        }
+        let reviewToDelete;
+        reviewToDelete = dispatch(DeleteReview(payload)).then(() => history.push(`/current/user`))
+        // console.log("THIS IS OUR CREATED SPOT", createdSpot)
+        //WHY IS HISTORY NOT WORKING
+        //   history.push("/")
+    }
+
+
     return(
 <div>
             <h1>USERS RICH ASS SPOTS THATS DRIVING HOME PRICES UP</h1>
@@ -83,10 +96,14 @@ const GetUserDetails = () => {
                     <NavLink key="key" to= {`/spot/${spot.id}/edit`}>
                     <button type="submit">EDIT THIS SPOT</button>
                     </NavLink>
-                    <form
+                    {/* <form
                      className="spot-form" onSubmit={submitHandler}>
                      <button type="submit">DELETE THIS SPOT</button>
-                    </form>
+                    </form> */}
+                    {/* <form */}
+                     {/* className="spot-form" onSubmit={submitHandler}> */}
+                     <button onClick= {() => submitHandler(spot.id)}>DELETE THIS SPOT</button>
+                    {/* </form> */}
                     </div>
                 )})
             }
@@ -99,10 +116,10 @@ const GetUserDetails = () => {
                     <div className= "spotReview"> {item.review}</div>
                     <div className= "spotStars"> {item.stars}</div>
 
-                    <form
-                     className="spot-form" onSubmit={submitHandler}>
-                     <button type="submit">DELETE THIS REVIEW</button>
-                    </form>
+                    {/* <form */}
+                     {/* className="spot-form" onSubmit={submitHandler}> */}
+                     <button onClick= {() => reviewHandler(item.id)}>DELETE THIS Review</button>
+                    {/* </form> */}
                     </div>
                 )})
                 }
