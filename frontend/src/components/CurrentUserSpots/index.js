@@ -89,6 +89,7 @@ const GetUserDetails = () => {
             {spotsByUserId.map((spot) =>
                 {return (
                     <div key= {spot.id}>
+                        <div className= "spotPicture"> <img src={spot.previewImage}/></div>
                     <div className= "spotReview"> {spot.address}</div>
                     <div className= "spotCity"> {spot.city}</div>
                     <div className= "spotState"> {spot.state}</div>
