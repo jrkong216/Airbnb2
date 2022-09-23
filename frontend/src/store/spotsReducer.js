@@ -64,7 +64,7 @@ return response
 // return response
 // }
 
-export const CreateSpot = (payload) => async dispatch => {
+export const CreateSpot = (payload, imagePayload) => async dispatch => {
     // console.log("DID MY CODE REACH HERE")
     const response = await csrfFetch('/api/spots', {
         method: 'POST',
@@ -72,13 +72,27 @@ export const CreateSpot = (payload) => async dispatch => {
         body: JSON.stringify(payload)
     });
     // console.log("WHAT IS IN MY RESPONSE", response)
+    let spotId;
     if (response.ok) {
         // console.log("DID MY CODE REACH HERE FOR RESPONSE TO BEE OK")
         const info = await response.json()
-        dispatch(create(info))
+        spotId = info.id
+        // dispatch(create(info))
         // console.log("THIS IS THE RESPONSE TO KEY INTO", response)
-        return response
+        // return response
     }
+
+    const imageResponse = await csrfFetch(`/api/spots/${spotId}/images`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(imagePayload)
+    });
+
+    if(response.ok && imageResponse.ok){
+        const imageInfo = await imageResponse.json()
+        dispatch(create(spotId))
+    }
+
 }
 
 export const UpdateSpot = (payload) => async (dispatch) => {

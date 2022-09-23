@@ -26,25 +26,15 @@ console.log("this is spotId", spotId)
 // const lastCreated = allSpotsArray.length
 // console.log("Is this going to be integer 6", lastCreated)
 
-//   useEffect(() => {
-//     const errors = []
+  useEffect(() => {
+    const errors = []
 
-    // if(name.length < 3) {
-    //   errors.push("Name must be 3 or more characters")
-    // } else if (name.length > 20) {
-    //   errors.push("Name must be 20 characters or less")
-    // }
-    // if(fruits.find(fruits => fruits.name === name)) {
-    //   errors.push("Name already exists.")
-    // }
+    if(!review) errors.push("Please provide a review")
+    if(stars < 1 || stars >5) errors.push("Rating must be an integer between 1 and 5")
 
-    // if (sweetness < 1 || sweetness > 10){
-    //   errors.push("Sweetness must be between 1 and 10")
-    // }
+    setValidationErrors(errors)
 
-//     setValidationErrors(errors)
-
-//   }, [name, sweetness, fruits])
+  }, [review, stars])
 
 const submitHandler = async (e) => {
   e.preventDefault()
@@ -78,12 +68,12 @@ try{
       className="review-form" onSubmit={submitHandler}
     >
       <h2>Create a Review</h2>
-      {/* <ul className="errors">
+      <ul className="errors">
         {validationErrors.length > 0 &&
           validationErrors.map((error) =>
           <li key={error}>{error}</li>
         )}
-      </ul> */}
+      </ul>
       <label>
         Review
         <input
@@ -107,7 +97,7 @@ try{
       <button
         type="submit"
         // disable={setValidationErrors.length > 0 ? true : false}
-          // disabled={!!validationErrors.length}
+          disabled={!!validationErrors.length}
       >
         Create Review
       </button>

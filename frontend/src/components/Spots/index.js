@@ -24,7 +24,7 @@ const GetAllSpots = () => {
     return (
         <div>
             <h1>AIRBNB SPLASH PAGE</h1>
-<>
+    <>
             {allSpotsArray.map(spot =>
                 {return (
                     <NavLink key={spot.id} to={`/spots/${spot.id}`}>

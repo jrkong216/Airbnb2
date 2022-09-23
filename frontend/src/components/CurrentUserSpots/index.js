@@ -75,7 +75,8 @@ const GetUserDetails = () => {
             reviewId: id
         }
         let reviewToDelete;
-        reviewToDelete = dispatch(DeleteReview(payload)).then(() => history.push(`/current/user`))
+        reviewToDelete = dispatch(DeleteReview(payload))
+        // .then(() => history.push(`/current/user`))
         // console.log("THIS IS OUR CREATED SPOT", createdSpot)
         //WHY IS HISTORY NOT WORKING
         //   history.push("/")

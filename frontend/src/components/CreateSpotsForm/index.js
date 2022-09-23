@@ -16,8 +16,8 @@ function SpotForm() {
   const [lng, setLongitude] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
-  // const [imageurl, setImageUrl] = useState('')
-
+  const [url, setImageUrl] = useState('')
+  const[preview, setPreview] = useState(false)
   const [validationErrors, setValidationErrors] = useState([])
  //GOING TO HAVE TO MAKE SOME SORT OF USER MUST BE LOGGED IN REFERRENCE
 
@@ -31,25 +31,24 @@ function SpotForm() {
 // const lastCreated = allSpotsArray.length
 // console.log("Is this going to be integer 6", lastCreated)
 
-//   useEffect(() => {
-//     const errors = []
+  useEffect(() => {
+    const errors = []
 
-    // if(name.length < 3) {
-    //   errors.push("Name must be 3 or more characters")
-    // } else if (name.length > 20) {
-    //   errors.push("Name must be 20 characters or less")
-    // }
-    // if(fruits.find(fruits => fruits.name === name)) {
-    //   errors.push("Name already exists.")
-    // }
+        if (!name) errors.push("Please provide a name")
+        if (!address) errors.push("Please provide an address");
+        if (!city) errors.push("Please provide a city");
+        if (!state) errors.push("Please provide a state")
+        if (!country) errors.push("Please provide a country")
+        if (lat < -90 || lat > 90) errors.push("Please provide a valid latitude between -90 to 90")
+        if (lng < -180 || lng > 180) errors.push("Please provide a valid longitude between -180 to 180")
+        if (!description) errors.push("Please provide a description")
+        if (price < 0) errors.push("Please set price above 0");
+        if (!url) errors.push("Please provide a image");
 
-    // if (sweetness < 1 || sweetness > 10){
-    //   errors.push("Sweetness must be between 1 and 10")
-    // }
 
-//     setValidationErrors(errors)
+    setValidationErrors(errors)
 
-//   }, [name, sweetness, fruits])
+  }, [name, address, city, state, country, lat, lng, description, price, url])
 
 const submitHandler = async (e) => {
   e.preventDefault()
@@ -66,9 +65,14 @@ const submitHandler = async (e) => {
     description
 }
 
+const imagePayload = {
+  url,
+  preview
+}
+
 let createdSpot;
 
-createdSpot = dispatch(CreateSpot(payload))
+createdSpot = dispatch(CreateSpot(payload, imagePayload))
 // console.log("THIS IS OUR CREATED SPOT", createdSpot)
 //WHY IS HISTORY NOT WORKING
   history.push("/")
@@ -83,12 +87,12 @@ createdSpot = dispatch(CreateSpot(payload))
       className="spot-form" onSubmit={submitHandler}
     >
       <h2>Create a Spot</h2>
-      {/* <ul className="errors">
+      <ul className="errors">
         {validationErrors.length > 0 &&
           validationErrors.map((error) =>
           <li key={error}>{error}</li>
         )}
-      </ul> */}
+      </ul>
       <label>
         Name
         <input
@@ -170,19 +174,28 @@ createdSpot = dispatch(CreateSpot(payload))
           value={price}
         />
       </label>
-      {/* <label>
-      Image Url
+      <label>
+      Url
         <input
           type="text"
-          name="imageurl"
+          name="url"
           onChange={(e)=> setImageUrl(e.target.value)}
-          value={imageurl}
+          value={url}
         />
-      </label> */}
+      </label>
+      <label>
+      Set Preview for your Spot?
+        <input
+          type="checkbox"
+          name="preview"
+          onChange={(e)=> setPreview(!preview)}
+          value={preview}
+        />
+      </label>
       <button
         type="submit"
         // disable={setValidationErrors.length > 0 ? true : false}
-          // disabled={!!validationErrors.length}
+          disabled={!!validationErrors.length}
       >
         Create Spot
       </button>
