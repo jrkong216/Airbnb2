@@ -17,6 +17,7 @@ const GetSpotDetails = () => {
     spotId = parseInt(spotId)
     const history = useHistory()
     const spotInfo = useSelector(state => state.spots[spotId])
+    console.log("THIS IS SPOTINFO OF THE SPOT details indx", spotInfo)
     const reviewInfo = useSelector(state => state.reviews)
     const reviewInfoArray = Object.values(reviewInfo)
     const reviewsBySpotId = reviewInfoArray.filter(spot => spot.spotId === +spotId)
@@ -27,7 +28,7 @@ const GetSpotDetails = () => {
     // console.log("this is keying into variable object", variable.id)
     // console.log("THIS IS THE STATE FOR SPOT 3 reviewInfo", reviewInfo)
     // console.log("This is the ARRAY OF THE INFO", reviewInfoArray)
-    console.log("THESE ARE THE REVIEWS", reviewsBySpotId)
+    // console.log("THESE ARE THE REVIEWS", reviewsBySpotId)
     useEffect(() => {
         dispatch(getAllReviews(spotId))
         dispatch(getAllSpots())

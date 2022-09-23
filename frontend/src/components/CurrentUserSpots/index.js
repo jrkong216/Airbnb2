@@ -22,7 +22,7 @@ const GetUserDetails = () => {
 
     const spotsInfoArray = Object.values(spotInfo)
     const spotsByUserId = spotsInfoArray.filter(spot => spot.ownerId === +userId)
-    // console.log("THIS IS THE STATE FOR SPOTInfo", spotInfo)
+    // console.log("THIS IS THE STATE FOR SPOTInfo from USER", spotInfo)
     // console.log("This is the ARRAY OF THE stopinfo", spotsInfoArray)
     console.log("THESE ARE THE spots by user", spotsByUserId)
 
@@ -89,8 +89,9 @@ const GetUserDetails = () => {
             {spotsByUserId.map((spot) =>
                 {return (
                     <div key= {spot.id}>
-                        <div className= "spotPicture"> <img src={spot.previewImage}/></div>
-                    <div className= "spotReview"> {spot.address}</div>
+                     <div className= "spotPicture"> <img src={spot.previewImage}/></div>
+                    <div className= "spotName"> THIS IS NAME {spot.name}</div>
+                    <div className= "spotReview"> THIS IS ADDRESS {spot.address}</div>
                     <div className= "spotCity"> {spot.city}</div>
                     <div className= "spotState"> {spot.state}</div>
                     <div className= "spotPrice"> ${spot.price}</div>
