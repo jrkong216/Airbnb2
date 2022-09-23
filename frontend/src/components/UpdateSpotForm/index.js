@@ -19,14 +19,14 @@ const { spotId } = useParams()
   const [lng, setLongitude] = useState(spotInfo.lng)
   const [description, setDescription] = useState(spotInfo.description)
   const [price, setPrice] = useState(spotInfo.price)
-  // const [imageurl, setImageUrl] = useState('')
+  // const [url, setImageUrl] = useState('')
 
   const [validationErrors, setValidationErrors] = useState([])
  //GOING TO HAVE TO MAKE SOME SORT OF USER MUST BE LOGGED IN REFERRENCE
 
   useEffect(() => {
     dispatch(getAllSpots())
-}, [dispatch, spotId])
+}, [dispatch])
 
 // const allSpots = useSelector(state => state.spots)
 // const allSpotsArray = Object.values(allSpots)
@@ -34,25 +34,24 @@ const { spotId } = useParams()
 // const lastCreated = allSpotsArray.length
 // console.log("Is this going to be integer 6", lastCreated)
 
-//   useEffect(() => {
-//     const errors = []
+useEffect(() => {
+    const errors = []
 
-    // if(name.length < 3) {
-    //   errors.push("Name must be 3 or more characters")
-    // } else if (name.length > 20) {
-    //   errors.push("Name must be 20 characters or less")
-    // }
-    // if(fruits.find(fruits => fruits.name === name)) {
-    //   errors.push("Name already exists.")
-    // }
+    if (!name) errors.push("Please provide a name")
+    if (!address) errors.push("Please provide an address");
+    if (!city) errors.push("Please provide a city");
+    if (!state) errors.push("Please provide a state")
+    if (!country) errors.push("Please provide a country")
+    if (lat < -90 || lat > 90) errors.push("Please provide a valid latitude between -90 to 90")
+    if (lng < -180 || lng > 180) errors.push("Please provide a valid longitude between -180 to 180")
+    if (!description) errors.push("Please provide a description")
+    if (price < 0) errors.push("Please set price above 0");
+    // if (!url) errors.push("Please provide a image");
 
-    // if (sweetness < 1 || sweetness > 10){
-    //   errors.push("Sweetness must be between 1 and 10")
-    // }
 
-//     setValidationErrors(errors)
+setValidationErrors(errors)
 
-//   }, [name, sweetness, fruits])
+}, [name, address, city, state, country, lat, lng, description, price])
 
 const submitHandler = async (e) => {
   e.preventDefault()
@@ -82,13 +81,13 @@ createdSpot = dispatch(UpdateSpot(payload))
     <form
       className="spot-form" onSubmit={submitHandler}
     >
-      <h2>UPDATE a Spot</h2>
-      {/* <ul className="errors">
+      <h2>Create a Spot</h2>
+      <ul className="errors">
         {validationErrors.length > 0 &&
           validationErrors.map((error) =>
           <li key={error}>{error}</li>
         )}
-      </ul> */}
+      </ul>
       <label>
         Name
         <input
@@ -171,12 +170,12 @@ createdSpot = dispatch(UpdateSpot(payload))
         />
       </label>
       {/* <label>
-      Image Url
+      Url
         <input
           type="text"
-          name="imageurl"
+          name="url"
           onChange={(e)=> setImageUrl(e.target.value)}
-          value={imageurl}
+          value={url}
         />
       </label> */}
       <button
