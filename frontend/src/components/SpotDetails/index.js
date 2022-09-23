@@ -75,6 +75,7 @@ const GetSpotDetails = () => {
         <div>
             <div>
                 <h1>SPECIFIC SPOT SPLASH PAGE</h1>
+                <div className= "spotPicture"> <img src={spotInfo.previewImage}/></div>
                 <div className="spotName"> {spotInfo.name}</div>
                 <div className="spotAddress"> {spotInfo.address}</div>
                 <div className="spotCountry"> {spotInfo.country}</div>
