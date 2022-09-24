@@ -34,7 +34,7 @@ function SpotForm() {
   useEffect(() => {
     const errors = []
 
-        if (!name) errors.push("Please provide a name")
+        if (!name.length) errors.push("Please provide a name")
         if (!address) errors.push("Please provide an address");
         if (!city) errors.push("Please provide a city");
         if (!state) errors.push("Please provide a state")
@@ -72,10 +72,10 @@ const imagePayload = {
 
 let createdSpot;
 
-createdSpot = dispatch(CreateSpot(payload, imagePayload))
+createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => history.push("/"))
 // console.log("THIS IS OUR CREATED SPOT", createdSpot)
 //WHY IS HISTORY NOT WORKING
-  history.push("/")
+
   // history.push(`/api/spots/${createdSpot.id}`)
 }
 //return spot from teh THUNK
@@ -93,6 +93,7 @@ createdSpot = dispatch(CreateSpot(payload, imagePayload))
           <li key={error}>{error}</li>
         )}
       </ul>
+
       <label>
         Name
         <input

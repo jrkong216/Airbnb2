@@ -81,6 +81,7 @@ const GetSpotDetails = () => {
                 <div className="spotAddress"> {spotInfo.address}</div>
                 <div className="spotCountry"> {spotInfo.country}</div>
                 <div className="spotPrice"> {spotInfo.price}</div>
+                <div className="spotavgRating"> THIS IS AVG RATING{spotInfo.avgRating}</div>
                 <div className="Creat-a-Spot-button">
                     <NavLink to={`/spot/${spotId}/edit`}>
                         <button type="submit">EDIT THIS SPOT</button>
