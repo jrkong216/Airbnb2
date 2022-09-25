@@ -23,7 +23,7 @@ const GetAllSpots = () => {
     }
 
     return (
-        <div className= "spots-container">
+        <div className= "home-spots-container">
         {allSpotsArray.map((spot)=>
             <SpotCard key={spot.id} spot={spot} />
             )}
@@ -33,7 +33,7 @@ const GetAllSpots = () => {
                 //     <button type="submit">CREATE A SPOT</button>
                 //     </NavLink>
                 // </div> */}
-                </div>
+        </div>
 
 
 
