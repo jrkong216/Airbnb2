@@ -3,6 +3,10 @@ import "./SpotCard.css"
 
 function SpotCard({spot}) {
 
+    if(spot.avgRating === null){
+        spot.avgRating = "NEW"
+    }
+
 return(
 <NavLink className="spot-cotainer" to={`/spots/${spot.id}`}>
     <div className= "spot-container">

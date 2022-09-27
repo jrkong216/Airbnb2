@@ -34,12 +34,19 @@ function Navigation({ isLoaded }){
   }
 
   return (
+    <div className= "Home-Nav-Link">
     <ul>
       <li>
         <NavLink exact to="/">Home</NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>
+    <div className = "Creat-a-Spot-button">
+                   <NavLink to="/spots/new">
+                   <button type="submit">CREATE A SPOT</button>
+                   </NavLink>
+                </div>
+    </div>
   );
 }
 
