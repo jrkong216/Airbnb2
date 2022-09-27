@@ -26,12 +26,17 @@ overflow: hidden
 
 .spot-info-container{
 display: grid;
-/* grid-template-columns: 3fr 1fr; */
+grid-template-columns: 3fr 1fr;
 padding: 10px 0px;
   width: 100%;
 }
 
+.spot-review-data-container{
+display: grid;
+grid-template-rows: 1ft;
+}
+
 .spot-price-container{
-    display: flex;
-    align-items: baseline;
+  align-content: end
+
 }

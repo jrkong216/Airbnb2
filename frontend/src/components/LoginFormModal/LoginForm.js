@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+import DemoUser from "../DemoUser";
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ function LoginForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    
+
     return dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
         const data = await res.json();
@@ -47,6 +48,7 @@ function LoginForm() {
         />
       </label>
       <button type="submit">Log In</button>
+      <DemoUser/>
     </form>
   );
 }

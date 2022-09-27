@@ -28,15 +28,12 @@ const GetAllSpots = () => {
             <SpotCard key={spot.id} spot={spot} />
             )}
 
-                {/* // <div className = "Creat-a-Spot-button">
-                //     <NavLink to="/spots/new">
-                //     <button type="submit">CREATE A SPOT</button>
-                //     </NavLink>
-                // </div> */}
+                <div className = "Creat-a-Spot-button">
+                   <NavLink to="/spots/new">
+                   <button type="submit">CREATE A SPOT</button>
+                   </NavLink>
+                </div>
         </div>
-
-
-
     )
 }
 

@@ -35,7 +35,7 @@ function SpotForm() {
     const errors = []
 
         if (!name.length) errors.push("Please provide a name")
-        if (!address) errors.push("Please provide an address");
+        if (!address.length) errors.push("Please provide an address");
         if (!city) errors.push("Please provide a city");
         if (!state) errors.push("Please provide a state")
         if (!country) errors.push("Please provide a country")

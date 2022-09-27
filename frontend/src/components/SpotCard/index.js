@@ -18,7 +18,7 @@ return(
             <div className= "spot-price-container">
                 <div className= "spot-price"> {spot.price}</div>
             </div>
-            <div className="spot-review-data">
+            <div className="spot-review-data-container">
             <div className="spot-star">
               <i className="fa-solid fa-star fa-xs"></i>
             </div>
