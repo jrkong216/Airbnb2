@@ -29,9 +29,6 @@ function App() {
           <Route exact path="/">
             <Spots/>
           </Route>
-          {/* <Route path="/signup">
-            <SignupFormPage />
-          </Route> */}
           <Route path="/spots/new">
             <CreateSpotsForm/>
           </Route>

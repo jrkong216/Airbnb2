@@ -2,14 +2,13 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import{useHistory} from 'react-router-dom'
 // import "./SignupForm.css"
 
-function SigninForm({setShowSignUpModal}) {
+function SignupForm() {
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history  = useHistory()
   const sessionUser = useSelector((state) => state.session.user);
-//   const [credential, setCredential] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -20,17 +19,24 @@ function SigninForm({setShowSignUpModal}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors([]);
 
-    return dispatch(sessionActions.signup({ firstName, lastName, email, username, password })).then(() => setShowSignUpModal(false)).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }
-    );
+
+    if (password === confirmPassword){
+      setErrors([]);
+      return dispatch(sessionActions.signup({ firstName, lastName, email, username, password })).catch(
+        async (res) => {
+          const data = await res.json();
+          if (data && data.errors) setErrors(data.errors);
+        });
+    } else {
+      return setErrors(['Confirm Password field must be the same as the Password field'])
+    }
+
+
   };
 //After clicking signup somehow direct it to Close, use a .then after dispatch
-  if (sessionUser) return history.push('/');
+  if (sessionUser) history.push("/")
+  // .then(() => setShowSignUpModal(false));
 
   return (
     <form onSubmit={handleSubmit}>
@@ -97,4 +103,4 @@ function SigninForm({setShowSignUpModal}) {
     </form>
   );
 }
-export default SigninForm;
+export default SignupForm;

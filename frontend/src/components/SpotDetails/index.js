@@ -17,7 +17,7 @@ const GetSpotDetails = () => {
     spotId = parseInt(spotId)
     const history = useHistory()
     const spotInfo = useSelector(state => state.spots[spotId])
-    console.log("THIS IS SPOTINFO OF THE SPOT details indx", spotInfo)
+    // console.log("THIS IS SPOTINFO OF THE SPOT details indx", spotInfo)
     const reviewInfo = useSelector(state => state.reviews)
     const reviewInfoArray = Object.values(reviewInfo)
     const reviewsBySpotId = reviewInfoArray.filter(spot => spot.spotId === +spotId)
