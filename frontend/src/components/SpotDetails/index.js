@@ -103,17 +103,24 @@ const GetSpotDetails = () => {
             </div>
         )
 
+        if(spotInfo.avgRating === null){
+            spotInfo.avgRating = "NEW"
+        }
+
 
     return (
         <div>
             <div>
-                <h1>SPECIFIC SPOT SPLASH PAGE</h1>
+                <h1>{spotInfo.name}</h1>
                 <div className= "spotPicture"> <img src={spotInfo.previewImage}/></div>
                 <div className="spotName"> {spotInfo.name}</div>
                 <div className="spotAddress"> {spotInfo.address}</div>
                 <div className="spotCountry"> {spotInfo.country}</div>
                 <div className="spotPrice"> {spotInfo.price}</div>
-                <div className="spotavgRating"> THIS IS AVG RATING{spotInfo.avgRating}</div>
+                <div className="spot-star">
+                <i className="fa-solid fa-star fa-xs"></i>
+                </div>
+                <div className="spotavgRating"> {spotInfo.avgRating}</div>
                 {editDeleteLinks}
                 {/* <div className="Edit-a-Spot-button"> */}
                     {/* <NavLink to={`/spot/${spotId}/edit`}> */}

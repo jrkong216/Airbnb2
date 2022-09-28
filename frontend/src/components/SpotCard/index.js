@@ -18,7 +18,7 @@ return(
             <div className= "spot-address"> {spot.address}</div>
                 <div className= "spot-city-state"> {spot.city}, {spot.state}</div>
                 <div className= "spot-country"> {spot.country}</div>
-                <div className= "spot-name"> {spot.name}</div>
+                
             </div>
             <div className= "spot-price-container">
                 <div className= "spot-price"> {spot.price}</div>
