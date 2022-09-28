@@ -15,27 +15,37 @@ const GetSpotDetails = () => {
     let { spotId } = useParams()
     spotId = parseInt(spotId)
     const sessionUser = useSelector(state => state.session.user);
+
+
     console.log("this is sesssionUser", sessionUser)
     const history = useHistory()
     const spotInfo = useSelector(state => state.spots[spotId])
-    const reviewInfo = useSelector(state => state.reviews)
-    const reviewInfoArray = Object.values(reviewInfo)
-    const reviewsBySpotId = reviewInfoArray.filter(spot => spot.spotId === +spotId)
-    console.log("this is reviewsBySpotId",reviewsBySpotId)
     useEffect(() => {
         dispatch(getAllReviews(spotId))
         dispatch(getAllSpots())
             .then(() => setIsLoaded(true))
     }, [dispatch, spotId])
+    const reviewInfo = useSelector(state => state.reviews)
+    if (spotInfo === undefined) {
+        return null
+    }
+    let sessionUserId
+    if (sessionUser) {
+        sessionUserId = sessionUser.id
+    }
+
+    let spotInfoOwnerId = spotInfo.ownerId
+    const reviewInfoArray = Object.values(reviewInfo)
+    const reviewsBySpotId = reviewInfoArray.filter(spot => spot.spotId === +spotId)
+    console.log("this is reviewsBySpotId",reviewsBySpotId)
+
 
 
     if (!isLoaded) {
         return (<div>Loading...</div>)
     }
 
-    if (spotInfo === undefined) {
-        return null
-    }
+
 
     const submitHandler = async (e) => {
         e.preventDefault()
@@ -87,18 +97,11 @@ const GetSpotDetails = () => {
     }
 
     let seeCreateReviewButton;
-    if(sessionUser && spotInfo.ownerId === sessionUser.id) {
         seeCreateReviewButton = (
             <div>
                 <button type="submit">Create a New Review</button>
             </div>
         )
-    } else {
-        seeCreateReviewButton = (
-            <>
-            </>
-        )
-    }
 
 
     return (
@@ -135,7 +138,7 @@ const GetSpotDetails = () => {
                                 )})
                     }
                                     <NavLink to={`/review/${spotId}/new`}>
-                                        {seeCreateReviewButton}
+                                    {sessionUserId  && sessionUserId  !== spotInfoOwnerId ? seeCreateReviewButton : null}
                                     </NavLink>
                             </div>
             </div>
