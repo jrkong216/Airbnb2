@@ -34,11 +34,11 @@ function SpotForm() {
   useEffect(() => {
     const errors = []
 
-        if (!name.length) errors.push("Please provide a name")
+        if (!name) errors.push("Please provide a name")
         if (!address.length) errors.push("Please provide an address");
-        if (!city) errors.push("Please provide a city");
-        if (!state) errors.push("Please provide a state")
-        if (!country) errors.push("Please provide a country")
+        if (!city.length) errors.push("Please provide a city");
+        if (!state.length) errors.push("Please provide a state")
+        if (!country.length) errors.push("Please provide a country")
         if (lat < -90 || lat > 90) errors.push("Please provide a valid latitude between -90 to 90")
         if (lng < -180 || lng > 180) errors.push("Please provide a valid longitude between -180 to 180")
         if (!description) errors.push("Please provide a description")

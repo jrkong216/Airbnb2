@@ -1,13 +1,13 @@
 // frontend/src/components/Navigation/index.js
 import React from 'react';
-// import { useState } from 'react';
+
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal'
 import './Navigation.css';
-// import { Modal} from '../../context/Modal'
+
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -22,7 +22,6 @@ function Navigation({ isLoaded }){
       <button>CREATE A SPOT</button>
       </NavLink>
       </div>
-
       </>
 
     );
@@ -31,12 +30,9 @@ function Navigation({ isLoaded }){
       <>
         <SignupFormModal />
         <LoginFormModal />
-
       </>
     );
   }
-
-
 
   return (
     <div className= "Home-Nav-Link">

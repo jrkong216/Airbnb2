@@ -81,7 +81,7 @@ createdSpot = dispatch(UpdateSpot(payload))
     <form
       className="spot-form" onSubmit={submitHandler}
     >
-      <h2>Create a Spot</h2>
+      <h2>Edit this Spot</h2>
       <ul className="errors">
         {validationErrors.length > 0 &&
           validationErrors.map((error) =>
