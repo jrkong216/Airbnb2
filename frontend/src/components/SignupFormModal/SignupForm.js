@@ -34,9 +34,9 @@ function SignupForm() {
 
 
   };
-//After clicking signup somehow direct it to Close, use a .then after dispatch
+
   if (sessionUser) history.push("/")
-  // .then(() => setShowSignUpModal(false));
+  
 
   return (
     <form onSubmit={handleSubmit}>

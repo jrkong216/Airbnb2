@@ -15,6 +15,7 @@ const GetSpotDetails = () => {
     let { spotId } = useParams()
     spotId = parseInt(spotId)
     const sessionUser = useSelector(state => state.session.user);
+    console.log("this is sesssionUser", sessionUser)
     const history = useHistory()
     const spotInfo = useSelector(state => state.spots[spotId])
     const reviewInfo = useSelector(state => state.reviews)
@@ -85,6 +86,20 @@ const GetSpotDetails = () => {
         )
     }
 
+    let seeCreateReviewButton;
+    if(sessionUser && spotInfo.ownerId === sessionUser.id) {
+        seeCreateReviewButton = (
+            <div>
+                <button type="submit">Create a New Review</button>
+            </div>
+        )
+    } else {
+        seeCreateReviewButton = (
+            <>
+            </>
+        )
+    }
+
 
     return (
         <div>
@@ -120,7 +135,7 @@ const GetSpotDetails = () => {
                                 )})
                     }
                                     <NavLink to={`/review/${spotId}/new`}>
-                                        <button type="submit">Create a New Review</button>
+                                        {seeCreateReviewButton}
                                     </NavLink>
                             </div>
             </div>

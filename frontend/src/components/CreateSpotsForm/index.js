@@ -19,17 +19,12 @@ function SpotForm() {
   const [url, setImageUrl] = useState('')
   const[preview, setPreview] = useState(false)
   const [validationErrors, setValidationErrors] = useState([])
- //GOING TO HAVE TO MAKE SOME SORT OF USER MUST BE LOGGED IN REFERRENCE
+
 
   useEffect(() => {
     dispatch(getAllSpots())
 }, [dispatch])
 
-// const allSpots = useSelector(state => state.spots)
-// const allSpotsArray = Object.values(allSpots)
-// console.log("this is allSpotsArray", allSpotsArray)
-// const lastCreated = allSpotsArray.length
-// console.log("Is this going to be integer 6", lastCreated)
 
   useEffect(() => {
     const errors = []

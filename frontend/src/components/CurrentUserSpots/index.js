@@ -22,20 +22,14 @@ const GetUserDetails = () => {
 
     const spotsInfoArray = Object.values(spotInfo)
     const spotsByUserId = spotsInfoArray.filter(spot => spot.ownerId === +userId)
-    // console.log("THIS IS THE STATE FOR SPOTInfo from USER", spotInfo)
-    // console.log("This is the ARRAY OF THE stopinfo", spotsInfoArray)
+
     console.log("THESE ARE THE spots by user", spotsByUserId)
 
     const reviewInfo = useSelector(state => state.reviews)
     const reviewInfoArray = Object.values(reviewInfo)
     const reviewsBySpotId = reviewInfoArray.filter(review => review.userId === +userId)
     const reviewByUser = reviewsBySpotId.filter(user => user.userId === +userId)
-    // console.log("THIS IS REVIEW BY USER", reviewByUser)
-    // const variable = reviewByUser.pop()
-    // console.log("This is variable", variable)
-    // console.log("THIS IS THE STATE reviewInfo", reviewInfo)
-    // console.log("This is the ARRAY OF THE INFO", reviewInfoArray)
-    // console.log("THESE ARE THE REVIEWS", reviewsBySpotId)
+
 
     useEffect(() => {
         dispatch(getUserReviews())
@@ -64,9 +58,7 @@ const GetUserDetails = () => {
 
             createdSpot = dispatch(DeleteSpot(payload)).then(() => history.push("/current/user")
             )
-            // console.log("THIS IS OUR CREATED SPOT", createdSpot)
-            //WHY IS HISTORY NOT WORKING
-            //   history.push("/")
+
        }
        const reviewHandler = async (id) => {
         // e.preventDefault()
@@ -76,10 +68,7 @@ const GetUserDetails = () => {
         }
         let reviewToDelete;
         reviewToDelete = dispatch(DeleteReview(payload))
-        // .then(() => history.push(`/current/user`))
-        // console.log("THIS IS OUR CREATED SPOT", createdSpot)
-        //WHY IS HISTORY NOT WORKING
-        //   history.push("/")
+       
     }
 
 

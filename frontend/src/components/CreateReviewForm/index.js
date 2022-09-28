@@ -14,17 +14,12 @@ function ReviewForm() {
   const { spotId } = useParams()
 console.log("this is spotId", spotId)
   const [validationErrors, setValidationErrors] = useState([])
- //GOING TO HAVE TO MAKE SOME SORT OF USER MUST BE LOGGED IN REFERRENCE
+
 
   useEffect(() => {
     dispatch(getAllReviews(spotId))
 }, [dispatch])
 
-// const allSpots = useSelector(state => state.spots)
-// const allSpotsArray = Object.values(allSpots)
-// console.log("this is allSpotsArray", allSpotsArray)
-// const lastCreated = allSpotsArray.length
-// console.log("Is this going to be integer 6", lastCreated)
 
   useEffect(() => {
     const errors = []
@@ -48,20 +43,12 @@ let createdReview;
 try{
   createdReview = await dispatch(CreateReview(spotId, payload))
 } catch(res) {
-  const data = await res.json() // If(data) set Validation error to data.message, if issue log nessage if why
-// need another if(err0r) DO NOT LET SUBMISSION HAPPEN
-  console.log("This is res", data)
+  const data = await res.json()
 }
 
-// console.log("THIS IS OUR CREATED SPOT", createdSpot)
-//WHY IS HISTORY NOT WORKING
-//   history.push("/")
   history.push(`/spots/${spotId}`)
-  // THIS SPOT IS NOT RE-RENDERING
+
 }
-//return spot from teh THUNK
-
-
 
   return (
     <form

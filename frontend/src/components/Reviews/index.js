@@ -17,7 +17,7 @@ const GetAllReviews = () => {
 
 
 
-    //  console.log("Is this being read before useEffect")
+    
     useEffect(() => {
         dispatch(getAllReviews(spotId))
             .then(() => setIsLoaded(true))
