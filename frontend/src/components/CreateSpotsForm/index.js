@@ -34,7 +34,7 @@ function SpotForm() {
   useEffect(() => {
     const errors = []
 
-        if (!name) errors.push("Please provide a name")
+        if (!name.length) errors.push("Please provide a name")
         if (!address.length) errors.push("Please provide an address");
         if (!city.length) errors.push("Please provide a city");
         if (!state.length) errors.push("Please provide a state")

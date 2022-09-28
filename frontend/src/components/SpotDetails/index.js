@@ -14,15 +14,13 @@ const GetSpotDetails = () => {
     const [isLoaded, setIsLoaded] = useState(false)
     let { spotId } = useParams()
     spotId = parseInt(spotId)
+    const sessionUser = useSelector(state => state.session.user);
     const history = useHistory()
     const spotInfo = useSelector(state => state.spots[spotId])
     const reviewInfo = useSelector(state => state.reviews)
     const reviewInfoArray = Object.values(reviewInfo)
     const reviewsBySpotId = reviewInfoArray.filter(spot => spot.spotId === +spotId)
-    const sessionUser = useSelector(state => state.session.user);
-    console.log("This is sessionUSER", sessionUser)
-// console.log("This is spotInfo for specific spot", spotInfo)
-console.log("This is reviewsBySpotId", reviewsBySpotId)
+    console.log("this is reviewsBySpotId",reviewsBySpotId)
     useEffect(() => {
         dispatch(getAllReviews(spotId))
         dispatch(getAllSpots())
@@ -49,10 +47,10 @@ console.log("This is reviewsBySpotId", reviewsBySpotId)
 
     }
 
-  
-    const reviewHandler = async (id) => {
+
+    const reviewHandler = async (id, userId) => {
         // e.preventDefault()
-        if (sessionUser.id === reviewsBySpotId.userId){
+        if (sessionUser.id === userId){
             const payload = {
                 spotId: spotId,
                 reviewId: id
@@ -117,7 +115,7 @@ console.log("This is reviewsBySpotId", reviewsBySpotId)
                                 <div className="itemReview"> {item.review}</div>
                                 <div className="itemStars"> {item.stars}</div>
 
-                                 <button onClick= {() => reviewHandler(item.id)}>DELETE THIS Review</button>
+                                 <button onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button>
                                 </div>
                                 )})
                     }
