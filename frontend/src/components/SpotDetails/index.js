@@ -114,7 +114,7 @@ const GetSpotDetails = () => {
             reviewNumber = "Be the First to Create a Review!"
         }
 
-    
+
         let numberOfReviews;
         if (reviewsBySpotId.length){
             numberOfReviews = reviewsBySpotId.length
@@ -126,9 +126,12 @@ const GetSpotDetails = () => {
         <div>
             <div>
                 <h1>{spotInfo.name}</h1>
+                <div className="spot-star">
+                <i className="fa-solid fa-star fa-xs"></i>
+                </div>
+                <div className="number-of-reviews"> {numberOfReviews} {reviewNumber} </div>
                 <div className= "spotPicture"> <img src={spotInfo.previewImage}/></div>
                 <div className="spotName"> {spotInfo.name}</div>
-                <div className="number-of-reviews"> {numberOfReviews} {reviewNumber} </div>
                 <div className="spotAddress"> {spotInfo.address}</div>
                 <div className="spotCountry"> {spotInfo.country}</div>
                 <div className="spotPrice"> {spotInfo.price}</div>
