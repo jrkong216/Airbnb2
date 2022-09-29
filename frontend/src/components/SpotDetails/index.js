@@ -38,7 +38,7 @@ const GetSpotDetails = () => {
     const reviewInfoArray = Object.values(reviewInfo)
     const reviewsBySpotId = reviewInfoArray.filter(spot => spot.spotId === +spotId)
     console.log("this is reviewsBySpotId",reviewsBySpotId)
-
+    const reviewOfUser = reviewsBySpotId.find(element => element.userId === sessionUserId)
 
 
     if (!isLoaded) {
@@ -144,7 +144,7 @@ const GetSpotDetails = () => {
                                 )})
                     }
                                     <NavLink to={`/review/${spotId}/new`}>
-                                    {sessionUserId  && sessionUserId  !== spotInfoOwnerId ? seeCreateReviewButton : null}
+                                    {sessionUserId  && sessionUserId  !== spotInfoOwnerId && !reviewOfUser ? seeCreateReviewButton : null}
                                     </NavLink>
                             </div>
             </div>
