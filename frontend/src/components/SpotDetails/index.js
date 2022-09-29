@@ -105,7 +105,22 @@ const GetSpotDetails = () => {
         if(spotInfo.avgRating === null){
             spotInfo.avgRating = "NEW"
         }
+        let reviewNumber;
+        if(reviewsBySpotId.length > 1) {
+            reviewNumber = "reviews"
+        } else if (reviewsBySpotId.length === 1) {
+            reviewNumber = "review"
+        } else {
+            reviewNumber = "Be the First to Create a Review!"
+        }
 
+    
+        let numberOfReviews;
+        if (reviewsBySpotId.length){
+            numberOfReviews = reviewsBySpotId.length
+        } else {
+            numberOfReviews = ""
+        }
 
     return (
         <div>
@@ -113,6 +128,7 @@ const GetSpotDetails = () => {
                 <h1>{spotInfo.name}</h1>
                 <div className= "spotPicture"> <img src={spotInfo.previewImage}/></div>
                 <div className="spotName"> {spotInfo.name}</div>
+                <div className="number-of-reviews"> {numberOfReviews} {reviewNumber} </div>
                 <div className="spotAddress"> {spotInfo.address}</div>
                 <div className="spotCountry"> {spotInfo.country}</div>
                 <div className="spotPrice"> {spotInfo.price}</div>
