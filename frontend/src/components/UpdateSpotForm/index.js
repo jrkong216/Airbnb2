@@ -73,7 +73,7 @@ let createdSpot;
 
 createdSpot = dispatch(UpdateSpot(payload))
 
-  history.push("/")
+  history.push(`/spots/${spotId}`)
 
 }
 
