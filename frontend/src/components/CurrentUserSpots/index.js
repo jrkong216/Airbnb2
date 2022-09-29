@@ -16,6 +16,8 @@ const GetUserDetails = () => {
     const [isLoaded, setIsLoaded] = useState(false)
     const { spotId } = useParams()
     const history = useHistory()
+    const user = useSelector(state => state.session.user)
+    console.log("this is user", user)
     const userId = useSelector(state => state.session.user.id)
 
     const spotInfo = useSelector(state => state.spots)
@@ -68,13 +70,13 @@ const GetUserDetails = () => {
         }
         let reviewToDelete;
         reviewToDelete = dispatch(DeleteReview(payload))
-       
+
     }
 
 
     return(
 <div>
-            <h1>USERS RICH ASS SPOTS THATS DRIVING HOME PRICES UP</h1>
+            <h1>{user.username}'s Spots</h1>
             {spotsByUserId.map((spot) =>
                 {return (
                     <div key= {spot.id}>
@@ -100,7 +102,7 @@ const GetUserDetails = () => {
                 )})
             }
                     <div>
-                    <h2>USER's KAREN REVIEWS</h2>
+                    <h2>{user.username}'s Reviews</h2>
                 <div>
                 {reviewsBySpotId.map((item) =>
                 {return (
