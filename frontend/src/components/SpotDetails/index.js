@@ -67,9 +67,8 @@ const GetSpotDetails = () => {
                 reviewId: id
             }
             let reviewToDelete;
-            reviewToDelete = dispatch(DeleteReview(payload)).then(() => history.push(`/spots/${spotId}`))
-            // console.log("THIS IS OUR CREATED SPOT", createdSpot)
-            //WHY IS HISTORY NOT WO
+            reviewToDelete = dispatch(DeleteReview(payload)).then(()=>dispatch(getAllSpots())).then(() => history.push(`/spots/${spotId}`))
+
         } else {
             alert("You do not have permission to Delete this review")
         }
