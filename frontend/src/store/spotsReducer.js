@@ -71,14 +71,11 @@ export const CreateSpot = (payload, imagePayload) => async dispatch => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     });
-    // console.log("WHAT IS IN MY RESPONSE", response)
-    // let imgResponse
+
     let spotId;
     let spotInfo
     if (response.ok) {
-        console.log("DID MY CODE REACH HERE FOR RESPONSE TO BEE OK")
         spotInfo = await response.json()
-        console.log("THIS IS SPOTINFO", spotInfo)
         spotId = spotInfo.id
     }
 

@@ -20,6 +20,7 @@ const GetSpotDetails = () => {
     console.log("this is sesssionUser", sessionUser)
     const history = useHistory()
     const spotInfo = useSelector(state => state.spots[spotId])
+    console.log("thi iss spotInfo", spotInfo)
     useEffect(() => {
         dispatch(getAllReviews(spotId))
         dispatch(getAllSpots())
@@ -48,7 +49,7 @@ const GetSpotDetails = () => {
 
 
     const submitHandler = async (e) => {
-        
+
         const payload = {
             id: spotId
         }

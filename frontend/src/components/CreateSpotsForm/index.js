@@ -17,7 +17,7 @@ function SpotForm() {
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
   const [url, setImageUrl] = useState('')
-  const[preview, setPreview] = useState(false)
+  const[preview, setPreview] = useState(true)
   const [validationErrors, setValidationErrors] = useState([])
 
 
@@ -92,6 +92,7 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
       <label>
         Name
         <input
+        required
           type="text"
           name="name"
           onChange={(e)=> setName(e.target.value)}
@@ -101,6 +102,7 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
       <label>
         Address
         <input
+        required
           type="text"
           name="address"
           onChange={(e)=> setAddress(e.target.value)}
@@ -110,6 +112,7 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
       <label>
         City
         <input
+        required
           type="text"
           name="city"
           onChange={(e)=> setCity(e.target.value)}
@@ -119,6 +122,7 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
       <label>
         State
         <input
+        required
           type="text"
           name="state"
           onChange={(e)=> setState(e.target.value)}
@@ -128,6 +132,7 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
       <label>
         Country
         <input
+        required
           type="text"
           name="country"
           onChange={(e)=> setCountry(e.target.value)}
@@ -137,6 +142,7 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
       <label>
       Latitude
         <input
+        required
           type="text"
           name="latitude"
           onChange={(e)=> setLatitude(e.target.value)}
@@ -146,6 +152,7 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
       <label>
       Longitude
         <input
+        required
           type="text"
           name="longitude"
           onChange={(e)=> setLongitude(e.target.value)}
@@ -155,6 +162,7 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
       <label>
       Description
         <input
+        required
           type="text"
           name="description"
           onChange={(e)=> setDescription(e.target.value)}
@@ -164,6 +172,7 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
       <label>
       Price
         <input
+        required
           type="text"
           name="price"
           onChange={(e)=> setPrice(e.target.value)}
@@ -173,13 +182,14 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
       <label>
       Url
         <input
+        required
           type="text"
           name="url"
           onChange={(e)=> setImageUrl(e.target.value)}
           value={url}
         />
       </label>
-      <label>
+      {/* <label>
       Set Preview for your Spot?
         <input
           type="checkbox"
@@ -187,11 +197,11 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
           onChange={(e)=> setPreview(!preview)}
           value={preview}
         />
-      </label>
+      </label> */}
       <button
         type="submit"
         // disable={setValidationErrors.length > 0 ? true : false}
-          disabled={!!validationErrors.length}
+          // disabled={!!validationErrors.length}
       >
         Create Spot
       </button>
