@@ -48,7 +48,7 @@ const GetSpotDetails = () => {
 
 
     const submitHandler = async (e) => {
-        e.preventDefault()
+        
         const payload = {
             id: spotId
         }
@@ -57,7 +57,6 @@ const GetSpotDetails = () => {
         )
 
     }
-
 
     const reviewHandler = async (id, userId) => {
         // e.preventDefault()
