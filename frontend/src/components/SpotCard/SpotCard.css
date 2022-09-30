@@ -2,7 +2,7 @@
 display: flex;
 flex-direction: column;
 border-radius: 25px;
-width: 19em;
+width: 17em;
 }
 
 
@@ -38,14 +38,26 @@ display: grid;
 grid-template-columns: 3fr 1fr;
 padding: 10px 0px;
   width: 100%;
+  border-color: rgb(43, 0, 255);
+    border-style: solid;
 }
 
 .spot-review-data-container{
-display: grid;
-grid-template-rows: 1ft;
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+border-color: rgb(64, 255, 0);
+    border-style: solid;
+    grid-row: 1;
+    grid-column:2
 }
 
 .spot-price-container{
-  align-content: end
+  align-content: end;
+  border-color: rgb(221, 255, 0);
+  border-style: solid;
+}
 
+.spot-star{
+  padding-right: 2.5px;
 }

@@ -129,6 +129,7 @@ const GetSpotDetails = () => {
                 <div className="spot-star">
                 <i className="fa-solid fa-star fa-xs"></i>
                 </div>
+                <div className="spot-rating">{spotInfo.avgRating}</div>
                 <div className="number-of-reviews"> {numberOfReviews} {reviewNumber} </div>
                 <div className= "spotPicture"> <img src={spotInfo.previewImage}/></div>
                 <div className="spotName"> {spotInfo.name}</div>
@@ -155,7 +156,12 @@ const GetSpotDetails = () => {
                     {reviewsBySpotId.map((item) => {
                         return (
                             <div key={item.id}>
+                                <div className="itemReview"> {item.User.firstName}'s review</div>
+                                {/* <div className="itemReview"> {item.createdAt}</div> */}
                                 <div className="itemReview"> {item.review}</div>
+                                <div className="spot-star">
+                                <i className="fa-solid fa-star fa-xs"></i>
+                                </div>
                                 <div className="itemStars"> {item.stars}</div>
 
                                  <button onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button>

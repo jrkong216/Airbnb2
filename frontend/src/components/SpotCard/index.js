@@ -4,7 +4,7 @@ import "./SpotCard.css"
 function SpotCard({spot}) {
 
     if(spot.avgRating === null){
-        spot.avgRating = "NEW"
+        spot.avgRating = "NEW!"
     }
 
 return(
@@ -15,20 +15,20 @@ return(
 
         <div className= "spot-info-container">
             <div className= "spot-info-text-container">
-            <div className= "spot-address"> {spot.address}</div>
                 <div className= "spot-city-state"> {spot.city}, {spot.state}</div>
                 <div className= "spot-country"> {spot.country}</div>
+                <div className= "spot-name"> {spot.name}</div>
 
             </div>
             <div className= "spot-price-container">
-                <div className= "spot-price"> {spot.price}</div>
+                <div className= "spot-price"> ${spot.price} night</div>
             </div>
             <div className="spot-review-data-container">
             <div className="spot-star">
               <i className="fa-solid fa-star fa-xs"></i>
             </div>
             <div className="spot-rating">{spot.avgRating}</div>
-          </div>
+            </div>
         </div>
     </div>
 </NavLink>
