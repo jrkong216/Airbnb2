@@ -8,7 +8,7 @@ function SpotCard({spot}) {
     }
 
 return(
-<NavLink className="spot-cotainer" to={`/spots/${spot.id}`}>
+<NavLink className="spot-link-container" to={`/spots/${spot.id}`}>
     <div className= "spot-container">
         <div className= "spot-image-container">
              <img className ="spot-image" src={spot.previewImage}/></div>
@@ -18,7 +18,7 @@ return(
             <div className= "spot-address"> {spot.address}</div>
                 <div className= "spot-city-state"> {spot.city}, {spot.state}</div>
                 <div className= "spot-country"> {spot.country}</div>
-                
+
             </div>
             <div className= "spot-price-container">
                 <div className= "spot-price"> {spot.price}</div>

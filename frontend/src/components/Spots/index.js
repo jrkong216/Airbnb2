@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {getAllSpots} from '../../store/spotsReducer'
 import { NavLink } from 'react-router-dom';
 import SpotCard from "../SpotCard"
+import "./Spots.css"
 
 
 const GetAllSpots = () => {
@@ -23,12 +24,12 @@ const GetAllSpots = () => {
     }
 
     return (
-        <div className= "home-spots-container">
+        <div className="home-container">
+            <div className= "all-spots-card-container">
         {allSpotsArray.map((spot)=>
             <SpotCard key={spot.id} spot={spot} />
             )}
-
-               
+            </div>
         </div>
     )
 }
