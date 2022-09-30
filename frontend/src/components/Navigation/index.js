@@ -41,7 +41,11 @@ function Navigation({ isLoaded }){
     <div className="navbar-main">
     <div className= "Home-Container">
         <NavLink exact to="/"><img className='logo' src={airbnb2}/></NavLink>
-        {isLoaded && sessionLinks}
+
+    </div>
+
+    <div className="Right-Side-Container">
+      {isLoaded && sessionLinks}
     </div>
     </div>
 

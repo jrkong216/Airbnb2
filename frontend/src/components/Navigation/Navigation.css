@@ -2,24 +2,40 @@
 display: flex;
 flex-direction: row;
 /* position: sticky; this is suppose to maintain the container stuck to thee top but not working */
+border-color: aqua;
+border-style: solid;
+justify-content: space-between;
 }
 
 
 .Home-Container{
     display: flex;
     align-items: center;
+    border-color: rgb(8, 0, 255);
+    border-style: solid;
 }
 
 .logo{
     max-height: 100px;
     max-width: 100px;
+    margin-left: 50px;
 }
 
 .profile-button{
     display: flex;
     /* justify-content: right */
+    padding-right: 50px
 }
 
 .Create-a-spot-Button{
     display: flex;
+    padding-right: 150px
+}
+
+.Right-Side-Container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-color: rgb(255, 0, 144);
+    border-style: solid;
 }
