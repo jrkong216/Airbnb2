@@ -7,6 +7,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal'
 import './Navigation.css';
+import airbnb2 from './Images/airbnb2.png'
 
 
 function Navigation({ isLoaded }){
@@ -16,11 +17,13 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-      <ProfileButton user={sessionUser} />
-      <div className= "Create-a-spot-Button">
+       <div className= "Create-a-spot-Button">
         <NavLink to="/spots/new">
       <button>CREATE A SPOT</button>
       </NavLink>
+      </div>
+      <div className= "profile-button">
+      <ProfileButton user={sessionUser}/>
       </div>
       </>
 
@@ -35,15 +38,13 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <div className= "Home-Nav-Link">
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
+    <div className="navbar-main">
+    <div className= "Home-Container">
+        <NavLink exact to="/"><img className='logo' src={airbnb2}/></NavLink>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
-
     </div>
+    </div>
+
   );
 }
 

@@ -1,0 +1,25 @@
+.navbar-main{
+display: flex;
+flex-direction: row;
+/* position: sticky; this is suppose to maintain the container stuck to thee top but not working */
+}
+
+
+.Home-Container{
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    max-height: 100px;
+    max-width: 100px;
+}
+
+.profile-button{
+    display: flex;
+    /* justify-content: right */
+}
+
+.Create-a-spot-Button{
+    display: flex;
+}
