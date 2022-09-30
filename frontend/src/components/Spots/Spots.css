@@ -3,16 +3,16 @@
     border-color: rgb(64, 255, 0);
     border-style: solid;
     justify-content: center;
+
 }
 
 .all-spots-card-container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(265px,1fr));
     border-color: rgb(255, 89, 0);
     border-style: solid;
-
+    grid-auto-rows: 1fr;
     padding-top: 20px;
-    padding-bottom: 20px;
-    justify-content: space-between;
+    max-width: 90%;
+    grid-gap:25px 25px;
 }
