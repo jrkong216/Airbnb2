@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import {CreateSpot} from "../../store/spotsReducer"
 import {getAllSpots} from '../../store/spotsReducer'
 
+
 function SpotForm() {
   const history = useHistory()
   const dispatch = useDispatch();
@@ -88,7 +89,6 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
           <li key={error}>{error}</li>
         )}
       </ul>
-
       <label>
         Name
         <input
