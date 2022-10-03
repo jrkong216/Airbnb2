@@ -33,6 +33,7 @@ function LoginForm() {
         ))}
       </ul>
       <div className="User-Email-Container">
+        <h2>Welcome to AirBnb2</h2>
       <label>
         Username or Email
         <input
@@ -59,7 +60,7 @@ function LoginForm() {
       </label>
       </div>
       <div className="Login-Container">
-      <button type="submit">Log In</button>
+      <button className="Login-Button" type="submit">Log In</button>
       </div>
       <div className="Demo-Container">
       <DemoUser/>
