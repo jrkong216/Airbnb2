@@ -2,8 +2,8 @@
 display: flex;
 flex-direction: row;
 /* position: sticky; this is suppose to maintain the container stuck to thee top but not working */
-border-color: aqua;
-border-style: solid;
+border-color: rgb(164, 165, 165);
+border-bottom-style: solid;
 justify-content: space-between;
 }
 
@@ -11,8 +11,9 @@ justify-content: space-between;
 .Home-Container{
     display: flex;
     align-items: center;
-    border-color: rgb(8, 0, 255);
-    border-style: solid;
+    /* border-color: rgb(8, 0, 255);
+    border-style: solid; */
+    margin-left: 8%
 }
 
 .logo{
@@ -24,7 +25,8 @@ justify-content: space-between;
 .profile-button{
     display: flex;
     /* justify-content: right */
-    padding-right: 50px
+
+
 }
 
 .Create-a-spot-Button{
@@ -36,6 +38,7 @@ justify-content: space-between;
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-color: rgb(255, 0, 144);
-    border-style: solid;
+    /* border-color: rgb(255, 0, 144);
+    border-style: solid; */
+    margin-right: 11%
 }

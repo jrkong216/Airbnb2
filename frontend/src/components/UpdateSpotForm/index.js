@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import {CreateSpot} from "../../store/spotsReducer"
 import {getAllSpots} from '../../store/spotsReducer'
 import {UpdateSpot} from '../../store/spotsReducer'
+import "./UpdateSpotForm.css"
 
 function UpdateSpotForm() {
 const { spotId } = useParams()
@@ -78,19 +79,25 @@ createdSpot = dispatch(UpdateSpot(payload))
 }
 
   return (
+    <div className="Outer-Update-Container">
+        <div className="Inner-Update-Container">
     <form
       className="spot-form" onSubmit={submitHandler}
     >
+      <div className="title-update-box">
       <h2>Edit this Spot</h2>
+      </div>
       <ul className="errors">
         {validationErrors.length > 0 &&
           validationErrors.map((error) =>
           <li key={error}>{error}</li>
         )}
       </ul>
+      <div className="form-Update-container">
       <label>
         Name
         <input
+        className="form-Update-inputs"
           type="text"
           name="name"
           onChange={(e)=> setName(e.target.value)}
@@ -100,6 +107,7 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
         Address
         <input
+        className="form-Update-inputs"
           type="text"
           name="address"
           onChange={(e)=> setAddress(e.target.value)}
@@ -109,6 +117,7 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
         City
         <input
+        className="form-Update-inputs"
           type="text"
           name="city"
           onChange={(e)=> setCity(e.target.value)}
@@ -118,6 +127,7 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
         State
         <input
+        className="form-Update-inputs"
           type="text"
           name="state"
           onChange={(e)=> setState(e.target.value)}
@@ -127,6 +137,7 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
         Country
         <input
+        className="form-Update-inputs"
           type="text"
           name="country"
           onChange={(e)=> setCountry(e.target.value)}
@@ -136,6 +147,7 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
       Latitude
         <input
+        className="form-Update-inputs"
           type="text"
           name="latitude"
           onChange={(e)=> setLatitude(e.target.value)}
@@ -145,6 +157,7 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
       Longitude
         <input
+        className="form-Update-inputs"
           type="text"
           name="longitude"
           onChange={(e)=> setLongitude(e.target.value)}
@@ -154,6 +167,7 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
       Description
         <input
+        className="form-Update-inputs"
           type="text"
           name="description"
           onChange={(e)=> setDescription(e.target.value)}
@@ -163,12 +177,14 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
       Price
         <input
+        className="form-Update-inputs"
           type="text"
           name="price"
           onChange={(e)=> setPrice(e.target.value)}
           value={price}
         />
       </label>
+      </div>
       {/* <label>
       Url
         <input
@@ -178,6 +194,7 @@ createdSpot = dispatch(UpdateSpot(payload))
           value={url}
         />
       </label> */}
+      <div className="button-Update-container">
       <button
         type="submit"
         // disable={setValidationErrors.length > 0 ? true : false}
@@ -185,7 +202,10 @@ createdSpot = dispatch(UpdateSpot(payload))
       >
         UPDATE SPOT
       </button>
+      </div>
     </form>
+    </div>
+    </div>
   );
 }
 
