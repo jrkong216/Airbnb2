@@ -1,32 +1,49 @@
-/* form {
-    background-color: rgb(255, 255, 255);
+.outer-sign-container{
     display: flex;
+    justify-content:center;
+
+
+}
+
+.inner-sign-container{
+    text-align: center;
+justify-content: center;
+padding: 10px;
+border-width: thin;
+    border-style: solid;
+    border-radius: 25px;
+    /* background-color: rgba(0,0,0,.7) */
+}
+
+.title-box{
+    /* border-color: rgb(8, 0, 255);
+    border-style: solid; */
+    text-align: center
+}
+
+
+.errors{
+    /* border-color: rgb(255, 0, 247); */
+    /* border-style: solid; */
     justify-content: center;
+}
+
+.form-container{
+    display: flex;
     flex-direction: column;
-    margin: 3px;
-    padding: 3px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-input {
-    border: 10px 4px 5px 5px black;
-    background-color: rgb(221, 237, 237);
-    display: flex;
     justify-content: center;
-    flex-direction: row;
-    margin: 3px;
-    padding: 3px;
-        font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
 }
-button {
-     border: 10px 4px 5px 5px black;
-     background-color: rgb(145, 188, 232);
-     color: rgb(10, 9, 9);
-     display: flex;
-     font-weight: bold;
-     justify-content: center;
-     flex-direction: row;
-     margin: 2px;
-     padding: 2px;
-     font-family: Arial, Helvetica, sans-serif;
-     max-width: 100px;
-} */
+
+.form-sign-inputs{
+    box-sizing: border-box;
+    width: 100%
+}
+
+.button-sign-container{
+    text-align: center;
+    /* border-color: rgb(255, 0, 247);
+    border-style: solid; */
+    /* align-content: center;
+    align-items: center; */
+}

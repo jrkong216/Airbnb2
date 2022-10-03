@@ -28,7 +28,7 @@ padding: 10px;
     justify-content: center;
 }
 
-.form-container{
+.form-sign-container{
     display: flex;
     flex-direction: column;
     justify-content: center;

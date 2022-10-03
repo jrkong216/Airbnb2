@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import{useHistory} from 'react-router-dom'
-// import "./SignupForm.css"
+import "./SignupForm.css"
 
 function SignupForm() {
   const dispatch = useDispatch();
@@ -36,71 +36,93 @@ function SignupForm() {
   };
 
   if (sessionUser) history.push("/")
-  
+
 
   return (
+
+    <div className="outer-sign-container">
+        <div className="inner-sign-container">
     <form onSubmit={handleSubmit}>
-      <ul>
+      <ul className="errors">
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
+      <div className="form-sign-container">
       <label>
         Email
         <input
+        className="form-sign-inputs"
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          placeholder="Email"
         />
       </label>
       <label>
         Username
         <input
+        className="form-sign-inputs"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
+          placeholder="Username"
         />
       </label>
       <label>
         FirstName
         <input
+        className="form-sign-inputs"
           type="text"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
+          placeholder="FirstName"
         />
       </label>
       <label>
         LastName
         <input
+        className="form-sign-inputs"
           type="text"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
+          placeholder="LastName"
         />
       </label>
       <label>
         Password
         <input
+        className="form-sign-inputs"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          placeholder="Password"
         />
       </label>
       <label>
         Confirm Password
         <input
+        className="form-sign-inputs"
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
+          placeholder="Confirm Password"
         />
       </label>
+      </div>
+      <div className="button-sign-container">
       <button type="submit">Sign Up</button>
-    </form>
+      </div>
+      </form>
+      </div>
+    </div>
+
   );
 }
 export default SignupForm;
