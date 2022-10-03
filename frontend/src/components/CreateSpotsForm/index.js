@@ -225,7 +225,7 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
         />
       </label> */}
       <div className="button-container">
-      <button
+      <button className="Create-Spot-button"
         type="submit"
         // disable={setValidationErrors.length > 0 ? true : false}
           // disabled={!!validationErrors.length}
