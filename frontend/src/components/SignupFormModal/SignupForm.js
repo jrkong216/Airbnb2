@@ -49,6 +49,7 @@ function SignupForm() {
         ))}
       </ul>
       <div className="form-sign-container">
+        <h2>Please Sign Up</h2>
       <label>
         Email
         <input
