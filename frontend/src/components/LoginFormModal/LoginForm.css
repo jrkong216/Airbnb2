@@ -1,0 +1,16 @@
+.Outer--modal-Container{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0,0,0,.7)
+
+}
+
+.Inner-modal-Container{
+    text-align: center;
+justify-content: center;
+padding: 10px;
+border-width: thin;
+    border-style: solid;
+    border-radius: 25px;
+    /* background-color: rgba(0,0,0,.7) */
+}
