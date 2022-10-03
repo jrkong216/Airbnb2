@@ -3,6 +3,7 @@ display: flex;
 flex-direction: column;
 border-radius: 25px;
 width: 17em;
+color: black;
 }
 
 
@@ -11,8 +12,7 @@ display: flex;
 flex-direction: column;
 /* border: 10px; */
 border-radius: 25px;
-/* border-color: aqua; */
-/* border-style: solid; */
+
 width: 17em;
 
 }
@@ -21,8 +21,7 @@ width: 17em;
 width: 100%;
 height: 280px;
 border-radius: 25px;
-/* border-style: solid; */
-/* border-color: red; */
+
 overflow: hidden
 }
 
@@ -38,26 +37,33 @@ display: grid;
 grid-template-columns: 3fr 1fr;
 padding: 10px 0px;
   width: 100%;
-  border-color: rgb(43, 0, 255);
-    border-style: solid;
+
 }
 
 .spot-review-data-container{
 display: flex;
 flex-direction: row;
 justify-content: flex-end;
-border-color: rgb(64, 255, 0);
-    border-style: solid;
     grid-row: 1;
     grid-column:2
 }
 
 .spot-price-container{
   align-content: end;
-  border-color: rgb(221, 255, 0);
-  border-style: solid;
 }
 
 .spot-star{
   padding-right: 2.5px;
+}
+
+.spot-city-state{
+  font-weight: bold;
+}
+
+.spot-price{
+  font-weight: bold;
+}
+
+.spot-rating{
+  font-weight: bold;
 }

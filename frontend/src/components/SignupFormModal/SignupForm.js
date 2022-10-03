@@ -117,7 +117,7 @@ function SignupForm() {
       </label>
       </div>
       <div className="button-sign-container">
-      <button type="submit">Sign Up</button>
+      <button className="Sign-Up-button" type="submit">Sign Up</button>
       </div>
       </form>
       </div>
