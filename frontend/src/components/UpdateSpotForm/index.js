@@ -20,7 +20,8 @@ const { spotId } = useParams()
   const [lng, setLongitude] = useState(spotInfo.lng)
   const [description, setDescription] = useState(spotInfo.description)
   const [price, setPrice] = useState(spotInfo.price)
-  // const [url, setImageUrl] = useState('')
+  // const [url, setImageUrl] = useState(spotInfo.previewImage)
+
 
   const [validationErrors, setValidationErrors] = useState([])
  //GOING TO HAVE TO MAKE SOME SORT OF USER MUST BE LOGGED IN REFERRENCE
@@ -35,28 +36,42 @@ const { spotId } = useParams()
 // const lastCreated = allSpotsArray.length
 // console.log("Is this going to be integer 6", lastCreated)
 
-useEffect(() => {
-    const errors = []
+// useEffect(() => {
+//     const errors = []
 
-    if (!name) errors.push("Please provide a name")
-    if (!address) errors.push("Please provide an address");
-    if (!city) errors.push("Please provide a city");
-    if (!state) errors.push("Please provide a state")
-    if (!country) errors.push("Please provide a country")
-    if (lat < -90 || lat > 90) errors.push("Please provide a valid latitude between -90 to 90")
-    if (lng < -180 || lng > 180) errors.push("Please provide a valid longitude between -180 to 180")
-    if (!description) errors.push("Please provide a description")
-    if (price < 0) errors.push("Please set price above 0");
-    // if (!url) errors.push("Please provide a image");
+//     if (!name) errors.push("Please provide a name")
+//     if (!address) errors.push("Please provide an address");
+//     if (!city) errors.push("Please provide a city");
+//     if (!state) errors.push("Please provide a state")
+//     if (!country) errors.push("Please provide a country")
+//     if (lat < -90 || lat > 90) errors.push("Please provide a valid latitude between -90 to 90")
+//     if (lng < -180 || lng > 180) errors.push("Please provide a valid longitude between -180 to 180")
+//     if (!description) errors.push("Please provide a description")
+//     if (price < 0) errors.push("Please set price above 0");
+//     // if (!url) errors.push("Please provide a image");
 
 
-setValidationErrors(errors)
+// setValidationErrors(errors)
 
-}, [name, address, city, state, country, lat, lng, description, price])
+// }, [name, address, city, state, country, lat, lng, description, price])
 
 const submitHandler = async (e) => {
   e.preventDefault()
+  const errors = []
 
+  if (!name.length) errors.push("Please provide a name")
+  if (!address.length) errors.push("Please provide an address");
+  if (!city.length) errors.push("Please provide a city");
+  if (!state.length) errors.push("Please provide a state")
+  if (!country.length) errors.push("Please provide a country")
+  if (lat < -90 || lat > 90) errors.push("Please provide a valid latitude between -90 to 90")
+  if (lng < -180 || lng > 180) errors.push("Please provide a valid longitude between -180 to 180")
+  if (!description) errors.push("Please provide a description")
+  if (price < 0) errors.push("Please set price above 0");
+  // if (!url) errors.push("Please provide a image");
+
+
+setValidationErrors(errors)
   const payload = {
     id: spotId,
     name,
@@ -67,7 +82,11 @@ const submitHandler = async (e) => {
     lat,
     lng,
     price,
-    description
+    description,
+    // url
+}
+if(errors.length){
+  return null
 }
 
 let createdSpot;
@@ -97,6 +116,7 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
         Name
         <input
+        required
         className="form-Update-inputs"
           type="text"
           name="name"
@@ -107,6 +127,7 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
         Address
         <input
+        required
         className="form-Update-inputs"
           type="text"
           name="address"
@@ -117,6 +138,7 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
         City
         <input
+        required
         className="form-Update-inputs"
           type="text"
           name="city"
@@ -127,6 +149,7 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
         State
         <input
+        required
         className="form-Update-inputs"
           type="text"
           name="state"
@@ -137,6 +160,7 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
         Country
         <input
+        required
         className="form-Update-inputs"
           type="text"
           name="country"
@@ -147,6 +171,7 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
       Latitude
         <input
+        required
         className="form-Update-inputs"
           type="text"
           name="latitude"
@@ -157,6 +182,7 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
       Longitude
         <input
+        required
         className="form-Update-inputs"
           type="text"
           name="longitude"
@@ -167,6 +193,7 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
       Description
         <input
+        required
         className="form-Update-inputs"
           type="text"
           name="description"
@@ -177,6 +204,7 @@ createdSpot = dispatch(UpdateSpot(payload))
       <label>
       Price
         <input
+        required
         className="form-Update-inputs"
           type="text"
           name="price"
@@ -184,6 +212,18 @@ createdSpot = dispatch(UpdateSpot(payload))
           value={price}
         />
       </label>
+      {/* <label>
+      Url
+        <input
+        className="form-inputs"
+        required
+          type="text"
+          name="url"
+          onChange={(e)=> setImageUrl(e.target.value)}
+          value={url}
+          placeholder="URL"
+        />
+      </label> */}
       </div>
       {/* <label>
       Url
@@ -195,7 +235,7 @@ createdSpot = dispatch(UpdateSpot(payload))
         />
       </label> */}
       <div className="button-Update-container">
-      <button
+      <button className="Update-Button"
         type="submit"
         // disable={setValidationErrors.length > 0 ? true : false}
           // disabled={!!validationErrors.length}
