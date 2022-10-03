@@ -23,15 +23,17 @@ justify-content: center;
 .stars-container{
     display: flex;
     flex-direction: row;
-    border-color: rgb(204, 255, 0);
-    border-style: solid;
+    /* border-color: rgb(204, 255, 0);
+    border-style: solid; */
+    justify-content: center;
 
 }
 .star-and-column{
     display: flex;
-    border-color: rgb(72, 0, 255);
-    border-style: solid;
+    /* border-color: rgb(72, 0, 255);
+    border-style: solid; */
     align-content: center;
+    align-items: center;
 }
 
 .creat-review-container{
