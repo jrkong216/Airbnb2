@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux"
 import {CreateSpot} from "../../store/spotsReducer"
 import {getAllSpots} from '../../store/spotsReducer'
-
+import "./CreateSpotsForm.css";
 
 function SpotForm() {
   const history = useHistory()
@@ -79,116 +79,142 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
 
 
   return (
+    <div className="Outer-Container">
+      <div className="Inner-Container">
     <form
       className="spot-form" onSubmit={submitHandler}
     >
-      <h2>Create a Spot</h2>
+      <div className="title-box">
+      <h2 className="title-words">Create a Spot</h2>
+      </div>
       <ul className="errors">
         {validationErrors.length > 0 &&
           validationErrors.map((error) =>
           <li key={error}>{error}</li>
         )}
       </ul>
+      <div className="form-container">
       <label>
         Name
         <input
+        className="form-inputs"
         required
           type="text"
           name="name"
           onChange={(e)=> setName(e.target.value)}
           value={name}
+          placeholder="Name"
         />
       </label>
       <label>
         Address
         <input
+        className="form-inputs"
         required
           type="text"
           name="address"
           onChange={(e)=> setAddress(e.target.value)}
           value={address}
+          placeholder="123 Example Street. etc"
         />
       </label>
       <label>
         City
         <input
+        className="form-inputs"
         required
           type="text"
           name="city"
           onChange={(e)=> setCity(e.target.value)}
           value={city}
+          placeholder="City"
         />
       </label>
       <label>
         State
         <input
+        className="form-inputs"
         required
           type="text"
           name="state"
           onChange={(e)=> setState(e.target.value)}
           value={state}
+          placeholder="State (examples: CA, NY)"
         />
       </label>
       <label>
         Country
         <input
+        className="form-inputs"
         required
           type="text"
           name="country"
           onChange={(e)=> setCountry(e.target.value)}
           value={country}
+          placeholder="Country"
         />
       </label>
       <label>
       Latitude
         <input
+        className="form-inputs"
         required
           type="text"
           name="latitude"
           onChange={(e)=> setLatitude(e.target.value)}
           value={lat}
+          placeholder="Latitude"
         />
       </label>
       <label>
       Longitude
         <input
+        className="form-inputs"
         required
           type="text"
           name="longitude"
           onChange={(e)=> setLongitude(e.target.value)}
           value={lng}
+          placeholder="Longitude"
         />
       </label>
       <label>
       Description
         <input
+        className="form-inputs"
         required
           type="text"
           name="description"
           onChange={(e)=> setDescription(e.target.value)}
           value={description}
+          placeholder="Description"
         />
       </label>
       <label>
       Price
         <input
+        className="form-inputs"
         required
           type="text"
           name="price"
           onChange={(e)=> setPrice(e.target.value)}
           value={price}
+          placeholder="Price"
         />
       </label>
       <label>
       Url
         <input
+        className="form-inputs"
         required
           type="text"
           name="url"
           onChange={(e)=> setImageUrl(e.target.value)}
           value={url}
+          placeholder="URL"
         />
       </label>
+      </div>
       {/* <label>
       Set Preview for your Spot?
         <input
@@ -198,14 +224,18 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
           value={preview}
         />
       </label> */}
+      <div className="button-container">
       <button
         type="submit"
         // disable={setValidationErrors.length > 0 ? true : false}
-          // disabled={!!validationErrors.length}
+          disabled={!!validationErrors.length}
       >
         Create Spot
       </button>
+      </div>
     </form>
+      </div>
+    </div>
   );
 }
 
