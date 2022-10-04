@@ -123,6 +123,19 @@ const GetSpotDetails = () => {
         }
 
 
+
+        // const deleteButtonReveal = (itemId, itemUserId) => {
+        //      let deleteButtonReveal;
+        // if(!sessionUser){
+        //     deleteButtonReveal=
+        //     <>
+        //     </>
+        // } else {
+        //     deleteButtonReveal=
+        //     <button onClick= {() => reviewHandler(itemId, itemUserId)}>DELETE THIS Review</button>
+        // }
+        // }
+
     return (
         <div>
             <div>
@@ -165,7 +178,9 @@ const GetSpotDetails = () => {
                                 </div>
                                 <div className="itemStars"> {item.stars}</div>
 
-                                 {sessionUser ? <button onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> : null}
+                                 {sessionUser && sessionUserId === item.userId? <button onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> : null}
+                                  {/* <button onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> */}
+                                  {/* {deleteButtonReveal(item.id, item.userId)} */}
                                 </div>
                                 )})
                     }
