@@ -122,6 +122,7 @@ const GetSpotDetails = () => {
             numberOfReviews = ""
         }
 
+
     return (
         <div>
             <div>
@@ -164,7 +165,7 @@ const GetSpotDetails = () => {
                                 </div>
                                 <div className="itemStars"> {item.stars}</div>
 
-                                 <button onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button>
+                                 {sessionUser ? <button onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> : null}
                                 </div>
                                 )})
                     }
