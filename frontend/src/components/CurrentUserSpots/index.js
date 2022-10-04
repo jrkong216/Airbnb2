@@ -9,6 +9,9 @@ import {DeleteSpot} from '../../store/spotsReducer'
 import {getAllReviews} from '../../store/reviewsReducer'
 import {getUserReviews} from '../../store/reviewsReducer'
 import { DeleteReview } from '../../store/reviewsReducer'
+import "./CurrentUserSpots.css"
+import SpotCard from "../SpotCard"
+
 
 const GetUserDetails = () => {
 
@@ -17,7 +20,7 @@ const GetUserDetails = () => {
     const { spotId } = useParams()
     const history = useHistory()
     const user = useSelector(state => state.session.user)
-    console.log("this is user", user)
+    // console.log("this is user", user)
     const userId = useSelector(state => state.session.user.id)
 
     const spotInfo = useSelector(state => state.spots)
@@ -25,11 +28,12 @@ const GetUserDetails = () => {
     const spotsInfoArray = Object.values(spotInfo)
     const spotsByUserId = spotsInfoArray.filter(spot => spot.ownerId === +userId)
 
-    console.log("THESE ARE THE spots by user", spotsByUserId)
+    // console.log("THESE ARE THE spots by user", spotsByUserId)
 
     const reviewInfo = useSelector(state => state.reviews)
     const reviewInfoArray = Object.values(reviewInfo)
     const reviewsBySpotId = reviewInfoArray.filter(review => review.userId === +userId)
+    // console.log("This is the reviewss by spotId", reviewsBySpotId)
     const reviewByUser = reviewsBySpotId.filter(user => user.userId === +userId)
 
 
@@ -76,47 +80,36 @@ const GetUserDetails = () => {
 
     return(
 <div>
-            <h1>{user.username}'s Spots</h1>
+            <h1 className="user-name">{user.username}'s Spots</h1>
+            <div className="user-home-container">
+                <div className="all-user-card-container">
             {spotsByUserId.map((spot) =>
                 {return (
-                    <div key= {spot.id}>
-                     <div className= "spotPicture"> <img src={spot.previewImage}/></div>
-                    <div className= "spotName"> THIS IS NAME {spot.name}</div>
-                    <div className= "spotReview"> THIS IS ADDRESS {spot.address}</div>
-                    <div className= "spotCity"> {spot.city}</div>
-                    <div className= "spotState"> {spot.state}</div>
-                    <div className= "spotPrice"> ${spot.price}</div>
-                    <div className= "spotAvgRating"> Average Rating {spot.avgRating}</div>
-                    <NavLink key="key" to= {`/spot/${spot.id}/edit`}>
-                    <button type="submit">EDIT THIS SPOT</button>
-                    </NavLink>
-                    {/* <form
-                     className="spot-form" onSubmit={submitHandler}>
-                     <button type="submit">DELETE THIS SPOT</button>
-                    </form> */}
-                    {/* <form */}
-                     {/* className="spot-form" onSubmit={submitHandler}> */}
-                     <button onClick= {() => submitHandler(spot.id)}>DELETE THIS SPOT</button>
-                    {/* </form> */}
-                    </div>
+                    <SpotCard key={spot.id} spot={spot}/>
                 )})
             }
+                </div>
+            </div>
                     <div>
-                    <h2>{user.username}'s Reviews</h2>
-                <div>
+                    <h2 className="user-name">{user.username}'s Reviews</h2>
+                <div className="user-review-container">
+                    <div className="all-user-review--container">
                 {reviewsBySpotId.map((item) =>
                 {return (
                     <div key= {item.id}>
-                    <div className= "spotReview"> {item.review}</div>
+                    <div className= "spotReviewName"> Location: {item.Spot.name}</div>
+                    <div className= "spotReview"> Review: {item.review}</div>
+                    <div className="user-review-data-container">
+                        <i className="fa-solid fa-star fa-xs"></i>
                     <div className= "spotStars"> {item.stars}</div>
+                    </div>
 
-                    {/* <form */}
-                     {/* className="spot-form" onSubmit={submitHandler}> */}
-                     <button onClick= {() => reviewHandler(item.id)}>DELETE THIS Review</button>
-                    {/* </form> */}
+                     <button className="user-delete-review-button" onClick= {() => reviewHandler(item.id)}>DELETE THIS Review</button>
+
                     </div>
                 )})
                 }
+                    </div>
                 </div>
 
                     </div>

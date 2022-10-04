@@ -22,7 +22,19 @@ console.log("this is spotId", spotId)
 }, [dispatch])
 
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   const errors = []
+
+  //   if(!review) errors.push("Please provide a review")
+  //   // if(stars < 1 || stars >5) errors.push("Rating must be an integer between 1 and 5")
+
+  //   setValidationErrors(errors)
+
+  // }, [review, stars])
+
+const submitHandler = async (e) => {
+  e.preventDefault()
+
     const errors = []
 
     if(!review) errors.push("Please provide a review")
@@ -30,16 +42,14 @@ console.log("this is spotId", spotId)
 
     setValidationErrors(errors)
 
-  }, [review, stars])
-
-const submitHandler = async (e) => {
-  e.preventDefault()
-
   const payload = {
     review,
     stars
 }
 
+ if(errors.length){
+  return null
+ }
 let createdReview;
 try{
   createdReview = await dispatch(CreateReview(spotId, payload))
@@ -97,7 +107,7 @@ try{
           onChange={(e)=> setStars(e.target.value)}
           value={stars}
         /> */}
-        <select value={stars} onChange={(e)=> setStars(e.target.value)}>
+        <select className="one-to-five" value={stars} onChange={(e)=> setStars(e.target.value)}>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -108,10 +118,10 @@ try{
       </div>
       </div>
       <div className="creat-review-container">
-      <button
+      <button className="create-review-button"
         type="submit"
         // disable={setValidationErrors.length > 0 ? true : false}
-          disabled={!!validationErrors.length}
+          // disabled={!!validationErrors.length}
       >
         Create Review
       </button>

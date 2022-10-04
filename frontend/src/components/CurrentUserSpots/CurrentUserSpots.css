@@ -1,0 +1,57 @@
+.user-home-container{
+    display: flex;
+    justify-content:center;
+    border-color: rgb(164, 165, 165);
+    border-bottom-style: solid;
+}
+
+.all-user-card-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(265px,1fr));
+    grid-auto-rows: 1fr;
+    padding-top: 20px;
+    max-width: 90%;
+    grid-gap:25px 25px;
+}
+
+.user-name{
+    margin-left:7%
+}
+
+.user-review-container{
+    display: flex;
+    justify-content: center;
+    /* border-style: solid;
+    border-color: black */
+}
+
+.all-user-review-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(265px,1fr));
+    grid-auto-rows: 1fr;
+    padding-top: 20px;
+    max-width: 90%;
+    grid-gap:25px 25px;
+    border-style: solid;
+    border-color: rgb(159, 51, 51)
+
+}
+
+.user-review-data-container{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    /* border-color:aqua;
+    border-style: solid; */
+}
+
+.user-delete-review-button{
+    width: 40%;
+    background-color: rgb(255, 90,95);
+    color: white;
+    border-radius:12px;
+    border-width: thin;
+    padding:10px;
+    margin-top:2%;
+    margin-bottom:2%;
+}
