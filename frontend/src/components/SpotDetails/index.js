@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { DeleteSpot } from '../../store/spotsReducer'
 import { getAllReviews } from '../../store/reviewsReducer'
 import { DeleteReview } from '../../store/reviewsReducer'
-
+import "./SpotDetails.css"
 
 const GetSpotDetails = () => {
 
@@ -178,7 +178,7 @@ const GetSpotDetails = () => {
                                 </div>
                                 <div className="itemStars"> {item.stars}</div>
 
-                                 {sessionUser && sessionUserId === item.userId? <button onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> : null}
+                                 {sessionUser && sessionUserId === item.userId? <button className="Review-Delete-Button" onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> : null}
                                   {/* <button onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> */}
                                   {/* {deleteButtonReveal(item.id, item.userId)} */}
                                 </div>
