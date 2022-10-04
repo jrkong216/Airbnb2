@@ -51,6 +51,7 @@ router.get('/current', requireAuth, async (req, res) => {
         newArr.push(bookingsObj)
       } else {
         bookingsObj.Spot.previewImage = null
+        newArr.push(bookingsObj)
       }
 
   }
