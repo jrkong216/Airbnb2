@@ -42,3 +42,15 @@ justify-content: space-between;
     border-style: solid; */
     margin-right: 11%
 }
+
+.become-host-button{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius:12px;
+    padding: 5px;
+    border: 0 solid #ddd
+}
+
+.become-host-button:hover{
+    background-color:rgb(244, 241, 241)
+}

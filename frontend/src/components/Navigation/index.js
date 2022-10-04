@@ -19,7 +19,7 @@ function Navigation({ isLoaded }){
       <>
        <div className= "Create-a-spot-Button">
         <NavLink to="/spots/new">
-      <button>CREATE A SPOT</button>
+      <button className= "become-host-button">Become a Host</button>
       </NavLink>
       </div>
       <div className= "profile-button">
