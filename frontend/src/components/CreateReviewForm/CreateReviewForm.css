@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 .Outer-Container{
     display: flex;
     justify-content: center;
@@ -57,6 +59,7 @@ ul{
 .input-box{
     height: 100px;
     width: 100%;
+    font-family: "Montserrat"
 }
 
 /* .one-to-five{
