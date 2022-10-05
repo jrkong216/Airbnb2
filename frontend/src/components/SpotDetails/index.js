@@ -46,8 +46,6 @@ const GetSpotDetails = () => {
         return (<div>Loading...</div>)
     }
 
-
-
     const submitHandler = async (e) => {
 
         const payload = {
@@ -56,7 +54,6 @@ const GetSpotDetails = () => {
         let createdSpot;
         createdSpot = dispatch(DeleteSpot(payload)).then(() => history.push("/")
         )
-
     }
 
     const reviewHandler = async (id, userId) => {
@@ -121,7 +118,6 @@ const GetSpotDetails = () => {
         } else {
             numberOfReviews = ""
         }
-
 
 
         // const deleteButtonReveal = (itemId, itemUserId) => {
