@@ -77,11 +77,11 @@ const GetSpotDetails = () => {
             <div>
             <div className="Edit-a-Spot-button">
                     <NavLink to={`/spot/${spotId}/edit`}>
-                        <button type="submit">EDIT THIS SPOT</button>
+                        <button className= "Review-Delete-Button" type="submit">EDIT THIS SPOT</button>
                     </NavLink>
             </div>
             <div className= "Delete-spot-button">
-                <button onClick= {() => submitHandler()}>DELETE THIS SPOT</button>
+                <button className= "Review-Delete-Button" onClick= {() => submitHandler()}>DELETE THIS SPOT</button>
             </div>
             </div>
         )
