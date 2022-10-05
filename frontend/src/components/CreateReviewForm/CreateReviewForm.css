@@ -57,9 +57,10 @@ ul{
 }
 
 .input-box{
-    height: 100px;
-    width: 100%;
-    font-family: "Montserrat"
+    height: 250px;
+    width: 550px;
+    font-family: "Montserrat";
+    resize: none;
 }
 
 /* .one-to-five{

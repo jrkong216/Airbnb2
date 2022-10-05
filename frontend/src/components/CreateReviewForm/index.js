@@ -108,6 +108,7 @@ try{
           value={stars}
         /> */}
         <select className="one-to-five" value={stars} onChange={(e)=> setStars(e.target.value)}>
+            {/* <option value="" disabled>Rate 1 to 5</option> */}
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>

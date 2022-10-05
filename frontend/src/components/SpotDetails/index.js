@@ -74,7 +74,7 @@ const GetSpotDetails = () => {
     let editDeleteLinks;
     if(sessionUser && spotInfo.ownerId === sessionUser.id) {
         editDeleteLinks = (
-            <div>
+            <div className="two-button-container">
             <div className="Edit-a-Spot-button">
                     <NavLink to={`/spot/${spotId}/edit`}>
                         <button className= "Review-Delete-Button" type="submit">EDIT THIS SPOT</button>
@@ -111,7 +111,6 @@ const GetSpotDetails = () => {
             reviewNumber = "Be the First to Create a Review!"
         }
 
-
         let numberOfReviews;
         if (reviewsBySpotId.length){
             numberOfReviews = reviewsBySpotId.length
@@ -119,51 +118,38 @@ const GetSpotDetails = () => {
             numberOfReviews = ""
         }
 
-
-        // const deleteButtonReveal = (itemId, itemUserId) => {
-        //      let deleteButtonReveal;
-        // if(!sessionUser){
-        //     deleteButtonReveal=
-        //     <>
-        //     </>
-        // } else {
-        //     deleteButtonReveal=
-        //     <button onClick= {() => reviewHandler(itemId, itemUserId)}>DELETE THIS Review</button>
-        // }
-        // }
-
     return (
-        <div>
-            <div>
+
+         <div className= "Spot-Detail-Inner-Container">
+
+                <div className="detail-title-container">
                 <h1>{spotInfo.name}</h1>
-                <div className="spot-star">
-                <i className="fa-solid fa-star fa-xs"></i>
                 </div>
+
+                <div className="detail-top-info-container">
+                <i className="fa-solid fa-star fa-xs"></i>
                 <div className="spot-rating">{spotInfo.avgRating}</div>
                 <div className="number-of-reviews"> {numberOfReviews} {reviewNumber} </div>
-                <div className= "spotPicture"> <img src={spotInfo.previewImage}/></div>
-                <div className="spotName"> {spotInfo.name}</div>
-                <div className="spotAddress"> {spotInfo.address}</div>
-                <div className="spotCountry"> {spotInfo.country}</div>
-                <div className="spotPrice"> {spotInfo.price}</div>
-                <div className="spot-star">
-                <i className="fa-solid fa-star fa-xs"></i>
+                <div classsName="city-state-country">{spotInfo.city},{spotInfo.state},{spotInfo.country}</div>
                 </div>
-                <div className="spotavgRating"> {spotInfo.avgRating}</div>
+
+                <div className="detail-image-container">
+                <div className= "spot-picture"> <img src={spotInfo.previewImage}/></div>
+                </div>
+
+                <div classsName="description-button-container">
+                <div className="spotName"> {spotInfo.name}</div>
+                {/* <div className="spotPrice"> {spotInfo.price}</div> */}
                 <div className="spotDescription"> Description: {spotInfo.description}</div>
+                </div>
+
                 {editDeleteLinks}
-                {/* <div className="Edit-a-Spot-button"> */}
-                    {/* <NavLink to={`/spot/${spotId}/edit`}> */}
-                        {/* <button type="submit">EDIT THIS SPOT</button> */}
-                    {/* </NavLink> */}
-                <div>
-                {/* <div className= "Delete-button">
-                <button onClick= {() => submitHandler()}>DELETE THIS SPOT</button>
-                </div> */}
-            {/* </div> */}
+
+
+
+                <div className="detail-review-container">
 
                 <h2>BELOW IS THE REVIEW OF THE SPOT</h2>
-
                     {reviewsBySpotId.map((item) => {
                         return (
                             <div key={item.id}>
@@ -174,19 +160,20 @@ const GetSpotDetails = () => {
                                 <i className="fa-solid fa-star fa-xs"></i>
                                 </div>
                                 <div className="itemStars"> {item.stars}</div>
-
                                  {sessionUser && sessionUserId === item.userId? <button className="Review-Delete-Button" onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> : null}
-                                  {/* <button onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> */}
-                                  {/* {deleteButtonReveal(item.id, item.userId)} */}
-                                </div>
-                                )})
+                            </div>
+                        )})
                     }
                                     <NavLink to={`/review/${spotId}/new`}>
                                     {sessionUserId  && sessionUserId  !== spotInfoOwnerId && !reviewOfUser ? seeCreateReviewButton : null}
                                     </NavLink>
-                            </div>
-            </div>
+
+                 </div>
+
         </div>
+
+
+
                 )
 }
 
