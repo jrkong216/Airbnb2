@@ -150,6 +150,7 @@ const GetSpotDetails = () => {
                 <i className="fa-solid fa-star fa-xs"></i>
                 </div>
                 <div className="spotavgRating"> {spotInfo.avgRating}</div>
+                <div className="spotDescription"> Description: {spotInfo.description}</div>
                 {editDeleteLinks}
                 {/* <div className="Edit-a-Spot-button"> */}
                     {/* <NavLink to={`/spot/${spotId}/edit`}> */}

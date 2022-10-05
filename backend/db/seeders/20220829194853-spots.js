@@ -188,7 +188,7 @@ module.exports = {
       country: "United States of America",
       lat: 37.7645358,
       lng: -122.4730327,
-      name: "Maadison Square Garden",
+      name: "Madison Square Garden",
       description: "Madison Square Garden, colloquially known as The Garden or by its initials MSG, is a multi-purpose indoor arena in New York City. It is located in Midtown Manhattan between Seventh and Eighth avenues from 31st to 33rd Street, above Pennsylvania Station.",
       price: 257,
       createdAt: "2021-11-19 20:39:36",
