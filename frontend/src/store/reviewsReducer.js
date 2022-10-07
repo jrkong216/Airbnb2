@@ -71,8 +71,8 @@ export const CreateReview = (spotId, payload) => async dispatch => {
 }
 
 export const DeleteReview = (payload) => async (dispatch) => {
-    console.log("IS the code getting here TO DELETEREVIEW?")
-    console.log("this is payload.reviewID", payload.reviewId)
+    // console.log("IS the code getting here TO DELETEREVIEW?")
+    // console.log("this is payload.reviewID", payload.reviewId)
     const response = await csrfFetch(`/api/reviews/${payload.reviewId}`, {
         method: 'delete',
     });

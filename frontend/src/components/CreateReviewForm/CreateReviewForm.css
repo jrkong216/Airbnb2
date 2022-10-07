@@ -57,8 +57,8 @@ ul{
 }
 
 .input-box{
-    height: 250px;
-    width: 550px;
+    height: 100%;
+    width: 100%;
     font-family: "Montserrat";
     resize: none;
 }

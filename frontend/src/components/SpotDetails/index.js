@@ -17,10 +17,10 @@ const GetSpotDetails = () => {
     const sessionUser = useSelector(state => state.session.user);
 
 
-    console.log("this is sesssionUser", sessionUser)
+    // console.log("this is sesssionUser", sessionUser)
     const history = useHistory()
     const spotInfo = useSelector(state => state.spots[spotId])
-    console.log("thi iss spotInfo", spotInfo)
+    // console.log("thi iss spotInfo", spotInfo)
     useEffect(() => {
         dispatch(getAllReviews(spotId))
         dispatch(getAllSpots())
@@ -40,7 +40,7 @@ const GetSpotDetails = () => {
     const reviewsBySpotId = reviewInfoArray.filter(spot => spot.spotId === +spotId)
     console.log("this is reviewsBySpotId",reviewsBySpotId)
     const reviewOfUser = reviewsBySpotId.find(element => element.userId === sessionUserId)
-
+    console.log("this is review by the USER", reviewOfUser)
 
     if (!isLoaded) {
         return (<div>Loading...</div>)
@@ -118,8 +118,9 @@ const GetSpotDetails = () => {
             numberOfReviews = ""
         }
 
-    return (
 
+    return (
+<div className="Spot-Detail-Outer-Container">
          <div className= "Spot-Detail-Inner-Container">
 
                 <div className="detail-title-container">
@@ -130,14 +131,14 @@ const GetSpotDetails = () => {
                 <i className="fa-solid fa-star fa-xs"></i>
                 <div className="spot-rating">{spotInfo.avgRating}</div>
                 <div className="number-of-reviews"> {numberOfReviews} {reviewNumber} </div>
-                <div classsName="city-state-country">{spotInfo.city},{spotInfo.state},{spotInfo.country}</div>
+                <div className="city-state-country">{spotInfo.city},{spotInfo.state},{spotInfo.country}</div>
                 </div>
 
                 <div className="detail-image-container">
-                <div className= "spot-picture"> <img src={spotInfo.previewImage}/></div>
+                <div className= "spot-picture"> <img src={spotInfo.previewImage} alt="location of house"/></div>
                 </div>
 
-                <div classsName="description-button-container">
+                <div className="description-name-container">
                 <div className="spotName"> {spotInfo.name}</div>
                 {/* <div className="spotPrice"> {spotInfo.price}</div> */}
                 <div className="spotDescription"> Description: {spotInfo.description}</div>
@@ -171,7 +172,7 @@ const GetSpotDetails = () => {
                  </div>
 
         </div>
-
+        </div>
 
 
                 )

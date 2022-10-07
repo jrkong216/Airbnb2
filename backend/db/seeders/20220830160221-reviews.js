@@ -14,7 +14,7 @@ module.exports = {
      await queryInterface.bulkInsert('Reviews', [
       {
         spotId: 1,
-        userId: 1,
+        userId: 2,
         review: "Slepted Overnight, got a 24-week Bootcamp intensive. Best sleep I ever had afterwards. 5 Stars!",
         stars: 5,
         createdAt: "2021-11-19 20:39:36",
@@ -22,7 +22,7 @@ module.exports = {
       },
       {
         spotId: 2,
-        userId: 2,
+        userId: 1,
         review: "The place was a little dusty, but sometimes I couldn't tell if it was dust or possibily cocaine",
         stars: 3,
         createdAt: "2021-11-19 20:39:36",
@@ -30,7 +30,7 @@ module.exports = {
       },
       {
         spotId: 3,
-        userId: 3,
+        userId: 2,
         review: "Great Bridge and Great People!!!",
         stars: 5,
         createdAt: "2021-11-19 20:39:36",
@@ -38,7 +38,7 @@ module.exports = {
       },
       {
         spotId: 4,
-        userId: 1,
+        userId: 2,
         review: "Lady Liberty never looked better!",
         stars: 5,
         createdAt: "2021-11-19 20:39:36",
@@ -46,7 +46,7 @@ module.exports = {
       },
       {
         spotId: 5,
-        userId: 2,
+        userId: 3,
         review: "Got lucky and got to see THEEEE Luke Skywalker training. You dont see that everyday.",
         stars: 4,
         createdAt: "2021-11-19 20:39:36",
@@ -54,7 +54,7 @@ module.exports = {
       },
       {
         spotId: 6,
-        userId: 3,
+        userId: 1,
         review: "Wouldn't tell anybody else to stay here... kept being ask if I wanted the red or blue pill...",
         stars: 1,
         createdAt: "2021-11-19 20:39:36",
@@ -62,7 +62,7 @@ module.exports = {
       },
       {
         spotId: 7,
-        userId: 1,
+        userId: 2,
         review: "The family atmosphere is great. I didn't see a dragon though. I thought I heard Eddie Murphy though..",
         stars: 5,
         createdAt: "2021-11-19 20:39:36",
@@ -78,7 +78,7 @@ module.exports = {
       // },
       {
         spotId: 9,
-        userId: 3,
+        userId: 2,
         review: "So many Balloons! Thaankfully the house didnt move when I stayed there",
         stars: 4,
         createdAt: "2021-11-19 20:39:36",
@@ -86,7 +86,7 @@ module.exports = {
       },
       {
         spotId: 10,
-        userId: 1,
+        userId: 3,
         review: "To many brothels if you ask me!",
         stars: 1,
         createdAt: "2021-11-19 20:39:36",
@@ -102,7 +102,7 @@ module.exports = {
       // },
       {
         spotId: 12,
-        userId: 3,
+        userId: 1,
         review: "The warriors are on FIRE!",
         stars: 5,
         createdAt: "2021-11-19 20:39:36",
@@ -110,7 +110,7 @@ module.exports = {
       },
       {
         spotId: 13,
-        userId: 1,
+        userId: 2,
         review: "This place is DYNAMIITE!",
         stars: 5,
         createdAt: "2021-11-19 20:39:36",
@@ -118,7 +118,7 @@ module.exports = {
       },
       {
         spotId: 14,
-        userId: 2,
+        userId: 3,
         review: "I was supposed to stay at this place, but apparently Mark Zuckerburg rented the whole place",
         stars: 1,
         createdAt: "2021-11-19 20:39:36",
