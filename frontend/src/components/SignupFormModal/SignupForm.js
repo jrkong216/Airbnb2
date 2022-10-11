@@ -43,11 +43,11 @@ function SignupForm() {
     <div className="outer-sign-container">
         <div className="inner-sign-container">
     <form onSubmit={handleSubmit}>
-      <ul className="errors">
+      <div className="errors">
         {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
+          <div key={idx}>{error}</div>
         ))}
-      </ul>
+      </div>
       <div className="form-sign-container">
         <h2>Please Sign Up</h2>
       <label>

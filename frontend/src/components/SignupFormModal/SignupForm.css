@@ -25,7 +25,8 @@ border-width: thin;
 .errors{
     /* border-color: rgb(255, 0, 247); */
     /* border-style: solid; */
-    justify-content: center;
+    /* justify-content: center; */
+    text-align: center;
 }
 
 .form-container{

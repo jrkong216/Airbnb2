@@ -65,7 +65,6 @@ const submitHandler = async (e) => {
 
     setValidationErrors(errors)
 
-
   const payload = {
     name,
     address,

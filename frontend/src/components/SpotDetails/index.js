@@ -20,13 +20,16 @@ const GetSpotDetails = () => {
     // console.log("this is sesssionUser", sessionUser)
     const history = useHistory()
     const spotInfo = useSelector(state => state.spots[spotId])
-    // console.log("thi iss spotInfo", spotInfo)
+    console.log("thi iss spotInfo", spotInfo)
+    console.log("thiss is spotInfo Owner id", spotInfo.ownerId)
+
     useEffect(() => {
         dispatch(getAllReviews(spotId))
         dispatch(getAllSpots())
             .then(() => setIsLoaded(true))
     }, [dispatch, spotId])
     const reviewInfo = useSelector(state => state.reviews)
+    // console.log("this iss reviewInfo", reviewInfo)
     if (spotInfo === undefined) {
         return null
     }
@@ -37,6 +40,12 @@ const GetSpotDetails = () => {
 
     let spotInfoOwnerId = spotInfo.ownerId
     const reviewInfoArray = Object.values(reviewInfo)
+    // console.log("thisis reviewInfoArraay", reviewInfoArray)
+    // const ownerArr = reviewInfoArray.filter(ele => ele.User.id === spotInfo.ownerId)
+    // console.log("this is Ownerarray", ownerArr)
+    // const ownerObj = ownerArr.pop()
+    // console.log("this siss owneers Obj",ownerObj)
+    // const ownerFirstName = ownerObj.User.firstName
     const reviewsBySpotId = reviewInfoArray.filter(spot => spot.spotId === +spotId)
     console.log("this is reviewsBySpotId",reviewsBySpotId)
     const reviewOfUser = reviewsBySpotId.find(element => element.userId === sessionUserId)
@@ -95,7 +104,7 @@ const GetSpotDetails = () => {
     let seeCreateReviewButton;
         seeCreateReviewButton = (
             <div>
-                <button type="submit">Create a New Review</button>
+                <button className="Create-Review-Button" type="submit">Create a New Review</button>
             </div>
         )
 
@@ -120,28 +129,32 @@ const GetSpotDetails = () => {
 
 
     return (
-<div className="Spot-Detail-Outer-Container">
-         <div className= "Spot-Detail-Inner-Container">
+
+         <div className= "Spot-Detail-Outer-Container">
+            <div className="Spot-Detail-Inner-Container">
 
                 <div className="detail-title-container">
-                <h1>{spotInfo.name}</h1>
+                <h2 className="spotInfo-name">{spotInfo.name}</h2>
                 </div>
 
                 <div className="detail-top-info-container">
+                <div className="spot-star">
                 <i className="fa-solid fa-star fa-xs"></i>
-                <div className="spot-rating">{spotInfo.avgRating}</div>
-                <div className="number-of-reviews"> {numberOfReviews} {reviewNumber} </div>
-                <div className="city-state-country">{spotInfo.city},{spotInfo.state},{spotInfo.country}</div>
                 </div>
-
+                <div className="spot-rating">{spotInfo.avgRating}</div>
+                <div className="number-of-reviews"> • {numberOfReviews} {reviewNumber} </div>
+                <div className="city-state-country">•    {spotInfo.city}, {spotInfo.state} • {spotInfo.country}</div>
+                </div>
+                <div className="detail-image-outer-container">
                 <div className="detail-image-container">
                 <div className= "spot-picture"> <img src={spotInfo.previewImage} alt="location of house"/></div>
                 </div>
-
+                </div>
+                <div className="home-owner-container">
+                <div className="Owner-name"> This location is hosted by OWNER NAME HERE</div>
+                </div>
                 <div className="description-name-container">
-                <div className="spotName"> {spotInfo.name}</div>
-                {/* <div className="spotPrice"> {spotInfo.price}</div> */}
-                <div className="spotDescription"> Description: {spotInfo.description}</div>
+                <div className="spotDescription"> {spotInfo.description}</div>
                 </div>
 
                 {editDeleteLinks}
@@ -151,6 +164,7 @@ const GetSpotDetails = () => {
                 <div className="detail-review-container">
 
                 <h2>BELOW IS THE REVIEW OF THE SPOT</h2>
+                <div className="review-outer-container">
                     {reviewsBySpotId.map((item) => {
                         return (
                             <div key={item.id}>
@@ -168,11 +182,12 @@ const GetSpotDetails = () => {
                                     <NavLink to={`/review/${spotId}/new`}>
                                     {sessionUserId  && sessionUserId  !== spotInfoOwnerId && !reviewOfUser ? seeCreateReviewButton : null}
                                     </NavLink>
-
-                 </div>
+                </div>
+            </div>
+            </div>
 
         </div>
-        </div>
+
 
 
                 )

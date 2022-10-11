@@ -1,37 +1,76 @@
 
-.Spot-Detail-Outer-Container{
+/* .Spot-Detail-Outer-Container{
     display: flex;
     justify-content: center;
-    border-color:rgb(255, 64, 0);
+    border-color:rgb(0, 255, 17);
     border-width: 100px;
+    flex-direction: column;
+
+} */
+
+.Spot-Detail-Outer-Container{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border-style:solid;
+    border-color:aqua;
     flex-direction: column;
 
 }
 
 .Spot-Detail-Inner-Container{
     display: flex;
-    justify-content: center;
     border-style:solid;
-    /* border-color:aqua; */
+    border-color:rgb(0, 255, 76);
+    width: 60%;
     flex-direction: column;
+    /* align-items: center; */
 }
 
+
 .detail-title-container{
-    /* border-style:solid;
-    border-color:rgb(21, 0, 255); */
+    border-style:solid;
+    border-color:rgb(21, 0, 255);
+
+}
+.spotInfo-name{
+    flex-shrink: 1;
+}
+
+.detail-top-info-container{
+    display:flex;
+    justify-content: flex-start;
+    padding-bottom: 5px;
+}
+.number-of-reviews{
+    padding-left: 10px;
+}
+
+.city-state-country{
+    padding-left: 10px
+}
+.detail-image-outer-container{
+    display:flex;
+    border-style:solid;
+    border-color:rgb(55, 0, 255);
+    justify-content: center;
 }
 
 .detail-image-container{
+    display:flex;
     width: 100%;
-    height: 100%;
+    height: 500px;
+    align-items:center;
+    justify-content: center;
+    border-style:solid;
+    border-color:rgb(255, 0, 115);
+    border-radius: 25px;
     overflow: hidden;
-    /* border-style:solid;
-    border-color:rgb(255, 0, 115); */
 }
 
 .spot-picture{
-    width: 100%;
-    height: 100%;
+    /* width:100%; */
+    /* height: 300px; */
     object-fit: cover;
 }
 
@@ -40,7 +79,7 @@
     border-color:rgb(255, 179, 0);
     color:green
 }
-/* SOMETHING I WRONG WITH DECRIPTION BUTTON CONTAINER */
+
 .spotName{
 color: red;
 }
@@ -55,8 +94,8 @@ color: red;
 }
 
 .detail-review-container{
-    /* border-style:solid;
-    border-color:rgb(255, 0, 234); */
+    border-style:solid;
+    border-color:rgb(255, 0, 234);
 }
 
 .Review-Delete-Button{
@@ -66,4 +105,12 @@ color: red;
     border-width: thin;
     padding:10px;
     /* margin-top:2%; */
+}
+
+.Create-Review-Button{
+    background-color: rgb(255, 90,95);
+    color: white;
+    border-radius:12px;
+    border-width: thin;
+    padding:10px;
 }
