@@ -1,7 +1,8 @@
 import { csrfFetch } from "./csrf";
 
 const GET = "spots/GET";
-// const GETONE = "spots/GETONE"
+
+const GETONE = "spots/GETONE"
 const CREATE = "spots/CREATE";
 const UPDATE = "spots/UPDATE"
 const DELETE = "spots/DELETE"
@@ -13,12 +14,12 @@ export const get = (list) => {
       list
     }}
 
-    // export const getOne = (list) => {
-    //     // console.log("This is the action creator with list", list)
-    //     return {
-    //       type: GETONE,
-    //       list
-    //     }}
+    export const getOne = (list) => {
+
+        return {
+          type: GETONE,
+          list
+        }}
 
   export const create = (list) => {
     return {
@@ -51,18 +52,18 @@ export const getAllSpots = () => async (dispatch) => {
 return response
 }
 
-// export const getOneSpot = (id) => async (dispatch) => {
-//     // console.log("IS the code getting here?")
-//     const response = await csrfFetch(`/api/spots/${id}`)
-// //READ HERE ABOUT STATE THIS HAS OTHER KEYS TALK TO JUSTIN
-//     if (response.ok) {
-//         const spot = await response.json();
-//         dispatch(getOne(spot))
-//         // console.log("This is the spots from reducer", spots)
-//         return response
-//     }
-// return response
-// }
+export const getOneSpot = (id) => async (dispatch) => {
+    // console.log("IS the code getting here?")
+    const response = await csrfFetch(`/api/spots/${id}`)
+//READ HERE ABOUT STATE THIS HAS OTHER KEYS TALK TO JUSTIN
+    if (response.ok) {
+        const spot = await response.json();
+        dispatch(getOne(spot))
+        // console.log("This is the spots from reducer", spots)
+        return response
+    }
+return response
+}
 
 export const CreateSpot = (payload, imagePayload) => async dispatch => {
     console.log("DID MY CODE REACH HERE")
@@ -138,6 +139,10 @@ const spotsReducer = (state = initialState, action) => {
             action.list.forEach(spot => {
                 newState[spot.id] = spot
             });
+            return newState
+        case GETONE:
+            newState = {...state}
+            newState[action.list.id] = action.list
             return newState
         case CREATE:
             newState = {...state}

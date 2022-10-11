@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from "react-router-dom"
-import { getAllSpots } from '../../store/spotsReducer'
+import { getOneSpot } from '../../store/spotsReducer'
 import { NavLink } from 'react-router-dom';
 import { DeleteSpot } from '../../store/spotsReducer'
 import { getAllReviews } from '../../store/reviewsReducer'
@@ -20,12 +20,14 @@ const GetSpotDetails = () => {
     // console.log("this is sesssionUser", sessionUser)
     const history = useHistory()
     const spotInfo = useSelector(state => state.spots[spotId])
-    console.log("thi iss spotInfo", spotInfo)
-    console.log("thiss is spotInfo Owner id", spotInfo.ownerId)
+
+    // console.log("thi iss spotInfo", spotInfo)
+    // console.log("this is sspotINFO IAMGE", spotInfo.SpotImages)
+    // console.log("thiss is spotInfo Owner id", spotInfo.ownerId)
 
     useEffect(() => {
         dispatch(getAllReviews(spotId))
-        dispatch(getAllSpots())
+        dispatch(getOneSpot(spotId))
             .then(() => setIsLoaded(true))
     }, [dispatch, spotId])
     const reviewInfo = useSelector(state => state.reviews)
@@ -40,16 +42,10 @@ const GetSpotDetails = () => {
 
     let spotInfoOwnerId = spotInfo.ownerId
     const reviewInfoArray = Object.values(reviewInfo)
-    // console.log("thisis reviewInfoArraay", reviewInfoArray)
-    // const ownerArr = reviewInfoArray.filter(ele => ele.User.id === spotInfo.ownerId)
-    // console.log("this is Ownerarray", ownerArr)
-    // const ownerObj = ownerArr.pop()
-    // console.log("this siss owneers Obj",ownerObj)
-    // const ownerFirstName = ownerObj.User.firstName
     const reviewsBySpotId = reviewInfoArray.filter(spot => spot.spotId === +spotId)
-    console.log("this is reviewsBySpotId",reviewsBySpotId)
+    // console.log("this is reviewsBySpotId",reviewsBySpotId)
     const reviewOfUser = reviewsBySpotId.find(element => element.userId === sessionUserId)
-    console.log("this is review by the USER", reviewOfUser)
+    // console.log("this is review by the USER", reviewOfUser)
 
     if (!isLoaded) {
         return (<div>Loading...</div>)
@@ -73,7 +69,7 @@ const GetSpotDetails = () => {
                 reviewId: id
             }
             let reviewToDelete;
-            reviewToDelete = dispatch(DeleteReview(payload)).then(()=>dispatch(getAllSpots())).then(() => history.push(`/spots/${spotId}`))
+            reviewToDelete = dispatch(DeleteReview(payload)).then(()=>dispatch(getOneSpot(spotId))).then(() => history.push(`/spots/${spotId}`))
 
         } else {
             alert("You do not have permission to Delete this review")
@@ -147,11 +143,11 @@ const GetSpotDetails = () => {
                 </div>
                 <div className="detail-image-outer-container">
                 <div className="detail-image-container">
-                <div className= "spot-picture"> <img src={spotInfo.previewImage} alt="location of house"/></div>
+                <div className= "spot-picture"> <img src={spotInfo.SpotImages[0].url} alt="location of house"/></div>
                 </div>
                 </div>
                 <div className="home-owner-container">
-                <div className="Owner-name"> This location is hosted by OWNER NAME HERE</div>
+                <div className="Owner-name"> This location is hosted by: {spotInfo.Owner.firstName} {spotInfo.Owner.lastName}</div>
                 </div>
                 <div className="description-name-container">
                 <div className="spotDescription"> {spotInfo.description}</div>

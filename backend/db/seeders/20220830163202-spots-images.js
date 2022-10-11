@@ -24,7 +24,7 @@ module.exports = {
       },
       {
         spotId: 4,
-        url: 'https://www.nps.gov/common/uploads/grid_builder/stli/crop16_9/7DBAB193-E4E7-80BE-262BCF6D65A24D88.jpg?width=465&quality=90&mode=crop',
+        url: 'https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2021/09/1200/675/statue-of-liberty-1.jpg?ve=1&tl=1',
         preview: true,
         //statue of liberty
       },
