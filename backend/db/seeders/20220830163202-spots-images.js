@@ -12,7 +12,7 @@ module.exports = {
       },
       {
         spotId: 2,
-        url: 'http://blogs.smithsonianmag.com/design/files/2012/07/221_sh-museum.jpg',
+        url: 'https://thirdeyetraveller.com/wp-content/uploads/221b-Baker-Street-London-Sherlock-Holmes-Museum-2.jpg',
         preview: true,
         //sherlock
       },
@@ -30,19 +30,19 @@ module.exports = {
       },
       {
         spotId: 5,
-        url: 'https://lumiere-a.akamaihd.net/v1/images/yodas-hut_a3d1133d.jpeg?region=0%2C75%2C1560%2C880&width=960',
+        url: 'https://i.pinimg.com/originals/6b/25/61/6b256149e8a97741883856c31c9cd4ea.png',
         preview: true,
         //yoda hut
       },
       {
         spotId: 6,
-        url: 'https://images.squarespace-cdn.com/content/v1/52d6d1ede4b0b322e9c7a2ea/1575268717767-TPMH7ZBKG0XVY0GO7BPM/1.png?format=1000w',
+        url: 'https://pbs.twimg.com/media/FHPo31TXEAA10cY.jpg:large',
         preview: true,
         //neos place
       },
       {
         spotId: 7,
-        url: 'https://theblackandwhite.net/wp-content/uploads/2021/03/Mulan-1-900x514.jpg',
+        url: 'https://pbs.twimg.com/media/EYyr81gXYAAM9UJ.jpg',
         preview: true,
         //mulan place
       },
@@ -54,19 +54,19 @@ module.exports = {
       },
       {
         spotId: 9,
-        url: 'https://cdn.dribbble.com/users/731780/screenshots/3889619/pixel_up_house_with_balloons-01.png',
+        url: 'https://cdn.apartmenttherapy.info/image/upload/v1564776737/stock/MCDUPUP_EC041_1.jpg',
         preview: true,
         //up house
       },
       {
         spotId: 10,
-        url: 'https://awoiaf.westeros.org/images/6/64/Tomasz_Jedruszek_Kings_Landing.jpg',
+        url: 'https://assets.vogue.com/photos/598dacb5f0b0e21484d342ba/master/w_2560%2Cc_limit/00-lede-a-game-of-thrones-guide-to-dubrovnik-croatia.jpg',
         preview: true,
         //kings landing
       },
       {
         spotId: 11,
-        url: 'https://wallpaperaccess.com/full/1307540.jpg',
+        url: 'https://cdn.vox-cdn.com/thumbor/7xduHxUGDbvuFRqIyENvDkU8Xek=/0x0:5000x3333/1200x800/filters:focal(2193x789:2993x1589)/cdn.vox-cdn.com/uploads/chorus_image/image/63571452/winterfell.0.jpg',
         preview: true,
         //house stark
       },
@@ -78,7 +78,7 @@ module.exports = {
       },
       {
         spotId: 13,
-        url: 'https://img.msg.com/wp-content/uploads/2017/07/MSG21_MSG_Getting-There_v2.jpg?w=500',
+        url: 'https://img.msg.com/wp-content/uploads/2021/02/BillyJoel_071818_1902_RT-1.jpg',
         preview: true,
         //madinson square
       },
