@@ -77,12 +77,12 @@ try{
       <div className="title-box">
       <h2 className="title-words">Create a Review</h2>
       </div>
-      <ul className="errors">
+      <div className="errors">
         {validationErrors.length > 0 &&
           validationErrors.map((error) =>
-          <li key={error}>{error}</li>
+          <div key={error}>{error}</div>
         )}
-      </ul>
+      </div>
       {/* <label>
         Review
         <input
