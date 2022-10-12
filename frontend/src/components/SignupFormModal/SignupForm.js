@@ -49,7 +49,10 @@ function SignupForm() {
         ))}
       </div>
       <div className="form-sign-container">
+        <div className="title-sign-container">
         <h2>Please Sign Up</h2>
+        </div>
+        <div className="inner-form-sign-container">
       <label>
         Email
         <input
@@ -119,6 +122,7 @@ function SignupForm() {
       </div>
       <div className="button-sign-container">
       <button className="Sign-Up-button" type="submit">Sign Up</button>
+      </div>
       </div>
       </form>
       </div>

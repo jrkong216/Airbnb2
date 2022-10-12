@@ -80,7 +80,7 @@ const GetUserDetails = () => {
 
     return(
 <div>
-            <h1 className="user-name">{user.username}'s Spots</h1>
+            <h1 className="user-name">My Spots</h1>
             <div className="user-home-container">
                 <div className="all-user-card-container">
             {spotsByUserId.map((spot) =>
@@ -91,18 +91,20 @@ const GetUserDetails = () => {
                 </div>
             </div>
                     <div>
-                    <h2 className="user-name">{user.username}'s Reviews</h2>
+                    <h2 className="user-name">My Reviews</h2>
                 <div className="user-review-container">
                     <div className="all-user-review--container">
                 {reviewsBySpotId.map((item) =>
                 {return (
                     <div key= {item.id}>
+
                     <div className= "spotReviewName"> Location: {item.Spot.name}</div>
-                    <div className= "spotReview"> Review: {item.review}</div>
                     <div className="user-review-data-container">
                         <i className="fa-solid fa-star fa-xs"></i>
                     <div className= "spotStars"> {item.stars}</div>
                     </div>
+                    <div className= "spotReview"> Review: {item.review}</div>
+
 
                      <button className="user-delete-review-button" onClick= {() => reviewHandler(item.id)}>DELETE THIS Review</button>
 
