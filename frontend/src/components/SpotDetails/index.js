@@ -23,7 +23,7 @@ const GetSpotDetails = () => {
     const history = useHistory()
     const spotInfo = useSelector(state => state.spots[spotId])
 
-    // console.log("thi iss spotInfo", spotInfo)
+    console.log("thi iss spotInfo", spotInfo)
     // console.log("this is sspotINFO IAMGE", spotInfo.SpotImages)
     // console.log("thiss is spotInfo Owner id", spotInfo.ownerId)
 
@@ -140,7 +140,7 @@ const GetSpotDetails = () => {
                 <div className="spot-star">
                 <i className="fa-solid fa-star fa-xs"></i>
                 </div>
-                <div className="spot-rating">{spotInfo.avgRating}</div>
+                <div className="spot-rating">{spotInfo.avgStarRating}</div>
                 <div className="number-of-reviews"> • {numberOfReviews} {reviewNumber} </div>
                 <div className="city-state-country">•    {spotInfo.city}, {spotInfo.state} • {spotInfo.country}</div>
                 </div>
@@ -159,10 +159,6 @@ const GetSpotDetails = () => {
                 <div className="description-name-container">
                 <h3 className="spotDescription"> {spotInfo.description}</h3>
                 </div>
-
-
-
-
 
                 <div className="detail-review-container">
 
