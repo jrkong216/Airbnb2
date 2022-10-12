@@ -80,6 +80,8 @@ const submitHandler = async (e) => {
   if (lng < -180 || lng > 180) errors.push("Please provide a valid longitude between -180 to 180")
   if (!description) errors.push("Please provide a description")
   if (price < 0) errors.push("Please set price above 0");
+  if (description.length > 254) errors.push("You can only provide 255 or less characters")
+  
   // if (!url) errors.push("Please provide a image");
 
 
@@ -118,12 +120,12 @@ createdSpot = dispatch(UpdateSpot(payload))
       <div className="title-update-box">
       <h2>Edit this Spot</h2>
       </div>
-      <ul className="errors">
+      <div className="errors">
         {validationErrors.length > 0 &&
           validationErrors.map((error) =>
-          <li key={error}>{error}</li>
+          <div key={error}>{error}</div>
         )}
-      </ul>
+      </div>
       <div className="form-Update-container">
       <label>
         Name
@@ -226,7 +228,7 @@ createdSpot = dispatch(UpdateSpot(payload))
         <input
         required
         className="form-Update-inputs"
-          type="text"
+          type="number"
           name="price"
           onChange={(e)=> setPrice(e.target.value)}
           placeholder= {spotInfo.price}

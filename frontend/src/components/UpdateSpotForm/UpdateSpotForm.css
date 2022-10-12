@@ -31,6 +31,8 @@ border: none;
     /* border-color: rgb(255, 0, 247); */
     /* border-style: solid; */
     justify-content: center;
+    color: red;
+    padding: 10px;
 }
 
 .form-Update-container{
