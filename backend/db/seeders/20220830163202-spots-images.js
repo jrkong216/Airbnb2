@@ -6,7 +6,7 @@ module.exports = {
      await queryInterface.bulkInsert('SpotImages', [
       {
         spotId: 1,
-        url: 'https://whimsysoul.com/wp-content/uploads/2020/02/Whimsy-Soul-Dunder-Mifflin-The-Office-3.png',
+        url: 'https://marketingtechstack.com/wp-content/uploads/2022/01/dunder-mifflin-featured-image.png',
         preview: true,
         //aa
       },
@@ -42,7 +42,7 @@ module.exports = {
       },
       {
         spotId: 7,
-        url: 'https://pbs.twimg.com/media/EYyr81gXYAAM9UJ.jpg',
+        url: 'https://helios-i.mashable.com/imagery/articles/014Cet8MZE0yNOdENkeCOL9/hero-image.fill.size_1248x702.v1611614996.png',
         preview: true,
         //mulan place
       },
@@ -72,7 +72,7 @@ module.exports = {
       },
       {
         spotId: 12,
-        url: 'https://www.mercurynews.com/wp-content/uploads/2019/08/EBT-L-ORACLE-0809-2.jpg?w=1024',
+        url: 'https://cdn.vox-cdn.com/thumbor/v03tex601sth-_P37rkRtm2Js_k=/88x0:4699x3458/1200x800/filters:focal(88x0:4699x3458)/cdn.vox-cdn.com/uploads/chorus_image/image/49343503/shutterstock_194315426.0.0.jpg',
         preview: true,
         //oracle arena
       },

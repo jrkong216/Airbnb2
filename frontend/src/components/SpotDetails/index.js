@@ -6,7 +6,9 @@ import { NavLink } from 'react-router-dom';
 import { DeleteSpot } from '../../store/spotsReducer'
 import { getAllReviews } from '../../store/reviewsReducer'
 import { DeleteReview } from '../../store/reviewsReducer'
+import airCover from './images/airCover.png'
 import "./SpotDetails.css"
+
 
 const GetSpotDetails = () => {
 
@@ -82,11 +84,11 @@ const GetSpotDetails = () => {
             <div className="two-button-container">
             <div className="Edit-a-Spot-button">
                     <NavLink to={`/spot/${spotId}/edit`}>
-                        <button className= "Review-Delete-Button" type="submit">EDIT THIS SPOT</button>
+                        <button className= "Edit-Delete-Button" type="submit">EDIT THIS SPOT</button>
                     </NavLink>
             </div>
             <div className= "Delete-spot-button">
-                <button className= "Review-Delete-Button" onClick= {() => submitHandler()}>DELETE THIS SPOT</button>
+                <button className= "Edit-Delete-Button" onClick= {() => submitHandler()}>DELETE THIS SPOT</button>
             </div>
             </div>
         )
@@ -150,6 +152,10 @@ const GetSpotDetails = () => {
                 <div className="home-owner-container">
                 <h2 className="Owner-name"> This location is hosted by: {spotInfo.Owner.firstName} {spotInfo.Owner.lastName}</h2>
                 </div>
+                <div className="aircover-container">
+                    <img className="aircover-image" src={airCover}></img>
+                    <p className="para">Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</p>
+                </div>
                 <div className="description-name-container">
                 <h3 className="spotDescription"> {spotInfo.description}</h3>
                 </div>
@@ -165,17 +171,18 @@ const GetSpotDetails = () => {
                     {reviewsBySpotId.map((item) => {
                         return (
                             <div key={item.id}>
-                                <div className="review-name"> {item.User.firstName}'s review</div>
+                                <div className="review-name"> {item.User.firstName}'s review:</div>
                                 <div className="review-star-rating-container">
                                 <div className="spot-star">
                                 <i className="fa-solid fa-star fa-xs"></i>
                                 </div>
                                 <div className="itemStars"> {item.stars}</div>
-                                {sessionUser && sessionUserId === item.userId? <button className="Review-Delete-Button" onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> : null}
+
                                 </div>
 
                                 {/* <div className="itemReview"> {item.createdAt}</div> */}
                                 <div className="itemReview"> {item.review}</div>
+                                {sessionUser && sessionUserId === item.userId? <button className="Review-Delete-Button" onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> : null}
 
 
 

@@ -1,13 +1,4 @@
 
-/* .Spot-Detail-Outer-Container{
-    display: flex;
-    justify-content: center;
-    border-color:rgb(0, 255, 17);
-    border-width: 100px;
-    flex-direction: column;
-
-} */
-
 .Spot-Detail-Outer-Container{
     display: flex;
     width: 100%;
@@ -110,11 +101,8 @@ font-weight: bold;
     color: white;
     border-radius:12px;
     border-width: thin;
-    margin-left: 20px;
     border: none;
-    /* padding:10px;
-    padding-left: 10px; */
-    /* margin-top:2%; */
+    padding:10px;
 }
 
 .Create-Review-Button{
@@ -123,6 +111,19 @@ font-weight: bold;
     border-radius:12px;
     border-width: thin;
     padding:10px;
+    border: none;
+}
+
+
+.Edit-Delete-Button{
+    background-color: rgb(255, 90,95);
+    color: white;
+    border-radius:12px;
+    border-width: thin;
+    margin-left: 20px;
+    border: none;
+    padding:10px;
+    padding-left: 10px;
 }
 
 .Owner-name{
@@ -140,4 +141,23 @@ font-weight: bold;
     display: flex;
     flex-direction: row;
     padding-bottom:5px;
+}
+
+.review-name{
+    font-size: larger;
+    font-weight: bold;
+}
+
+
+.aircover-container{
+    border-color: rgb(203, 207, 207);
+    border-bottom-style: solid;
+    width:50%;
+    padding-top: 20px;
+    /* border-style:solid;
+    border-color:rgb(255, 0, 115); */
+}
+
+.aircover-image{
+    width: 50%;
 }
