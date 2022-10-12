@@ -80,8 +80,8 @@ const submitHandler = async (e) => {
   if (lng < -180 || lng > 180) errors.push("Please provide a valid longitude between -180 to 180")
   if (!description) errors.push("Please provide a description")
   if (price < 0) errors.push("Please set price above 0");
-  if (description.length > 254) errors.push("You can only provide 255 or less characters")
-  
+  if (description.length > 254) errors.push("You can only provide 255 or less characters as a description")
+
   // if (!url) errors.push("Please provide a image");
 
 

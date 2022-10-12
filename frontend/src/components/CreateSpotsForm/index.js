@@ -61,8 +61,9 @@ const submitHandler = async (e) => {
         if (!description) errors.push("Please provide a description")
         if (price < 0) errors.push("Please set price above 0");
         if (!url) errors.push("Please provide a image");
-
-
+        if (description.length > 254) errors.push("You can only provide 255 or less characters as a description")
+        if (url.slice(0,5).toLowerCase() !== "https") errors.push("Url must start with https")
+        
     setValidationErrors(errors)
 
   const payload = {
@@ -107,12 +108,12 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
       <div className="title-box">
       <h2 className="title-words">Create a Spot</h2>
       </div>
-      <ul className="errors">
+      <div className="errors">
         {validationErrors.length > 0 &&
           validationErrors.map((error) =>
-          <li key={error}>{error}</li>
+          <div key={error}>{error}</div>
         )}
-      </ul>
+      </div>
       <div className="form-container">
       <label>
         Name
@@ -215,7 +216,7 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
         <input
         className="form-inputs"
         required
-          type="text"
+          type="number"
           name="price"
           onChange={(e)=> setPrice(e.target.value)}
           value={price}

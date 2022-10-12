@@ -14,19 +14,20 @@ border-color: rgb(0, 0, 0);
     border-style: solid;
     border-radius: 25px;
      border-width: thin;
+     border: none;
 }
 
 .title-box{
-    /* border-color: rgb(8, 0, 255);
-    border-style: solid; */
+    border-color: rgb(203, 207, 207);
+    border-bottom-style: solid;
     text-align: center
 }
 
 
 .errors{
-    /* border-color: rgb(255, 0, 247); */
-    /* border-style: solid; */
     justify-content: center;
+    color: red;
+    padding: 10px;
 }
 
 .form-sign-container{
@@ -38,7 +39,11 @@ border-color: rgb(0, 0, 0);
 
 .form-inputs{
     box-sizing: border-box;
-    width: 100%
+    width: 100%;
+    font-family: "Montserrat";
+    padding: 10px;
+    border-radius: 12px;
+    border-width: thin
 }
 
 .button-container{
@@ -56,5 +61,5 @@ border-color: rgb(0, 0, 0);
     border-radius:12px;
     border-width: thin;
     padding:10px;
-    margin-top:5%;
+    margin-top:2%;
 }
