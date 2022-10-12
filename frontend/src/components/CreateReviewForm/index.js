@@ -38,7 +38,7 @@ const submitHandler = async (e) => {
     const errors = []
 
     if(!review) errors.push("Please provide a review")
-    // if(stars < 1 || stars >5) errors.push("Rating must be an integer between 1 and 5")
+    if(stars < 1 || stars >5 || stars=== "") errors.push("Rating must be an integer between 1 and 5")
 
     setValidationErrors(errors)
 
@@ -50,6 +50,13 @@ const submitHandler = async (e) => {
  if(errors.length){
   return null
  }
+
+//  if (stars === ""){
+//   alert("You must pick a rating between 1-5")
+//   return null
+//  }
+
+
 let createdReview;
 try{
   createdReview = await dispatch(CreateReview(spotId, payload))
@@ -107,8 +114,8 @@ try{
           onChange={(e)=> setStars(e.target.value)}
           value={stars}
         /> */}
-        <select className="one-to-five" value={stars} onChange={(e)=> setStars(e.target.value)}>
-            {/* <option value="" disabled>Rate 1 to 5</option> */}
+        <select className="one-to-five" onChange={(e)=> setStars(e.target.value)} value={stars}>
+            <option value= "" disabled>Rate 1 to 5</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>

@@ -131,6 +131,7 @@ const GetSpotDetails = () => {
 
                 <div className="detail-title-container">
                 <h2 className="spotInfo-name">{spotInfo.name}</h2>
+                {editDeleteLinks}
                 </div>
 
                 <div className="detail-top-info-container">
@@ -147,31 +148,37 @@ const GetSpotDetails = () => {
                 </div>
                 </div>
                 <div className="home-owner-container">
-                <div className="Owner-name"> This location is hosted by: {spotInfo.Owner.firstName} {spotInfo.Owner.lastName}</div>
+                <h2 className="Owner-name"> This location is hosted by: {spotInfo.Owner.firstName} {spotInfo.Owner.lastName}</h2>
                 </div>
                 <div className="description-name-container">
-                <div className="spotDescription"> {spotInfo.description}</div>
+                <h3 className="spotDescription"> {spotInfo.description}</h3>
                 </div>
 
-                {editDeleteLinks}
+
 
 
 
                 <div className="detail-review-container">
 
-                <h2>BELOW IS THE REVIEW OF THE SPOT</h2>
+                <h2>See Reviews Below!!</h2>
                 <div className="review-outer-container">
                     {reviewsBySpotId.map((item) => {
                         return (
                             <div key={item.id}>
-                                <div className="itemReview"> {item.User.firstName}'s review</div>
-                                {/* <div className="itemReview"> {item.createdAt}</div> */}
-                                <div className="itemReview"> {item.review}</div>
+                                <div className="review-name"> {item.User.firstName}'s review</div>
+                                <div className="review-star-rating-container">
                                 <div className="spot-star">
                                 <i className="fa-solid fa-star fa-xs"></i>
                                 </div>
                                 <div className="itemStars"> {item.stars}</div>
-                                 {sessionUser && sessionUserId === item.userId? <button className="Review-Delete-Button" onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> : null}
+                                {sessionUser && sessionUserId === item.userId? <button className="Review-Delete-Button" onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> : null}
+                                </div>
+
+                                {/* <div className="itemReview"> {item.createdAt}</div> */}
+                                <div className="itemReview"> {item.review}</div>
+
+
+
                             </div>
                         )})
                     }

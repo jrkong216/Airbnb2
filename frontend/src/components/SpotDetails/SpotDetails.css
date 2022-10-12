@@ -12,16 +12,16 @@
     display: flex;
     width: 100%;
     align-items: center;
-    border-style:solid;
-    border-color:aqua;
+    /* border-style:solid;
+    border-color:aqua; */
     flex-direction: column;
 
 }
 
 .Spot-Detail-Inner-Container{
     display: flex;
-    border-style:solid;
-    border-color:rgb(0, 255, 76);
+    /* border-style:solid;
+    border-color:rgb(0, 255, 76); */
     width: 60%;
     flex-direction: column;
     /* align-items: center; */
@@ -29,12 +29,18 @@
 
 
 .detail-title-container{
-    border-style:solid;
-    border-color:rgb(21, 0, 255);
-
+    display: flex;
+    flex-direction: row;
+    /* border-style:solid;
+    border-color:rgb(21, 0, 255); */
 }
-.spotInfo-name{
-    flex-shrink: 1;
+
+.two-button-container{
+    display: flex;
+    /* border-style:solid;
+    border-color:rgb(0, 255, 179); */
+    align-items: center;
+    justify-content: center;
 }
 
 .detail-top-info-container{
@@ -51,8 +57,8 @@
 }
 .detail-image-outer-container{
     display:flex;
-    border-style:solid;
-    border-color:rgb(55, 0, 255);
+    /* border-style:solid;
+    border-color:rgb(55, 0, 255); */
     justify-content: center;
 }
 
@@ -62,8 +68,8 @@
     height: 500px;
     align-items:center;
     justify-content: center;
-    border-style:solid;
-    border-color:rgb(255, 0, 115);
+    /* border-style:solid;
+    border-color:rgb(255, 0, 115); */
     border-radius: 25px;
     overflow: hidden;
 }
@@ -75,18 +81,19 @@
 }
 
 .description-name-container{
-    border-style:solid;
-    border-color:rgb(255, 179, 0);
-    color:green
+    border-color: rgb(203, 207, 207);
+    border-bottom-style: solid;
 }
 
 .spotName{
-color: red;
+font-weight: bold;
 }
-.two-button-container{
-    /* border-style:solid;
-    border-color:rgb(255, 0, 238); */
+
+.home-owner-container{
+    border-color: rgb(203, 207, 207);
+    border-bottom-style: solid;
 }
+
 
 .detail-top-info-container{
     /* border-style:solid;
@@ -94,8 +101,8 @@ color: red;
 }
 
 .detail-review-container{
-    border-style:solid;
-    border-color:rgb(255, 0, 234);
+    /* border-style:solid;
+    border-color:rgb(255, 0, 234); */
 }
 
 .Review-Delete-Button{
@@ -103,7 +110,10 @@ color: red;
     color: white;
     border-radius:12px;
     border-width: thin;
-    padding:10px;
+    margin-left: 20px;
+    border: none;
+    /* padding:10px;
+    padding-left: 10px; */
     /* margin-top:2%; */
 }
 
@@ -113,4 +123,21 @@ color: red;
     border-radius:12px;
     border-width: thin;
     padding:10px;
+}
+
+.Owner-name{
+    border-bottom: 1px;
+    border-color: grey;
+}
+
+.itemReview{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+}
+
+.review-star-rating-container{
+    display: flex;
+    flex-direction: row;
+    padding-bottom:5px;
 }
