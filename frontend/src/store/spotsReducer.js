@@ -106,6 +106,7 @@ export const UpdateSpot = (payload) => async (dispatch) => {
         // console.log("DID MY CODE REACH HERE FOR RESPONSE TO BEE OK")
         const info = await response.json()
         dispatch(update(info))
+        // dispatch(getAllSpots())
         console.log("THIS IS THE RESPONSE TO KEY INTO", response)
         return response
     }

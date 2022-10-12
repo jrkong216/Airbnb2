@@ -2,33 +2,45 @@ import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux"
 import {CreateSpot} from "../../store/spotsReducer"
-import {getAllSpots} from '../../store/spotsReducer'
+import {getAllSpots, getOneSpot} from '../../store/spotsReducer'
 import {UpdateSpot} from '../../store/spotsReducer'
 import "./UpdateSpotForm.css"
 
 function UpdateSpotForm() {
 const { spotId } = useParams()
+
   const history = useHistory()
-  const spotInfo = useSelector(state => state.spots[spotId])
   const dispatch = useDispatch();
-  const [name, setName] = useState(spotInfo.name)
-  const [address, setAddress] = useState(spotInfo.address)
-  const [city, setCity] = useState(spotInfo.city)
-  const [state, setState] = useState(spotInfo.state)
-  const [country, setCountry] = useState(spotInfo.country)
-  const [lat, setLatitude] = useState(spotInfo.lat)
-  const [lng, setLongitude] = useState(spotInfo.lng)
-  const [description, setDescription] = useState(spotInfo.description)
-  const [price, setPrice] = useState(spotInfo.price)
-  // const [url, setImageUrl] = useState(spotInfo.previewImage)
+  const spotInfo = useSelector(state => state.spots[spotId])
+  console.log("this is spotInfo", spotInfo)
+ const [name, setName] = useState("")
+ const [address, setAddress] = useState("")
+ const [city, setCity] = useState("")
+ const [state, setState] = useState("")
+ const [country, setCountry] = useState("")
+ const [lat, setLatitude] = useState("")
+ const [lng, setLongitude] = useState("")
+ const [description, setDescription] = useState("")
+ const [price, setPrice] = useState("")
+ // const [url, setImageUrl] = useState(spotInfo.previewImage)
+ const [validationErrors, setValidationErrors] = useState([])
+//GOING TO HAVE TO MAKE SOME SORT OF USER MUST BE LOGGED IN REFERRENCE
+
+useEffect(() => {
+  dispatch(getOneSpot(spotId))
+}, [dispatch, spotId])
+
+if(!spotInfo) return null
 
 
-  const [validationErrors, setValidationErrors] = useState([])
- //GOING TO HAVE TO MAKE SOME SORT OF USER MUST BE LOGGED IN REFERRENCE
 
-  useEffect(() => {
-    dispatch(getAllSpots())
-}, [dispatch])
+
+
+// if (!isLoaded){
+//   return (<div>Loading...</div>)
+//   }
+
+// if(!getOneSpot(spotId)) return null
 
 // const allSpots = useSelector(state => state.spots)
 // const allSpotsArray = Object.values(allSpots)
@@ -121,6 +133,7 @@ createdSpot = dispatch(UpdateSpot(payload))
           type="text"
           name="name"
           onChange={(e)=> setName(e.target.value)}
+          placeholder= {spotInfo.name}
           value={name}
         />
       </label>
@@ -132,6 +145,7 @@ createdSpot = dispatch(UpdateSpot(payload))
           type="text"
           name="address"
           onChange={(e)=> setAddress(e.target.value)}
+          placeholder= {spotInfo.address}
           value={address}
         />
       </label>
@@ -143,6 +157,7 @@ createdSpot = dispatch(UpdateSpot(payload))
           type="text"
           name="city"
           onChange={(e)=> setCity(e.target.value)}
+          placeholder= {spotInfo.city}
           value={city}
         />
       </label>
@@ -154,6 +169,7 @@ createdSpot = dispatch(UpdateSpot(payload))
           type="text"
           name="state"
           onChange={(e)=> setState(e.target.value)}
+          placeholder= {spotInfo.state}
           value={state}
         />
       </label>
@@ -165,6 +181,7 @@ createdSpot = dispatch(UpdateSpot(payload))
           type="text"
           name="country"
           onChange={(e)=> setCountry(e.target.value)}
+          placeholder= {spotInfo.country}
           value={country}
         />
       </label>
@@ -176,6 +193,7 @@ createdSpot = dispatch(UpdateSpot(payload))
           type="text"
           name="latitude"
           onChange={(e)=> setLatitude(e.target.value)}
+          placeholder= {spotInfo.lat}
           value={lat}
         />
       </label>
@@ -187,6 +205,7 @@ createdSpot = dispatch(UpdateSpot(payload))
           type="text"
           name="longitude"
           onChange={(e)=> setLongitude(e.target.value)}
+          placeholder= {spotInfo.lng}
           value={lng}
         />
       </label>
@@ -198,6 +217,7 @@ createdSpot = dispatch(UpdateSpot(payload))
           type="text"
           name="description"
           onChange={(e)=> setDescription(e.target.value)}
+          placeholder= {spotInfo.description}
           value={description}
         />
       </label>
@@ -209,6 +229,7 @@ createdSpot = dispatch(UpdateSpot(payload))
           type="text"
           name="price"
           onChange={(e)=> setPrice(e.target.value)}
+          placeholder= {spotInfo.price}
           value={price}
         />
       </label>

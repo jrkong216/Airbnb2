@@ -1,6 +1,7 @@
 .Outer-Container{
     display: flex;
     justify-content: center;
+    padding-top: 2%;
     /* border-color: rgb(0, 255, 76);
     border-style: solid; */
 
@@ -13,7 +14,6 @@ border-color: rgb(0, 0, 0);
     border-style: solid;
     border-radius: 25px;
      border-width: thin;
-padding: 10px;
 }
 
 .title-box{

@@ -1,6 +1,9 @@
+
+
 .Outer-Update-Container{
     display: flex;
     justify-content: center;
+    padding-top: 2%;
     /* border-color: rgb(0, 255, 76);
     border-style: solid; */
 
@@ -12,13 +15,13 @@ border-color: rgb(0, 0, 0);
     border-style: solid;
     border-radius: 25px;
      border-width: thin;
-padding: 10px;
+/* padding: 10px; */
 width: 40%;
 }
 
 .title-update-box{
-    /* border-color: rgb(8, 0, 255);
-    border-style: solid; */
+    border-color: rgb(203, 207, 207);
+    border-bottom-style: solid;
     text-align: center
 }
 
@@ -34,11 +37,13 @@ width: 40%;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+
 }
 
 .form-Update-inputs{
     box-sizing: border-box;
-    width: 100%
+    width: 100%;
+    font-family: "Montserrat";
 }
 
 .button-Update-container{
