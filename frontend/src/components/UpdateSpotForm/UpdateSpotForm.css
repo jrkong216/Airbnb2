@@ -17,6 +17,7 @@ border-color: rgb(0, 0, 0);
      border-width: thin;
 /* padding: 10px; */
 width: 40%;
+border: none;
 }
 
 .title-update-box{
@@ -44,6 +45,9 @@ width: 40%;
     box-sizing: border-box;
     width: 100%;
     font-family: "Montserrat";
+    padding: 10px;
+    border-radius: 12px;
+    border-width: thin
 }
 
 .button-Update-container{
@@ -61,6 +65,7 @@ width: 40%;
     border-radius:12px;
     border-width: thin;
     padding:10px;
-    margin-top:5%;
+    margin-top:2%;
     margin-bottom: 5%;
+    border: none;
 }
