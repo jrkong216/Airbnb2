@@ -27,13 +27,17 @@ function LoginForm() {
     <div className="Outer-modal-Container">
         <div className="Inner-modal-Container">
     <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
+      
       <div className="User-Email-Container">
+      <div className="title-log-container">
         <h2>Welcome to AirBnb2</h2>
+        </div>
+        <div className="errors">
+        {errors.map((error, idx) => (
+          <div key={idx}>{error}</div>
+        ))}
+      </div>
+        <div className="inner-form-sign-container">
       <label>
         Username or Email
         <input
@@ -58,6 +62,7 @@ function LoginForm() {
           placeholder="Password"
         />
       </label>
+      </div>
       </div>
       <div className="Login-Container">
       <button className="Login-Button" type="submit">Log In</button>

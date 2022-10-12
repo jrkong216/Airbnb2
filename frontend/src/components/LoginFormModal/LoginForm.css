@@ -17,6 +17,19 @@ padding-right: 30px;
     /* background-color: rgba(0,0,0,.7) */
 }
 
+.title-log-container{
+    border-color: rgb(203, 207, 207);
+    border-bottom-style: solid;
+    text-align: center
+}
+
+.errors{
+    justify-content: center;
+    color: red;
+    padding: 10px;
+}
+
+
 .Login-Button{
     width:100%;
     background-color: rgb(255, 90,95);
