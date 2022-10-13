@@ -106,8 +106,8 @@ const GetSpotDetails = () => {
             </div>
         )
 
-        if(spotInfo.avgRating === null){
-            spotInfo.avgRating = "NEW"
+        if(spotInfo.avgStarRating === null){
+            spotInfo.avgStarRating = "NEW!"
         }
         let reviewNumber;
         if(reviewsBySpotId.length > 1) {
@@ -124,6 +124,7 @@ const GetSpotDetails = () => {
         } else {
             numberOfReviews = ""
         }
+
 
 
     return (
