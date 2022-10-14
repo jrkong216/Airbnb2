@@ -135,6 +135,7 @@ font-weight: bold;
     display: flex;
     flex-direction: row;
     padding-bottom: 10px;
+    padding-left: 15px;
 }
 
 .review-star-rating-container{
@@ -160,4 +161,18 @@ font-weight: bold;
 
 .aircover-image{
     width: 50%;
+}
+
+.review-spot-star-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.outer-review-star-container{
+    display:flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    /* border-style:solid;
+    border-color:rgb(255, 0, 115); */
 }

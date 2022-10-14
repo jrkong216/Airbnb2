@@ -162,8 +162,14 @@ const GetSpotDetails = () => {
                 </div>
 
                 <div className="detail-review-container">
-
-                <h2>See Reviews Below!!</h2>
+                {/* <h2>See Reviews Below!!</h2> */}
+                <div className="outer-review-star-container">
+                <div className="review-spot-star-container">
+                <i className="fa-solid fa-star fa-2x"></i>
+                </div>
+                <h1 className="spot-rating">{spotInfo.avgStarRating}</h1>
+                <h1 className="number-of-reviews"> • {numberOfReviews} {reviewNumber} </h1>
+                </div>
                 <div className="review-outer-container">
                     {reviewsBySpotId.map((item) => {
                         return (
@@ -180,9 +186,6 @@ const GetSpotDetails = () => {
                                 {/* <div className="itemReview"> {item.createdAt}</div> */}
                                 <div className="itemReview"> {item.review}</div>
                                 {sessionUser && sessionUserId === item.userId? <button className="Review-Delete-Button" onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> : null}
-
-
-
                             </div>
                         )})
                     }
