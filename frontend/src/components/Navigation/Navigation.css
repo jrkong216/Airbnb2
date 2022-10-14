@@ -5,52 +5,53 @@ flex-direction: row;
 border-color: rgb(164, 165, 165);
 border-bottom-style: solid;
 justify-content: space-between;
+position:sticky;
+top:0px;
+background-color: white;
 }
 
 
 .Home-Container{
     display: flex;
     align-items: center;
-    /* border-color: rgb(8, 0, 255);
-    border-style: solid; */
-    margin-left: 8%
+    /* margin-left: 8% */
 }
 
 .logo{
-    max-height: 100px;
-    max-width: 100px;
-    margin-left: 50px;
+    max-height: 150px;
+    max-width: 150px;
 }
 
 .profile-button{
     display: flex;
-    /* justify-content: right */
-
-
 }
 
 .Create-a-spot-Button{
     display: flex;
-    padding-right: 150px
+    padding-right: 150px;
+
 }
 
 .Right-Side-Container{
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-right: 300px;
     /* border-color: rgb(255, 0, 144);
     border-style: solid; */
-    margin-right: 11%
+
 }
 
 .become-host-button{
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     border-radius:12px;
-    padding: 5px;
+    padding: 15px;
     border: 0 solid #ddd
 }
 
 .become-host-button:hover{
-    background-color:rgb(244, 241, 241)
+    background-color: rgb(255, 90,95);
+    color: white;
+    border: none;
 }

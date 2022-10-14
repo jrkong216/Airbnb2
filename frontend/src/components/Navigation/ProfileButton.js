@@ -3,11 +3,21 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { NavLink, useHistory } from 'react-router-dom';
+import { Modal } from '../../context/Modal'
+import LoginFormModal from '../LoginFormModal';
+import SignupFormModal from '../SignupFormModal';
+import SignupForm from '../SignupFormModal/SignupForm'
+import LoginForm from '../LoginFormModal/LoginForm'
+
+
+import './ProfileButton.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const history = useHistory()
   const [showMenu, setShowMenu] = useState(false);
+  const [showSignUpModal, setShowSignUpModal] = useState(false);
+  const [showLogInModal, setShowLogInModal] = useState(false);
 
   const openMenu = () => {
     if (showMenu) return;
@@ -32,22 +42,64 @@ function ProfileButton({ user }) {
     history.push("/");
   };
 
-  return (
+let loggedInOrNot;
+if (user){
+  loggedInOrNot =(
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-
+    <button className="actual-button" onClick={openMenu}>
+        <div className="profile-button-container">
+      <span className="fa-solid fa-bars fa-2x"></span>
+      <span className="fa-solid fa-circle-user fa-2x"></span>
+      </div>
       </button>
       {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
+        <div className="dropdown-content">
+          
+          <div>{user.username}</div>
+          <div>{user.email}</div>
           <NavLink to={`/current/user`}>My Spots</NavLink>
-          <li>
+          <div>
             <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
+          </div>
+        </div>
       )}
+    </>
+  )
+} else{
+  loggedInOrNot = (
+    <>
+    <button className="actual-button" onClick={openMenu}>
+        <div className="profile-button-container">
+      <span className="fa-solid fa-bars fa-2x"></span>
+      <span className="fa-solid fa-circle-user fa-2x"></span>
+      </div>
+      </button>
+      {showMenu && (
+        <div className="dropdown-content">
+        <div className="sign-up-text" onClick={() => setShowSignUpModal(true)}>Sign Up</div>
+        <div className="log-in-text" onClick={() => setShowLogInModal(true)}>Log In</div>
+        </div>
+        )}
+        {showSignUpModal && (
+        <Modal onClose={() => setShowSignUpModal(false)}>
+          <SignupForm />
+
+        </Modal>
+      )}
+      {showLogInModal && (
+        <Modal onClose={() => setShowLogInModal(false)}>
+
+          <LoginForm />
+        </Modal>
+      )}
+
+    </>
+  )
+}
+
+  return (
+    <>
+      {loggedInOrNot}
     </>
   );
 }

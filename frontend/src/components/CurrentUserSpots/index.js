@@ -91,7 +91,7 @@ const GetUserDetails = () => {
                 </div>
             </div>
                     <div>
-                    <h2 className="user-name">My Reviews</h2>
+                    {/* <h2 className="user-name">My Reviews</h2>
                 <div className="user-review-container">
                     <div className="all-user-review--container">
                 {reviewsBySpotId.map((item) =>
@@ -109,10 +109,10 @@ const GetUserDetails = () => {
                      <button className="user-delete-review-button" onClick= {() => reviewHandler(item.id)}>DELETE THIS Review</button>
 
                     </div>
-                )})
-                }
-                    </div>
-                </div>
+                )}) */}
+                {/* } */}
+                    {/* </div> */}
+                {/* </div> */}
 
                     </div>
 </div>

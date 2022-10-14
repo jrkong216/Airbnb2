@@ -3,3 +3,16 @@
     border-style: solid;
     border-radius: 25px;
 } */
+
+.log-in-text{
+    padding-top:5px;
+}
+
+.log-in-text:hover{
+    background-color: rgb(255, 90,95);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 12px;
+}

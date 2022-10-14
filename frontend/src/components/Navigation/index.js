@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
-import SignupFormModal from '../SignupFormModal'
+import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 import airbnb2 from './Images/airbnb2.png'
 
@@ -31,8 +31,11 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <SignupFormModal />
-        <LoginFormModal />
+      <div className= "profile-button">
+      <ProfileButton/>
+      </div>
+        {/* <SignupFormModal />
+        <LoginFormModal /> */}
       </>
     );
   }
