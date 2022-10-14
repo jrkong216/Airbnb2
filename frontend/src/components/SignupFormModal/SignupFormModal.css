@@ -3,6 +3,7 @@
     color: white;
     border: none;
     cursor: pointer;
-    padding: 5px;
-    border-radius: 12px;
+    /* padding: 5px; */
+    width:125px;
+    border-radius: 2px;
 }

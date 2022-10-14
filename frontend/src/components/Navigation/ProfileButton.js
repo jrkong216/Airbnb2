@@ -47,19 +47,24 @@ if (user){
   loggedInOrNot =(
     <>
     <button className="actual-button" onClick={openMenu}>
-        <div className="profile-button-container">
-      <span className="fa-solid fa-bars fa-2x"></span>
-      <span className="fa-solid fa-circle-user fa-2x"></span>
+        <div className="profile-button-container" id="pink">
+      <span className="fa-solid fa-bars fa-2x" id="pink"></span>
+      <span className="fa-solid fa-circle-user fa-2x" id="pink"></span>
       </div>
       </button>
       {showMenu && (
         <div className="dropdown-content">
-          
+          {/* <div className="username-container">
           <div>{user.username}</div>
+          </div>
+          <div className="username-container">
           <div>{user.email}</div>
-          <NavLink to={`/current/user`}>My Spots</NavLink>
+          </div> */}
+          <div className="username-container">
+          <NavLink className="my-spots" to={`/current/user`}>My Spots</NavLink>
+          </div>
           <div>
-            <button onClick={logout}>Log Out</button>
+            <div className="log-out" onClick={logout}>Log Out</div>
           </div>
         </div>
       )}
@@ -69,7 +74,7 @@ if (user){
   loggedInOrNot = (
     <>
     <button className="actual-button" onClick={openMenu}>
-        <div className="profile-button-container">
+        <div className="profile-button-container" id="pink">
       <span className="fa-solid fa-bars fa-2x"></span>
       <span className="fa-solid fa-circle-user fa-2x"></span>
       </div>

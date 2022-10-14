@@ -4,11 +4,11 @@
     justify-content: center;
     padding: 5px;
     border-style: solid;
-    border-color: rgb(255, 90,95);
+    border-color: rgb(216, 214, 214);
     border-width: thin;
     border-radius: 25px;
     background-color: white;
-
+    cursor: pointer;
 }
 
 .actual-button{
@@ -27,11 +27,36 @@
     flex-direction: column;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 70px;
+    width: 125px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     z-index: 1;
-    top: 70%;
-    border-radius: 12px;
+    top: 75%;
+    border-radius: 5px;
     /* right: 22%; */
+}
+
+.username-container:hover{
+    background-color: rgb(255, 90,95);
+    color: white;
+    border: none;
+    cursor: pointer;
+    /* padding: 5px; */
+    width:125px;
+    border-radius: 2px;
+}
+
+.log-out:hover{
+    background-color: rgb(255, 90,95);
+    color: white;
+    border: none;
+    cursor: pointer;
+    /* padding: 5px; */
+    width:125px;
+    border-radius: 2px;
+}
+
+#pink:hover{
+    color: rgb(255, 90,95)
 }

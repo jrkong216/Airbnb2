@@ -41,7 +41,7 @@ const router = express.Router();
 router.post(
   '/',
   validateSignup,
-  async (req, res) => {
+  async (req, res, next) => {
     const { email, password, username, firstName, lastName } = req.body;
 
     if(!username || !email){
@@ -59,17 +59,26 @@ router.post(
     }
     const emailExisted = await User.findOne({where: {email}});
 
-    if(emailExisted){
-      res.status(403);
-      res.json({
+    // if(emailExisted){
+    //   res.status(403);
+    //   res.json({
+    //     "message": "User already exists",
+    //     "statusCode": 403,
+    //     "errors": {
+    //       "email": "User with that email already exists"
+    //     }
+    //   })
+    // }
 
-        "message": "User already exists",
-        "statusCode": 403,
-        "errors": {
-          "email": "User with that email already exists"
-        }
-      })
+    if (emailExisted){
+      const err = new Error("User already exists")
+      err.status = 403
+      err.title = "Login failed"
+      err.errors = ["User with that email already exists"]
+      return next(err)
     }
+
+
     const userExisted = await User.findOne({where: {username}});
     if(userExisted){
       res.status(403);

@@ -31,8 +31,10 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
+      <div className= "logged-out-profile-container">
       <div className= "profile-button">
       <ProfileButton/>
+      </div>
       </div>
         {/* <SignupFormModal />
         <LoginFormModal /> */}
@@ -42,12 +44,14 @@ function Navigation({ isLoaded }){
 
   return (
     <div className="navbar-main">
+      <div className="navbar-inner-container">
     <div className= "Home-Container">
         <NavLink exact to="/"><img className='logo' src={airbnb2}/></NavLink>
     </div>
 
     <div className="Right-Side-Container">
       {isLoaded && sessionLinks}
+    </div>
     </div>
     </div>
 
