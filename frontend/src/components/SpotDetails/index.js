@@ -150,12 +150,11 @@ const GetSpotDetails = () => {
                 <div className= "spot-picture"> <img src={spotInfo.SpotImages[0].url} alt="location of house"/></div>
                 </div>
                 </div>
-                <div className="home-owner-container">
-                <h2 className="Owner-name"> This location is hosted by: {spotInfo.Owner.firstName}</h2>
-                </div>
                 <div className="middle-container">
-
                 <div className="middle-left-container">
+                <div className="home-owner-container">
+                <h2 className="Owner-name"> Entire home hosted by {spotInfo.Owner.firstName}</h2>
+                </div>
                 <div className="border-awards-container">
                 <div className="awards-container">
                     <div className="trophy-container">
@@ -193,7 +192,20 @@ const GetSpotDetails = () => {
                 </div>
                 </div>
                 <div className="middle-right-container">
-
+                    <div className="top-card-container">
+                        <div className="top-inner-card-container">
+                    <div className= "spot-card-price-container">
+                        <div className= "spot-card-price"> ${spotInfo.price} night</div>
+                        <div className="detail-top-info-container">
+                                <div className="spot-star">
+                                    <i className="fa-solid fa-star fa-xs"></i>
+                                </div>
+                    <div className="spot-rating">{spotInfo.avgStarRating}</div>
+                    <div className="number-of-reviews"> • {numberOfReviews} {reviewNumber} </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                 </div>
                 </div>
                 <div className="detail-review-container">
