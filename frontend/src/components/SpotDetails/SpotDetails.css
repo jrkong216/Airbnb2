@@ -24,7 +24,11 @@
     flex-direction: row;
     /* border-style:solid;
     border-color:rgb(21, 0, 255); */
+    padding-top: 2%;
+    padding-bottom: 1%;
+    font-size: 40px;
 }
+
 
 .two-button-container{
     display: flex;
@@ -66,7 +70,7 @@
 }
 
 .spot-picture{
-    /* width:100%; */
+    width:100%;
     /* height: 300px; */
     object-fit: cover;
 }
@@ -161,7 +165,7 @@ font-weight: bold;
 }
 
 .aircover-image{
-    width: 50%;
+    width: 30%;
 }
 
 .review-spot-star-container{
