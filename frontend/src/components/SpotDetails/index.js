@@ -151,7 +151,38 @@ const GetSpotDetails = () => {
                 </div>
                 </div>
                 <div className="home-owner-container">
-                <h2 className="Owner-name"> This location is hosted by: {spotInfo.Owner.firstName} {spotInfo.Owner.lastName}</h2>
+                <h2 className="Owner-name"> This location is hosted by: {spotInfo.Owner.firstName}</h2>
+                </div>
+                <div className="middle-container">
+
+                <div className="middle-left-container">
+                <div className="border-awards-container">
+                <div className="awards-container">
+                    <div className="trophy-container">
+                    <i class="fa-solid fa-award fa-2x"></i>
+                    </div>
+                    <div className="description-of-host">
+                    <div className="block-bold">{spotInfo.Owner.firstName} is a Superhost!</div>
+                    <div className="block" >Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</div>
+                    </div>
+                </div>
+                <div className="awards-container">
+                    <div className="trophy-container">
+                    <i class="fa-solid fa-wifi fa-lg"></i>
+                    </div>
+                    <div className="description-of-host">
+                    <div className="block-bold">Fast wifi</div>
+                    <div className="block" >At 129 Mbps, you can take video calls and stream videos for your whole group.</div>
+                    </div>
+                </div>
+                <div className="awards-container">
+                    <div className="trophy-container">
+                    <i class="fa-solid fa-calendar fa-lg"></i>
+                    </div>
+                    <div className="description-of-host">
+                    <div className="block-bold-1">Free cancellation for 48 hours.</div>
+                    </div>
+                </div>
                 </div>
                 <div className="aircover-container">
                     <img className="aircover-image" src={airCover}></img>
@@ -160,7 +191,11 @@ const GetSpotDetails = () => {
                 <div className="description-name-container">
                 <h3 className="spotDescription"> {spotInfo.description}</h3>
                 </div>
+                </div>
+                <div className="middle-right-container">
 
+                </div>
+                </div>
                 <div className="detail-review-container">
                 {/* <h2>See Reviews Below!!</h2> */}
                 <div className="outer-review-star-container">
@@ -186,6 +221,9 @@ const GetSpotDetails = () => {
                                 {/* <div className="itemReview"> {item.createdAt}</div> */}
                                 <div className="itemReview"> {item.review}</div>
                                 {sessionUser && sessionUserId === item.userId? <button className="Review-Delete-Button" onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> : null}
+
+
+
                             </div>
                         )})
                     }
