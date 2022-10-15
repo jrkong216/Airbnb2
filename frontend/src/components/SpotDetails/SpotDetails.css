@@ -261,7 +261,7 @@ font-weight: bold;
 .top-card-container{
     display: flex;
     width: 80%;
-    height: 90%;
+    height: 450px;
     border-style:solid;
     border-color:rgb(177, 180, 178);
     border-radius: 15px;
@@ -294,4 +294,11 @@ font-weight: bold;
     /* border-style:solid;
     border-color:rgb(39, 20, 213); */
     font-size: x-large
+}
+
+
+.itemReview{
+    width: 60%;
+    /* border-style:solid;
+    border-color:rgb(39, 20, 213); */
 }
