@@ -16,7 +16,7 @@ background-color: white;
     justify-content: space-between;
     /* border-color: grey; */
     /* border-style: solid; */
-    width:78%;
+    width:90%;
 }
 
 
@@ -29,6 +29,8 @@ background-color: white;
 .logo{
     max-height: 125px;
     max-width: 125px;
+    /* border-color: rgb(255, 0, 144);
+    border-style: solid; */
 }
 
 
