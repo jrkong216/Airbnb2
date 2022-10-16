@@ -42,6 +42,11 @@ function ProfileButton({ user }) {
     history.push("/");
   };
 
+  const mySpots = (e) => {
+    e.preventDefault();
+    history.push(`/current/user`);
+  };
+
 let loggedInOrNot;
 if (user){
   loggedInOrNot =(
@@ -60,8 +65,8 @@ if (user){
           <div className="username-container">
           <div>{user.email}</div>
           </div> */}
-          <div className="username-container">
-          <NavLink className="my-spots" to={`/current/user`}>My Spots</NavLink>
+          <div>
+          <div className="my-spots" onClick={mySpots}>My Spots</div>
           </div>
           <div>
             <div className="log-out" onClick={logout}>Log Out</div>
