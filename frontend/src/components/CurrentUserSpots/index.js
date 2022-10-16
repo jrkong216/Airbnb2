@@ -38,7 +38,9 @@ let spotsOrNot
             spotsOrNot = (
                 <div>
                     <h1 className="user-name">My Spots</h1>
+                        <div className= "no-spots-container">
                         <h2>You have no spots!</h2>
+                        </div>
                         {/* <img src= "https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg?cs=srgb&dl=pexels-pixabay-45170.jpg&fm=jpg"></img> */}
              </div>
              )
