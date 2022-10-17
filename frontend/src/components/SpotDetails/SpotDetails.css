@@ -1,3 +1,5 @@
+* {-webkit-font-smoothing: antialiased;}
+
 .Spot-Detail-Outer-Container{
     display: flex;
     width: 100%;
@@ -76,8 +78,8 @@
     border-bottom-style: solid;
 }
 
-.spotName{
-font-weight: bold;
+.spotInfo-name{
+font-weight: 900;
 }
 
 .home-owner-container{

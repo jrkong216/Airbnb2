@@ -133,7 +133,7 @@ const GetSpotDetails = () => {
             <div className="Spot-Detail-Inner-Container">
 
                 <div className="detail-title-container">
-                <div className="spotInfo-name">{spotInfo.name}</div>
+                <div className="spotInfo-name">{spotInfo.name}dfsdfsd</div>
                 {editDeleteLinks}
                 </div>
 

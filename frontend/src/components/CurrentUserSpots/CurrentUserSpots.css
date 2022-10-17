@@ -20,6 +20,8 @@
 
 .user-review-container{
     display: flex;
+    width: 80%;
+    flex-direction: column;
     justify-content: center;
     /* border-style: solid;
     border-color: black */
@@ -37,6 +39,13 @@
 
 }
 
+.outer-review-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .user-review-data-container{
     display:flex;
     flex-direction: row;
@@ -46,13 +55,13 @@
 }
 
 .user-delete-review-button{
-    width: 40%;
+    width: 15%;
     background-color: rgb(255, 90,95);
     color: white;
     border-radius:12px;
     border-width: thin;
     padding:10px;
-    margin-top:2%;
+    margin-top:1%;
     margin-bottom:2%;
 }
 
