@@ -10,34 +10,42 @@ const { spotId } = useParams()
 
   const history = useHistory()
   const dispatch = useDispatch();
-  const [isLoaded, setIsLoaded] = useState(false)
-  useEffect(() => {
-    dispatch(getOneSpot(spotId))
-    .then(() => setIsLoaded(true))
-  }, [dispatch, spotId])
-
 
   const spotInfo = useSelector(state => state.spots[spotId])
 
-  console.log("this is spotInfo", spotInfo)
- const [name, setName] = useState(spotInfo.name)
- const [address, setAddress] = useState(spotInfo.address)
- const [city, setCity] = useState(spotInfo.city)
- const [state, setState] = useState(spotInfo.state)
- const [country, setCountry] = useState(spotInfo.country)
- const [lat, setLatitude] = useState(spotInfo.lat)
- const [lng, setLongitude] = useState(spotInfo.lng)
- const [description, setDescription] = useState(spotInfo.description)
- const [price, setPrice] = useState(spotInfo.price)
+ const [name, setName] = useState("")
+ const [address, setAddress] = useState("")
+ const [city, setCity] = useState("")
+ const [state, setState] = useState("")
+ const [country, setCountry] = useState("")
+ const [lat, setLatitude] = useState("")
+ const [lng, setLongitude] = useState("")
+ const [description, setDescription] = useState("")
+ const [price, setPrice] = useState("")
  // const [url, setImageUrl] = useState(spotInfo.previewImage)
  const [validationErrors, setValidationErrors] = useState([])
 
+
 useEffect(() => {
   dispatch(getOneSpot(spotId))
-}, [dispatch, spotId])
+}, [dispatch])
+
+useEffect(() => {
+  setName(spotInfo && spotInfo.name)
+  setAddress(spotInfo && spotInfo.address)
+  setCity(spotInfo && spotInfo.city)
+  setState(spotInfo && spotInfo.state)
+  setCountry(spotInfo && spotInfo.country)
+  setLatitude(spotInfo && spotInfo.lat)
+  setLongitude(spotInfo && spotInfo.lng)
+  setDescription(spotInfo && spotInfo.description)
+  setPrice(spotInfo && spotInfo.price)
+}, [spotInfo])
+// console.log("This is being ran on line 34", name)
 
 if(!spotInfo) return null
 
+// console.log("This is being ran on line 40", name)
 // if (!isLoaded){
 //   return (<div>Loading...</div>)
 //   }
