@@ -158,7 +158,7 @@ const GetSpotDetails = () => {
                 <div className="border-awards-container">
                 <div className="awards-container">
                     <div className="trophy-container">
-                    <i class="fa-solid fa-award fa-2x"></i>
+                    <i className="fa-solid fa-award fa-2x"></i>
                     </div>
                     <div className="description-of-host">
                     <div className="block-bold">{spotInfo.Owner.firstName} is a Superhost!</div>
@@ -167,7 +167,7 @@ const GetSpotDetails = () => {
                 </div>
                 <div className="awards-container">
                     <div className="trophy-container">
-                    <i class="fa-solid fa-wifi fa-lg"></i>
+                    <i className="fa-solid fa-wifi fa-lg"></i>
                     </div>
                     <div className="description-of-host">
                     <div className="block-bold">Fast wifi</div>
@@ -176,7 +176,7 @@ const GetSpotDetails = () => {
                 </div>
                 <div className="awards-container">
                     <div className="trophy-container">
-                    <i class="fa-solid fa-calendar fa-lg"></i>
+                    <i className="fa-solid fa-calendar fa-lg"></i>
                     </div>
                     <div className="description-of-host">
                     <div className="block-bold-1">Free cancellation for 48 hours.</div>
