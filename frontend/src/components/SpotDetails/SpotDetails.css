@@ -99,7 +99,7 @@ font-weight: 900;
 }
 
 .Review-Delete-Button{
-    background-color: rgb(255, 90,95);
+    background-color: rgb(230, 30,77);
     color: white;
     border-radius:12px;
     border-width: thin;
@@ -108,7 +108,7 @@ font-weight: 900;
 }
 
 .Create-Review-Button{
-    background-color: rgb(255, 90,95);
+    background-color: rgb(230, 30,77);
     color: white;
     border-radius:12px;
     border-width: thin;
@@ -118,7 +118,7 @@ font-weight: 900;
 
 
 .Edit-Delete-Button{
-    background-color: rgb(255, 90,95);
+    background-color: rgb(230, 30,77);
     color: white;
     border-radius:12px;
     border-width: thin;
