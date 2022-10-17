@@ -54,7 +54,14 @@ const GetUserDetails = () => {
             let reviewToDelete;
                 reviewToDelete = dispatch(DeleteReview(payload))
         }
+        const submitHandler = async (spotid) => {
 
+            const payload = {
+                id: spotid
+            }
+            let createdSpot;
+            createdSpot = dispatch(DeleteSpot(payload))
+        }
 
 
 let spotsOrNot
@@ -66,7 +73,7 @@ let spotsOrNot
                         <h2>You have no spots!</h2>
                         </div>
                         {/* <img src= "https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg?cs=srgb&dl=pexels-pixabay-45170.jpg&fm=jpg"></img> */}
-             </div>
+                </div>
              )
         } else {
          spotsOrNot = (
@@ -76,9 +83,22 @@ let spotsOrNot
                 <div className="all-user-card-container">
             {spotsByUserId.map((spot) =>
                 {return (
+                    <>
+                    <div>
                     <SpotCard key={spot.id} spot={spot}/>
+                    <div className= "Delete-spot-button-container">
+                <button className= "Edit-Delete-Button" onClick= {() => submitHandler(spot.id)}>DELETE THIS SPOT</button>
+                    </div>
+                    <div className="Edit-a-Spot-button-container">
+                    <NavLink to={`/spot/${spot.id}/edit`}>
+                        <button className= "Edit-Delete-Button" type="submit">EDIT THIS SPOT</button>
+                    </NavLink>
+            </div>
+                    </div>
+                    </>
                 )})
             }
+
                 </div>
             </div>
                     <div className="outer-review-container">
