@@ -21,17 +21,6 @@ console.log("this is spotId", spotId)
     dispatch(getAllReviews(spotId))
 }, [dispatch])
 
-
-  // useEffect(() => {
-  //   const errors = []
-
-  //   if(!review) errors.push("Please provide a review")
-  //   // if(stars < 1 || stars >5) errors.push("Rating must be an integer between 1 and 5")
-
-  //   setValidationErrors(errors)
-
-  // }, [review, stars])
-
 const submitHandler = async (e) => {
   e.preventDefault()
 

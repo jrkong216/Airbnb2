@@ -62,7 +62,7 @@ export const signup = (user) => async (dispatch) => {
     }),
   });
   const data = await response.json();
-  console.log("IF POST REQUEST GOOD then this is DATA after json of the post", data)
+  // console.log("IF POST REQUEST GOOD then this is DATA after json of the post", data)
   dispatch(setUser(data));
   return response;
 };
@@ -87,11 +87,3 @@ const sessionReducer = (state = initialState, action) => {
 };
 
 export default sessionReducer;
-
-// window.store.dispatch(window.sessionActions.signup({
-//   email: 'new@user.io',
-//   password: 'password',
-//   username: 'NewUser',
-// firstName: 'Jason',
-// lastName:'kong'
-// }));

@@ -66,7 +66,7 @@ return response
 }
 
 export const CreateSpot = (payload, imagePayload) => async dispatch => {
-    console.log("DID MY CODE REACH HERE")
+    // console.log("DID MY CODE REACH HERE")
     const response = await csrfFetch('/api/spots', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -107,7 +107,7 @@ export const UpdateSpot = (payload) => async (dispatch) => {
         const info = await response.json()
         dispatch(update(info))
         // dispatch(getAllSpots())
-        console.log("THIS IS THE RESPONSE TO KEY INTO", response)
+        // console.log("THIS IS THE RESPONSE TO KEY INTO", response)
         return response
     }
 }
@@ -121,7 +121,7 @@ export const DeleteSpot = (payload) => async (dispatch) => {
     if (response.ok) {
         // console.log("DID MY CODE REACH HERE FOR RESPONSE TO BEE OK")
         const info = await response.json()
-        console.log("THIS IS INFO", info)
+        // console.log("THIS IS INFO", info)
         dispatch(remove(payload.id))
         // console.log("THIS IS THE RESPONSE TO KEY INTO", response)
         return response
@@ -156,7 +156,7 @@ const spotsReducer = (state = initialState, action) => {
             newState = {...state}
             delete newState[action.id]
             return newState
-            default:
+        default:
                 return state;
     }
 }

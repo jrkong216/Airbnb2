@@ -4,10 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getAllSpots }  from '../../store/spotsReducer'
 import { getUserReviews } from '../../store/reviewsReducer'
 import { useParams, useHistory } from "react-router-dom"
-// import {getOneSpot} from '../../store/spotsReducer'
 import { NavLink } from 'react-router-dom';
 import {DeleteSpot} from '../../store/spotsReducer'
-import {getAllReviews} from '../../store/reviewsReducer'
 import { DeleteReview } from '../../store/reviewsReducer'
 import "./CurrentUserSpots.css"
 import SpotCard from "../SpotCard"
@@ -18,8 +16,6 @@ const GetUserDetails = () => {
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
     const { spotId } = useParams()
-    const history = useHistory()
-    const user = useSelector(state => state.session.user)
     const userId = useSelector(state => state.session.user.id)
     const spotInfo = useSelector(state => state.spots)
     const spotsInfoArray = Object.values(spotInfo)

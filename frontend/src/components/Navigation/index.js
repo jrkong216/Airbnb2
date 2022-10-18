@@ -4,8 +4,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import LoginFormModal from '../LoginFormModal';
-import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 import airbnb2 from './Images/airbnb2.png'
 
@@ -36,8 +34,6 @@ function Navigation({ isLoaded }){
       <ProfileButton/>
       </div>
       </div>
-        {/* <SignupFormModal />
-        <LoginFormModal /> */}
       </>
     );
   }

@@ -1,7 +1,6 @@
 import { useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {getAllSpots} from '../../store/spotsReducer'
-import { NavLink } from 'react-router-dom';
 import SpotCard from "../SpotCard"
 import "./Spots.css"
 
