@@ -66,6 +66,21 @@
     padding: 5px;
 }
 
+.my-reviews{
+    padding: 5px;
+}
+
+.my-reviews:hover{
+    background-color: rgb(230, 30,77);
+    color: white;
+    border: none;
+    cursor: pointer;
+    /* padding: 5px; */
+    width:125px;
+    border-radius: 2px;
+}
+
+
 .my-spots:hover{
     background-color: rgb(230, 30,77);
     color: white;

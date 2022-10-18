@@ -47,6 +47,11 @@ function ProfileButton({ user }) {
     history.push(`/current/user`);
   };
 
+  const myReviews = (e) => {
+    e.preventDefault();
+    history.push(`/current/user/reviews`);
+  };
+
 let loggedInOrNot;
 if (user){
   loggedInOrNot =(
@@ -67,6 +72,9 @@ if (user){
           </div> */}
           <div>
           <div className="my-spots" onClick={mySpots}>My Spots</div>
+          </div>
+          <div>
+          <div className="my-reviews" onClick={myReviews}>My Reviews</div>
           </div>
           <div>
             <div className="log-out" onClick={logout}>Log Out</div>

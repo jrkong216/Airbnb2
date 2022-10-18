@@ -126,7 +126,6 @@ export const DeleteSpot = (payload) => async (dispatch) => {
         // console.log("THIS IS THE RESPONSE TO KEY INTO", response)
         return response
     }
-
 }
 
 const initialState = {}

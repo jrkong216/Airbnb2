@@ -7,7 +7,7 @@ import { useParams, useHistory } from "react-router-dom"
 import { NavLink } from 'react-router-dom';
 import {DeleteSpot} from '../../store/spotsReducer'
 import { DeleteReview } from '../../store/reviewsReducer'
-import "./CurrentUserSpots.css"
+import "./CurrentUserReviews.css"
 import SpotCard from "../SpotCard"
 
 
@@ -40,7 +40,16 @@ const GetUserDetails = () => {
         if (spotInfo === undefined){
             return null
         }
+        const reviewHandler = async (id) => {
+            // e.preventDefault()
+            const payload = {
+                spotId: spotId,
+                reviewId: id
+            }
 
+            let reviewToDelete;
+                reviewToDelete = dispatch(DeleteReview(payload))
+        }
         const submitHandler = async (spotid) => {
 
             const payload = {
@@ -52,12 +61,12 @@ const GetUserDetails = () => {
 
 
 let spotsOrNot
-        if(spotsByUserId.length === 0){
+        if(reviewsBySpotId.length === 0){
             spotsOrNot = (
                 <div>
-                    <h1 className="user-name">My Spots</h1>
+                    <h1 className="user-name">My Reviews</h1>
                         <div className= "no-spots-container">
-                        <h2>You have no spots!</h2>
+                        <h2>You have no reviews!</h2>
                         </div>
                         {/* <img src= "https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg?cs=srgb&dl=pexels-pixabay-45170.jpg&fm=jpg"></img> */}
                 </div>
@@ -65,34 +74,30 @@ let spotsOrNot
         } else {
          spotsOrNot = (
             <div>
-            <h1 className="user-name">My Spots</h1>
-            <div className="user-home-container">
-                <div className="all-user-card-container">
-            {spotsByUserId.map((spot) =>
+                    <div className="outer-review-container">
+                    <h2 className="user-name">My Reviews</h2>
+                <div className="user-review-container">
+                    <div className="all-user-review--container">
+                {reviewsBySpotId.map((item) =>
                 {return (
-                    <>
-                    <div>
-                    <SpotCard key={spot.id} spot={spot}/>
-                    <div className= "Delete-spot-button-container">
-                <button className= "Edit-Delete-Button" onClick= {() => submitHandler(spot.id)}>DELETE THIS SPOT</button>
+                    <div key= {item.id}>
+                    <div className= "spotReviewName"> Location: {item.Spot.name}</div>
+                    <div className="user-review-data-container">
+                        <i className="fa-solid fa-star fa-xs"></i>
+                    <div className= "spotStars"> {item.stars}</div>
                     </div>
-                    <div className="Edit-a-Spot-button-container">
-                    <NavLink to={`/spot/${spot.id}/edit`}>
-                        <button className= "Edit-Delete-Button" type="submit">EDIT THIS SPOT</button>
-                    </NavLink>
-            </div>
+                    <div className= "spotReview"> Review: {item.review}</div>
+                     <button className="user-delete-review-button" onClick= {() => reviewHandler(item.id)}>DELETE THIS Review</button>
                     </div>
-                    </>
                 )})
-            }
-
-                </div>
-            </div>
+                }
                     </div>
+                </div>
 
+                    </div>
+</div>
          )
         }
-
 
     return(
         <>
