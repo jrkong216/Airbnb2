@@ -62,7 +62,13 @@ const submitHandler = async (e) => {
         if (price < 0) errors.push("Please set price above 0");
         if (!url) errors.push("Please provide a image");
         if (description.length > 254) errors.push("You can only provide 255 or less characters as a description")
-        if (url.slice(0,5).toLowerCase() !== "https") errors.push("Url must start with https")
+        // if (url.slice(0,5).toLowerCase() !== "https") errors.push("Url must start with https")
+
+        const lastLetters = url.split(".")
+        const lastIndex = lastLetters[lastLetters.length-1]
+            const arrayChecker = ["jpg", "png", "jpeg", "img"]
+        if (!arrayChecker.includes(lastIndex)) errors.push("url file must either be a .jpg, .png, .jpeg, .img")
+
 
     setValidationErrors(errors)
 
@@ -89,9 +95,11 @@ if(errors.length){
 
 let createdSpot;
 
-createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => history.push("/"))
-// console.log("THIS IS OUR CREATED SPOT", createdSpot)
+// console.log("this is created spot", createdSpot)
+createdSpot = await dispatch(CreateSpot(payload, imagePayload))
 
+history.push(`/spots/${createdSpot.id}`)
+// console.log("THIS IS OUR CREATED SPOT", createdSpot)
   // history.push(`/api/spots/${createdSpot.id}`)
 }
 //return spot from teh THUNK
