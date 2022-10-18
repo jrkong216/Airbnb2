@@ -183,7 +183,7 @@ createdSpot = dispatch(UpdateSpot(payload))
         <input
         required
         className="form-Update-inputs"
-          type="text"
+          type="number"
           name="latitude"
           onChange={(e)=> setLatitude(e.target.value)}
           // placeholder= {spotInfo.lat}
@@ -195,7 +195,7 @@ createdSpot = dispatch(UpdateSpot(payload))
         <input
         required
         className="form-Update-inputs"
-          type="text"
+          type="number"
           name="longitude"
           onChange={(e)=> setLongitude(e.target.value)}
           // placeholder= {spotInfo.lng}

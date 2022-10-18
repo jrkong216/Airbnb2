@@ -179,7 +179,7 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
         <input
         className="form-inputs"
         required
-          type="text"
+          type="number"
           name="latitude"
           onChange={(e)=> setLatitude(e.target.value)}
           value={lat}
@@ -191,7 +191,7 @@ createdSpot = await dispatch(CreateSpot(payload, imagePayload)).then(() => histo
         <input
         className="form-inputs"
         required
-          type="text"
+          type="number"
           name="longitude"
           onChange={(e)=> setLongitude(e.target.value)}
           value={lng}
