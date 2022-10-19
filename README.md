@@ -40,7 +40,7 @@ When you edit the page will reload and you can see the errors in the console.
 ## Home Page
 ![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221681/SplashPage_doowe9.png)
 ## Demo User
-![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221496/DemoUser_fw5ahq.png)
+![DemoGif](https://res.cloudinary.com/decrtjcgv/image/upload/v1666222733/DemoUser_yiz7gh.gif)
 ## Create a Spot
 ![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221493/CreateSpot_pgw9gq.png)
 ## Update a Spot
