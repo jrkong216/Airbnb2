@@ -5,13 +5,13 @@ You can find a live link to [Airbnb2](https://authen-me-airbnb2.herokuapp.com/)
 
 Please see below links to project Wiki:
 
-[API Routes] <--- insert links here
+[AirBnb2 API Routes](https://github.com/jrkong216/Airbnb2/tree/dev2/backend#readme)
 
-[Feature List]
+[AirBnb2 Database Schema](https://camo.githubusercontent.com/dcff9dd41392b50c83e73ea96225eac04ec388b03f701523a6b13f35be969360/68747470733a2f2f64726976652e676f6f676c652e636f6d2f75633f6578706f72743d766965772669643d3159386f645f4b6371556537714b366d584962677a4a5275442d35435747447137)
 
-[Database Schema Image]
+[AirBnb2 Feature Lists](https://github.com/jrkong216/Airbnb2/wiki/AirBnb2-Feature-List)
 
-[Redux State Shape]
+[AirBnb2 Redux Shape]
 
 # Coding technologies used for the project:
 
