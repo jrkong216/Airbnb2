@@ -38,24 +38,25 @@ When you edit the page will reload and you can see the errors in the console.
 # Features:
 
 ## Home Page
-![image](https://drive.google.com/uc?export=view&id=1LzP9P-Dt_-OldD3v1qnlK19ps_wlUITf)
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221681/SplashPage_doowe9.png)
 ## Demo User
-![image](https://drive.google.com/uc?export=view&id=1mqG27u3FqhcIsqa0OPTpSaJ3tDk8g57N)
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221496/DemoUser_fw5ahq.png)
 ## Create a Spot
-![image](https://drive.google.com/uc?export=view&id=1HlhtPhXDmDcT547Df_ZTA1Wo8SKxSUf9)
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221493/CreateSpot_pgw9gq.png)
 ## Update a Spot
-![image](https://drive.google.com/uc?export=view&id=1uY9xPwxAPvY0ZCm0MFhhVgaVNl4tB4a3)
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221494/Edit_a_Spot_pjvi9r.png)
 ## Delete a Spot
 Dynamically delete your spot from your spots page or your spot details page
-![image](https://drive.google.com/uc?export=view&id=1dhCvEsdS_vnXyopRaYX4y6knl-OHlh8c)
-![image](https://drive.google.com/uc?export=view&id=1dhCvEsdS_vnXyopRaYX4y6knl-OHlh8c)
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221495/SpotDetailsEditDelete_ep727g.png)
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221495/My_Spots_x8abw6.png)
 ## My Spots
-![image](https://drive.google.com/uc?export=view&id=1dhCvEsdS_vnXyopRaYX4y6knl-OHlh8c)
+Listing of all your owned spotss
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221495/My_Spots_x8abw6.png)
 ## My Reviews
-![image](https://drive.google.com/uc?export=view&id=1HXEe-0-XGL0jW-DiiQZhHizFzrV7vapP)
+Listing of all your reviewss
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221493/My_Reviews_qrtchh.png)
 ## Create a Review
-![image](https://drive.google.com/uc?export=view&id=1i1xGpL2xb3hJafi4lijpgvTD99BGqOT9)
-![image](https://drive.google.com/uc?export=view&id=1VQIBkfXlt2w4s-RybCX3N1EuKTQCTjiK)
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221887/CreateAReview_ddhgzz.png)
 ## Delete a Review
-![image](https://drive.google.com/uc?export=view&id=1HXEe-0-XGL0jW-DiiQZhHizFzrV7vapP)
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221493/My_Reviews_qrtchh.png)
 
