@@ -3,7 +3,7 @@
 ### Airbnb2 is a web application inspired by Airbnb, that offers an online platform for renting, primarily short-term transition staying for vocation rentals, and tourism activiies.
 You can find a live link to [Airbnb2](https://authen-me-airbnb2.herokuapp.com/)
 
-Please see below links to project Wiki:
+Please see below links for quick review:
 
 [AirBnb2 API Routes](https://github.com/jrkong216/Airbnb2/tree/dev2/backend#readme)
 
@@ -11,7 +11,7 @@ Please see below links to project Wiki:
 
 [AirBnb2 Feature Lists](https://github.com/jrkong216/Airbnb2/wiki/AirBnb2-Feature-List)
 
-[AirBnb2 Redux Shape]
+[AirBnb2 Redux State Shape](https://github.com/jrkong216/Airbnb2/wiki/Redux-State-Shape)
 
 # Coding technologies used for the project:
 
