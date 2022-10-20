@@ -40,7 +40,11 @@ When you edit the page will reload and you can see the errors in the console.
 ## Home Page
 ![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221681/SplashPage_doowe9.png)
 ## Demo User
-![](https://media1.giphy.com/media/8HNvtjmIEQjWTPvyB4/giphy.gif?cid=790b7611c21767cd1ab35ae8b070006b76a848e1a402e98d&rid=giphy.gif&ct=g)
+
+<p align="center">
+  <img src="https://media1.giphy.com/media/8HNvtjmIEQjWTPvyB4/giphy.gif?cid=790b7611c21767cd1ab35ae8b070006b76a848e1a402e98d&rid=giphy.gif&ct=g)" alt="animated" />
+</p>
+ 
 ## Create a Spot
 ![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221493/CreateSpot_pgw9gq.png)
 ## Update a Spot
