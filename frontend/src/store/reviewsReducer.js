@@ -1,7 +1,8 @@
 import { csrfFetch } from "./csrf";
 
 const GETREVIEWS = "reviews/GET"
-const CREATEREVIEW = "reviews/CREATE";
+const CREATEREVIEW = "reviews/CREATE"
+const UPDATEREVIEW = "reviews/UPDATE"
 const DELETEREVIEW = "reviews/DELETE"
 
 export const getReviews = (list) => {
@@ -16,6 +17,12 @@ export const getReviews = (list) => {
       type: CREATEREVIEW,
       list
     }}
+
+    export const updateReview = (list) => {
+        return {
+          type: UPDATEREVIEW,
+          list
+        }}
 
     export const removeReview = (id) => {
         return {
@@ -70,6 +77,25 @@ export const CreateReview = (spotId, payload) => async dispatch => {
     }
 }
 
+export const UpdateReview = (reviewId,payload) => async (dispatch) => {
+    // console.log("IS the code getting here?")
+    const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+
+    if (response.ok) {
+        // console.log("DID MY CODE REACH HERE FOR RESPONSE TO BEE OK")
+        const info = await response.json()
+        dispatch(updateReview(info))
+        // dispatch(getAllSpots())
+        // console.log("THIS IS THE RESPONSE TO KEY INTO", response)
+        return response
+    }
+}
+
+
 export const DeleteReview = (payload) => async (dispatch) => {
     // console.log("IS the code getting here TO DELETEREVIEW?")
     // console.log("this is payload.reviewID", payload.reviewId)
@@ -108,6 +134,10 @@ const reviewsReducer = (state = initialState, action) => {
             // console.log("this is the current NewState", newState)
             newState[action.list.id] = action.list
             return newState
+        case UPDATEREVIEW:
+                newState = {...state}
+                newState[action.list.id] = action.list
+                return newState
         case DELETEREVIEW:
             newState = {...state}
             delete newState[action.id]

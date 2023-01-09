@@ -91,3 +91,15 @@
     border-style: solid;
     border-color: rgb(128, 34, 0);
 }
+
+.user-edit-review-button{
+    width: 15%;
+    background-color: rgb(230, 30,77);
+    color: white;
+    border-radius:12px;
+    border-width: thin;
+    padding:10px;
+    margin-top:1%;
+    margin-bottom:2%;
+    margin-left: 2%;
+}

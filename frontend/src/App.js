@@ -10,6 +10,7 @@ import Spots from "./components/Spots"
 import CreateSpotsForm from "./components/CreateSpotsForm"
 import SpotDetails from "./components/SpotDetails"
 import UpdateSpotForm from "./components/UpdateSpotForm"
+import UpdateReviewForm from "./components/UpdateReviewForm"
 import CreateReviewForm from "./components/CreateReviewForm"
 import CurrentUserSpots from "./components/CurrentUserSpots"
 import CurrentUserReviews from "./components/CurrentUserReviews"
@@ -44,6 +45,9 @@ function App() {
           </Route>
           <Route exact path="/current/user/reviews">
             <CurrentUserReviews/>
+          </Route>
+          <Route exact path="/current/user/reviews/:reviewId">
+            <UpdateReviewForm/>
           </Route>
           <Route path="/current/user">
             <CurrentUserSpots/>

@@ -11,8 +11,9 @@ import "./CurrentUserReviews.css"
 import SpotCard from "../SpotCard"
 
 
-const GetUserDetails = () => {
 
+const GetUserDetails = () => {
+    const history = useHistory()
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
     const { spotId } = useParams()
@@ -40,7 +41,7 @@ const GetUserDetails = () => {
         if (spotInfo === undefined){
             return null
         }
-        const reviewHandler = async (id) => {
+        const deleteReviewHandler = async (id) => {
             // e.preventDefault()
             const payload = {
                 spotId: spotId,
@@ -50,13 +51,11 @@ const GetUserDetails = () => {
             let reviewToDelete;
                 reviewToDelete = dispatch(DeleteReview(payload))
         }
-        const submitHandler = async (spotid) => {
 
-            const payload = {
-                id: spotid
-            }
-            let createdSpot;
-            createdSpot = dispatch(DeleteSpot(payload))
+
+        const editReviewHandler = async (id) => {
+            history.push(`/current/user/reviews/${id}`);
+
         }
 
 
@@ -87,7 +86,9 @@ let spotsOrNot
                     <div className= "spotStars"> {item.stars}</div>
                     </div>
                     <div className= "spotReview"> Review: {item.review}</div>
-                     <button className="user-delete-review-button" onClick= {() => reviewHandler(item.id)}>DELETE THIS Review</button>
+                     <button className="user-delete-review-button" onClick= {() => deleteReviewHandler(item.id)}>Delete Review</button>
+                     <button className="user-edit-review-button" onClick= {() => editReviewHandler(item.id)}>Edit Review</button>
+                     {/* {console.log("this is item", item)} */}
                     </div>
                 )})
                 }
