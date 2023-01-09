@@ -3,15 +3,15 @@
 ### Airbnb2 is a web application inspired by Airbnb, that offers an online platform for renting, primarily short-term transition staying for vocation rentals, and tourism activiies.
 You can find a live link to [Airbnb2](https://authen-me-airbnb2.herokuapp.com/)
 
-Please see below links to project Wiki:
+Please see below links for quick review:
 
-[API Routes] <--- insert links here
+[AirBnb2 API Routes](https://github.com/jrkong216/Airbnb2/tree/dev2/backend#readme)
 
-[Feature List]
+[AirBnb2 Database Schema](https://camo.githubusercontent.com/dcff9dd41392b50c83e73ea96225eac04ec388b03f701523a6b13f35be969360/68747470733a2f2f64726976652e676f6f676c652e636f6d2f75633f6578706f72743d766965772669643d3159386f645f4b6371556537714b366d584962677a4a5275442d35435747447137)
 
-[Database Schema Image]
+[AirBnb2 Feature Lists](https://github.com/jrkong216/Airbnb2/wiki/AirBnb2-Feature-List)
 
-[Redux State Shape]
+[AirBnb2 Redux State Shape](https://github.com/jrkong216/Airbnb2/wiki/Redux-State-Shape)
 
 # Coding technologies used for the project:
 
@@ -38,24 +38,29 @@ When you edit the page will reload and you can see the errors in the console.
 # Features:
 
 ## Home Page
-![image](https://drive.google.com/uc?export=view&id=1LzP9P-Dt_-OldD3v1qnlK19ps_wlUITf)
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221681/SplashPage_doowe9.png)
 ## Demo User
-![image](https://drive.google.com/uc?export=view&id=1mqG27u3FqhcIsqa0OPTpSaJ3tDk8g57N)
+
+<p align="center">
+  <img src="https://media1.giphy.com/media/8HNvtjmIEQjWTPvyB4/giphy.gif?cid=790b7611c21767cd1ab35ae8b070006b76a848e1a402e98d&rid=giphy.gif&ct=g)" alt="animated" />
+</p>
+ 
 ## Create a Spot
-![image](https://drive.google.com/uc?export=view&id=1HlhtPhXDmDcT547Df_ZTA1Wo8SKxSUf9)
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221493/CreateSpot_pgw9gq.png)
 ## Update a Spot
-![image](https://drive.google.com/uc?export=view&id=1uY9xPwxAPvY0ZCm0MFhhVgaVNl4tB4a3)
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221494/Edit_a_Spot_pjvi9r.png)
 ## Delete a Spot
 Dynamically delete your spot from your spots page or your spot details page
-![image](https://drive.google.com/uc?export=view&id=1dhCvEsdS_vnXyopRaYX4y6knl-OHlh8c)
-![image](https://drive.google.com/uc?export=view&id=1dhCvEsdS_vnXyopRaYX4y6knl-OHlh8c)
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221495/SpotDetailsEditDelete_ep727g.png)
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221495/My_Spots_x8abw6.png)
 ## My Spots
-![image](https://drive.google.com/uc?export=view&id=1dhCvEsdS_vnXyopRaYX4y6knl-OHlh8c)
+Listing of all your owned spotss
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221495/My_Spots_x8abw6.png)
 ## My Reviews
-![image](https://drive.google.com/uc?export=view&id=1HXEe-0-XGL0jW-DiiQZhHizFzrV7vapP)
+Listing of all your reviewss
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221493/My_Reviews_qrtchh.png)
 ## Create a Review
-![image](https://drive.google.com/uc?export=view&id=1i1xGpL2xb3hJafi4lijpgvTD99BGqOT9)
-![image](https://drive.google.com/uc?export=view&id=1VQIBkfXlt2w4s-RybCX3N1EuKTQCTjiK)
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221887/CreateAReview_ddhgzz.png)
 ## Delete a Review
-![image](https://drive.google.com/uc?export=view&id=1HXEe-0-XGL0jW-DiiQZhHizFzrV7vapP)
+![image](https://res.cloudinary.com/decrtjcgv/image/upload/v1666221493/My_Reviews_qrtchh.png)
 
