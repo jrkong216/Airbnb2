@@ -113,6 +113,23 @@ const BookingCard = ({spotInfo, numberOfReviews, reviewNumber, spotId}) => {
       </div>
     </form>
       </div>
+      {/* <div className = "bookingpricecontainer">
+                    <div className = "underlinethis">${spotInfo.price} x {(Math.abs(new Date(endDate) - new Date(startDate)))/86400000} nights</div>
+                    <div>${spotInfo.price * (Math.abs(new Date(endDate) - new Date(startDate)))/86400000} </div>
+                </div> */}
+                {/* <div className = "bookingpricecontainer">
+                    <div className = "underlinethis">Cleaning fee</div>
+                    <div>$80</div>
+                </div>
+
+                <div className = "bookingpricecontainer">
+                    <div className = "underlinethis">Service fee</div>
+                    <div>$50 </div>
+                </div> */}
+        <div className = "TotalContainer">
+                    <div className = "taxestotal">Total before taxes</div>
+                    <div className = "taxestotal">${80 + 50 + spotInfo.price * (Math.abs(new Date(endDate) - new Date(startDate)))/86400000} </div>
+        </div>
 </div>
 </>
     )
