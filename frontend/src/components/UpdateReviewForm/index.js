@@ -19,7 +19,7 @@ const { reviewId } = useParams()
 
 
   useEffect(() => {
-    dispatch(getAllReviews(reviewId))
+    dispatch(getAllReviews())
 }, [dispatch])
 
 useEffect(() => {

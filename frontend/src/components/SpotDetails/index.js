@@ -8,6 +8,7 @@ import { getAllReviews } from '../../store/reviewsReducer'
 import { DeleteReview } from '../../store/reviewsReducer'
 import airCover from './images/airCover.png'
 import "./SpotDetails.css"
+import BookingCard from '../BookingCard';
 
 
 const GetSpotDetails = () => {
@@ -191,22 +192,7 @@ const GetSpotDetails = () => {
                 <h3 className="spotDescription"> {spotInfo.description}</h3>
                 </div>
                 </div>
-                <div className="middle-right-container">
-                    <div className="top-card-container">
-                        <div className="top-inner-card-container">
-                    <div className= "spot-card-price-container">
-                        <div className= "spot-card-price"> ${spotInfo.price} night</div>
-                        <div className="detail-top-info-container">
-                                <div className="spot-star">
-                                    <i className="fa-solid fa-star fa-xs"></i>
-                                </div>
-                    <div className="spot-rating">{spotInfo.avgStarRating}</div>
-                    <div className="number-of-reviews"> • {numberOfReviews} {reviewNumber} </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
+                <BookingCard spotInfo={spotInfo} numberOfReviews={numberOfReviews} reviewNumber={reviewNumber} spotId={spotId} />
                 </div>
                 <div className="detail-review-container">
                 {/* <h2>See Reviews Below!!</h2> */}
