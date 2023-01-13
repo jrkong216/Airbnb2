@@ -450,20 +450,23 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 
     const { spotId } = req.params
     const findSpot = await Spot.findByPk(spotId)
+    console.log("this is findSpot", findSpot)
 
     const { user } = req
     const userId = user.dataValues.id
 
-    const allBoookings = await Booking.findAll({
+    const allBookings = await Booking.findAll({
         include: [
             { model: Spot, where: { id: spotId } }
         ]
     })
 
+    console.log("this is allBookings", allBookings)
+
     if (findSpot) {
         //  check if a booking for a spot has already been made by userId
         let booked;
-        for (let booking of allBoookings) {
+        for (let booking of allBookings) {
             if (booking.userId === userId) {
                 booked = true
             }

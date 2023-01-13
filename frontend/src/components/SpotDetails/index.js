@@ -24,7 +24,7 @@ const GetSpotDetails = () => {
     const history = useHistory()
     const spotInfo = useSelector(state => state.spots[spotId])
 
-    console.log("thi iss spotInfo", spotInfo)
+    // console.log("thi iss spotInfo", spotInfo)
     // console.log("this is sspotINFO IAMGE", spotInfo.SpotImages)
     // console.log("thiss is spotInfo Owner id", spotInfo.ownerId)
 

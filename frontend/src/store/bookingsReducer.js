@@ -43,7 +43,7 @@ export const getBookings = (spotid) => async (dispatch) => {
     }
 }
 
-export const getUserbookings = () => async (dispatch) => {
+export const getUserBookings = () => async (dispatch) => {
     const response = await fetch(`/api/bookings/current`);
     if(response.ok) {
         const bookings = await response.json();
@@ -63,7 +63,7 @@ export const createBooking = (payload, spotid) => async dispatch => {
     if(response.ok) {
         const info = await response.json()
         dispatch(create(info))
-        return response
+        return info
     }
 }
 
@@ -82,7 +82,7 @@ export const updatebooking = (payload, bookingId) => async dispatch => {
     }
 }
 
-export const deletebooking = (bookingId) => async dispatch => {
+export const DeleteBooking = (bookingId) => async dispatch => {
     const response = await csrfFetch(`/api/bookings/${bookingId}`, {
         method: 'DELETE',
     })
