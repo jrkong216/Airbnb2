@@ -450,7 +450,6 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 
     const { spotId } = req.params
     const findSpot = await Spot.findByPk(spotId)
-    console.log("this is findSpot", findSpot)
 
     const { user } = req
     const userId = user.dataValues.id
@@ -460,17 +459,45 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
             { model: Spot, where: { id: spotId } }
         ]
     })
-
     console.log("this is allBookings", allBookings)
+
+    let providedStartDate = Date.parse(startDate)
+    let providedEndDate = Date.parse(endDate)
 
     if (findSpot) {
         //  check if a booking for a spot has already been made by userId
-        let booked;
-        for (let booking of allBookings) {
-            if (booking.userId === userId) {
-                booked = true
-            }
-        }
+        for(let i = 0; i<allBookings.length; i++){
+            if(providedStartDate >=Date.parse(allBookings[i].startDate) && providedStartDate<=Date.parse(allBookings[i].endDate))
+            res.status(403)
+            res.json({
+                message: "Sorry, this spot is already booked for the specified dates",
+                statusCode: 403,
+                errors: {
+                    startDate: "Start date conflicts with an existing booking",
+                    endDate: "End date conflicts with an existing booking"
+                }
+            })
+            if(providedEndDate >=Date.parse(allBookings[i].startDate) && providedEndDate <=Date.parse(allBookings[i].endDate))
+            res.status(403)
+            res.json({
+                message: "Sorry, this spot is already booked for the specified dates",
+                statusCode: 403,
+                errors: {
+                    startDate: "Start date conflicts with an existing booking",
+                    endDate: "End date conflicts with an existing booking"
+                }
+            })
+            if(providedStartDate <=Date.parse(allBookings[i].startDate) && providedEndDate>=Date.parse(allBookings[i].endDate))
+            res.status(403)
+            res.json({
+                message: "Sorry, this spot is already booked for the specified dates",
+                statusCode: 403,
+                errors: {
+                    startDate: "Start date conflicts with an existing booking",
+                    endDate: "End date conflicts with an existing booking"
+                }
+            })
+          }
 
         if (booked) {
             //* Error response: Booking already exists for the Spot
@@ -483,7 +510,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
                     endDate: "End date conflicts with an existing booking"
                 }
             })
-        } else if (endDate < startDate) {
+        } else if (providedEndDate < providedStartDate) {
             //* Error Booking: Body validation errors
             res.status(400)
             res.json({
@@ -494,7 +521,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
                 }
             })
         } else {
-            // Create Booking WHY ISBNT THIS WORKING WHY DOES IT NOT GIVE THE "id"
+
             const spotBooking = await Booking.create({
                 spotId: parseInt(req.params.spotId),
                 userId,
