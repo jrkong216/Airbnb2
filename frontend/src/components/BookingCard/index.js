@@ -23,7 +23,7 @@ const BookingCard = ({spotInfo, numberOfReviews, reviewNumber, spotId}) => {
       try {
         // createdBooking = await dispatch(createBooking(payload, spotId)).then(() => dispatch(getBookings(spotId))).then(() => dispatch(getOneSpot(spotId)))
         createdBooking = await dispatch(createBooking(payload, spotId)).then(() => dispatch(getBookings(spotId)))
-        history.push("/current/bookings")
+        history.push("/current/user/bookings")
     }
 
     catch (res) {

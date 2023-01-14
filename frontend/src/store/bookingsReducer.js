@@ -38,6 +38,7 @@ export const getBookings = (spotid) => async (dispatch) => {
     const response = await fetch(`/api/spots/${spotid}/bookings`);
     if(response.ok) {
         const bookings = await response.json();
+        console.log("bookings is", bookings)
         dispatch(read(bookings))
         return response
     }
@@ -108,7 +109,7 @@ const bookingsReducer = (state = initalState, action) => {
     switch(action.type) {
         case READ:
             newState = {...state}
-            action.list.forEach(booking => {
+            action.list.Bookings.forEach(booking => {
                 // console.log("this is newstate", newState)
                 newState[booking.id] = booking
                 // console.log("this is spot", spot)

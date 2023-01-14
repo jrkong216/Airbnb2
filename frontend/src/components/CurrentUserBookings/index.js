@@ -9,6 +9,7 @@ import {DeleteSpot} from '../../store/spotsReducer'
 import { DeleteBooking } from '../../store/bookingsReducer'
 import "./CurrentUserBookings.css"
 import SpotCard from "../SpotCard"
+import dateFormat from 'dateformat'
 
 
 
@@ -30,8 +31,10 @@ const GetUserBookingDetails = () => {
     console.log("this is bookingInfo", bookingInfo)
     const bookingInfoArray = Object.values(bookingInfo)
     const bookingsBySpotId = bookingInfoArray.filter(booking => booking.userId === +userId)
-    // console.log("This is the reviewss by spotId", reviewsBySpotId)
-    const bookingByUser = bookingsBySpotId.filter(user => user.userId === +userId)
+    // console.log("This is the bookingsBySpotId by spotId", bookingsBySpotId)
+    const bookingsByUser = bookingsBySpotId.filter(user => user.userId === +userId)
+    console.log("this is bookingsByUser", bookingsByUser)
+
     useEffect(() => {
         dispatch(getUserBookings())
         dispatch(getAllSpots())
@@ -82,15 +85,16 @@ let spotsOrNot
                     <h2 className="user-name">My Bookings</h2>
                 <div className="user-review-container">
                     <div className="all-user-review--container">
-                {bookingsBySpotId.map((item) =>
+                {bookingsByUser.map((item) =>
                 {return (
                     <div key= {item.id}>
-                    <div className= "spotReviewName"> Location: {item.Spot.name}</div>
-                    {/* <div className="user-review-data-container">
-                        <i className="fa-solid fa-star fa-xs"></i>
-                    <div className= "spotStars"> {item.stars}</div>
-                    </div> */}
-                    <div className= "spotReview"> Booking: {item.booking}</div>
+                    <div className= "spotReviewName"> Name: {item.Spot.name}</div>
+                    <div className= "spotReviewName"> Address: {item.Spot.address}</div>
+                    <div className= "spotReviewName"> City: {item.Spot.city}</div>
+                    <div className= "spotReviewName"> State: {item.Spot.state}</div>
+                    <div className= "spotReviewName"> Start Date: {dateFormat(item.startDate, "mmmm dd, yyyy")}</div>
+                    <div className= "spotReviewName"> End Date: {dateFormat(item.endDate, "mmmm dd, yyyy")}</div>
+
                      <button className="user-delete-review-button" onClick= {() => deleteBookingHandler(item.id)}>Delete Booking</button>
                      <button className="user-edit-review-button" onClick= {() => editBookingHandler(item.id)}>Edit Booking</button>
                      {/* {console.log("this is item", item)} */}
