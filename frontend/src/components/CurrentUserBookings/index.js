@@ -4,11 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getAllSpots }  from '../../store/spotsReducer'
 import { getUserBookings } from '../../store/bookingsReducer'
 import { useParams, useHistory } from "react-router-dom"
-import { NavLink } from 'react-router-dom';
-import {DeleteSpot} from '../../store/spotsReducer'
 import { DeleteBooking } from '../../store/bookingsReducer'
 import "./CurrentUserBookings.css"
-import SpotCard from "../SpotCard"
 import dateFormat from 'dateformat'
 
 
@@ -51,13 +48,9 @@ const GetUserBookingDetails = () => {
         }
         const deleteBookingHandler = async (id) => {
             // e.preventDefault()
-            const payload = {
-                spotId: spotId,
-                bookingId: id
-            }
 
             let bookingToDelete;
-                bookingToDelete = dispatch(DeleteBooking(payload))
+                bookingToDelete = dispatch(DeleteBooking(id))
         }
 
 

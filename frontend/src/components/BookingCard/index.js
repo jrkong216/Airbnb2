@@ -11,6 +11,12 @@ const BookingCard = ({spotInfo, numberOfReviews, reviewNumber, spotId}) => {
     let [endDate, setEndDate] = useState("");
     const [validationErrors, setValidationErrors] = useState([]);
 
+    let todaysDate = new Date()
+    todaysDate.setDate(todaysDate.getDate() - 1)
+
+    let disabledDates = todaysDate
+
+
     const submitHandler = async (e) => {
         e.preventDefault()
 
@@ -76,8 +82,9 @@ const BookingCard = ({spotInfo, numberOfReviews, reviewNumber, spotId}) => {
           type="date"
           name="startDate"
           onChange={(e)=> setStartDate(e.target.value)}
+        //   min = {disabledDates.toISOString().slice(0, -8)}
+          min = {new Date().toISOString().split("T")[0]}
           value={startDate}
-        //   placeholder="St"
         />
       </label>
       <label>
@@ -88,8 +95,8 @@ const BookingCard = ({spotInfo, numberOfReviews, reviewNumber, spotId}) => {
           type="date"
           name="endDate"
           onChange={(e)=> setEndDate(e.target.value)}
+          min = {new Date().toISOString().split("T")[0]}
           value={endDate}
-        //   placeholder="123 Example Street. etc"
         />
       </label>
 
