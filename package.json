@@ -1,13 +1,13 @@
 {
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "moment": "^2.29.4",
     "pg": "^8.8.0"
   },
   "name": "authenticate-me",
   "description": "First proj front/back clone AirBnb ## Database Schema Design",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "heroku-postbuild": "npm run build --prefix frontend",
     "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",

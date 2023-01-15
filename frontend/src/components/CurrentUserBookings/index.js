@@ -9,7 +9,6 @@ import "./CurrentUserBookings.css"
 import dateFormat from 'dateformat'
 
 
-
 const GetUserBookingDetails = () => {
     const history = useHistory()
     const dispatch = useDispatch()
@@ -19,11 +18,7 @@ const GetUserBookingDetails = () => {
     const spotInfo = useSelector(state => state.spots)
     const spotsInfoArray = Object.values(spotInfo)
     const spotsByUserId = spotsInfoArray.filter(spot => spot.ownerId === +userId)
-    // const reviewInfo = useSelector(state => state.reviews)
-    // const reviewInfoArray = Object.values(reviewInfo)
-    // const reviewsBySpotId = reviewInfoArray.filter(review => review.userId === +userId)
-    // // console.log("This is the reviewss by spotId", reviewsBySpotId)
-    // const reviewByUser = reviewsBySpotId.filter(user => user.userId === +userId)
+
     const bookingInfo = useSelector(state => state.bookings)
     console.log("this is bookingInfo", bookingInfo)
     const bookingInfoArray = Object.values(bookingInfo)
@@ -68,7 +63,6 @@ let spotsOrNot
                         <div className= "no-spots-container">
                         <h2>You have no bookings!</h2>
                         </div>
-                        {/* <img src= "https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg?cs=srgb&dl=pexels-pixabay-45170.jpg&fm=jpg"></img> */}
                 </div>
              )
         } else {
@@ -85,8 +79,11 @@ let spotsOrNot
                     <div className= "spotReviewName"> Address: {item.Spot.address}</div>
                     <div className= "spotReviewName"> City: {item.Spot.city}</div>
                     <div className= "spotReviewName"> State: {item.Spot.state}</div>
-                    <div className= "spotReviewName"> Start Date: {dateFormat(item.startDate, "mmmm dd, yyyy")}</div>
-                    <div className= "spotReviewName"> End Date: {dateFormat(item.endDate, "mmmm dd, yyyy")}</div>
+                    {/* {console.log("this is startdate", item.startDate)}
+                    {console.log("this is enddate", item.endDate)} */}
+                    <div className= "spotReviewName"> Start Date: {item.startDate.slice(0,10)}</div>
+
+                    <div className= "spotReviewName"> End Date: {item.endDate.slice(0,10)}</div>
 
                      <button className="user-delete-review-button" onClick= {() => deleteBookingHandler(item.id)}>Delete Booking</button>
                      <button className="user-edit-review-button" onClick= {() => editBookingHandler(item.id)}>Edit Booking</button>

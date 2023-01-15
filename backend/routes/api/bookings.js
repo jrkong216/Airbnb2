@@ -87,7 +87,7 @@ router.put('/:bookingId', async (req, res) =>{
     if (useableStartDate  > useableEndDate ) {
         res.status(400)
         res.json({
-          message: "Validation error",
+          message: "Your End Date cannot come before your Start Date",
           statusCode: 400,
           errors: {
             endDate: "endDate cannot come before startDate"
@@ -97,14 +97,14 @@ router.put('/:bookingId', async (req, res) =>{
       // error for trying to bookin in the past???
       // need how to get todays date and then end of booking date
       // userableStartDate covers both cases of the start and end date is "before" now
-let presentDate = new Date()
-    if ( presentDate > useableStartDate ) {
-        res.status(403)
-        res.json({
-            message: "Past bookings can't be modified",
-            statusCode: 403
-        })
-    }
+// let presentDate = new Date()
+//     if ( presentDate > useableStartDate ) {
+//         res.status(403)
+//         res.json({
+//             message: "Past bookings can't be modified",
+//             statusCode: 403
+//         })
+//     }
 
     // booking conflict??? not working line 110-115 not doing as intended need to re-review
 

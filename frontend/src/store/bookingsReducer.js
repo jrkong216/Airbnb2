@@ -34,8 +34,11 @@ export const removeBooking = (id) => {
 
 
 
-export const getBookings = (spotid) => async (dispatch) => {
-    const response = await fetch(`/api/spots/${spotid}/bookings`);
+export const getBookings = (spotId) => async (dispatch) => {
+    console.log("did it get here")
+    const response = await fetch(`/api/spots/${spotId}/bookings`);
+    console.log("did it get here 2")
+    console.log("this is response", response)
     if(response.ok) {
         const bookings = await response.json();
         console.log("bookings is", bookings)
@@ -68,7 +71,7 @@ export const createBooking = (payload, spotid) => async dispatch => {
     }
 }
 
-export const updatebooking = (payload, bookingId) => async dispatch => {
+export const updateBooking = (payload, bookingId) => async dispatch => {
 
     const response = await csrfFetch(`/api/bookings/${bookingId}`, {
         method: 'PUT',

@@ -11,10 +11,8 @@ const BookingCard = ({spotInfo, numberOfReviews, reviewNumber, spotId}) => {
     let [endDate, setEndDate] = useState("");
     const [validationErrors, setValidationErrors] = useState([]);
 
-    let todaysDate = new Date()
-    todaysDate.setDate(todaysDate.getDate() - 1)
-
-    let disabledDates = todaysDate
+    console.log("this is StartDate", startDate)
+    console.log("this is EndDate", endDate)
 
 
     const submitHandler = async (e) => {
@@ -101,15 +99,6 @@ const BookingCard = ({spotInfo, numberOfReviews, reviewNumber, spotId}) => {
       </label>
 
       </div>
-      {/* <label>
-      Set Preview for your Spot?
-        <input
-          type="checkbox"
-          name="preview"
-          onChange={(e)=> setPreview(!preview)}
-          value={preview}
-        />
-      </label> */}
       <div className="button-container">
       <button className="Create-Spot-button"
         type="submit"

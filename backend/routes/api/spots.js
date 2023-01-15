@@ -377,6 +377,8 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 
     const findSpot = await Spot.findByPk(spotId)
 
+    console.log("this is findspot", findSpot)
+
     const allBookings = await Booking.findAll({
         where: {spotId},
         include: [
