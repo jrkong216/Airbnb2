@@ -88,10 +88,7 @@ font-weight: 900;
 }
 
 
-.detail-top-info-container{
-    /* border-style:solid;
-    border-color:rgb(13, 255, 0); */
-}
+
 
 .detail-review-container{
     /* border-style:solid;
@@ -250,54 +247,13 @@ font-weight: 900;
     width:60%
 }
 
-.middle-right-container{
-    display: flex;
-    flex-direction: row;
-    /* border-style:solid;
-    border-color:rgb(46, 18, 169); */
-    width:40%;
-    justify-content:right;
-    /* align-items: center; */
-}
 
 
-.top-card-container{
-    display: flex;
-    width: 80%;
-    height: 450px;
-    border-style:solid;
-    border-color:rgb(177, 180, 178);
-    border-radius: 15px;
-    border-width: thin;
-    margin-top: 6%;
-    justify-content: center;
-}
 
-.top-inner-card-container{
-    /* border-style:solid;
-    border-color:rgb(255, 81, 0); */
-    width: 90%;
-    justify-content: center;
-    border-radius: 15px;
-    margin-top:5%;
 
-}
 
-.spot-card-price-container{
-    display:flex;
-    flex-direction: row;
-    /* border-style:solid;
-    border-color:rgb(0, 255, 119); */
-    justify-content: space-between;
-    align-items: flex-end;
-}
 
-.spot-card-price{
-    display: inline-block;
-    /* border-style:solid;
-    border-color:rgb(39, 20, 213); */
-    font-size: x-large
-}
+
 
 
 .itemReview{

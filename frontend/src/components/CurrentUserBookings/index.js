@@ -12,6 +12,7 @@ import dateFormat from 'dateformat'
 const GetUserBookingDetails = () => {
     const history = useHistory()
     const dispatch = useDispatch()
+    const moment = require("moment")
     const [isLoaded, setIsLoaded] = useState(false)
     const { spotId } = useParams()
     const userId = useSelector(state => state.session.user.id)
@@ -82,7 +83,8 @@ let spotsOrNot
                     {/* {console.log("this is startdate", item.startDate)}
                     {console.log("this is enddate", item.endDate)} */}
                     <div className= "spotReviewName"> Start Date: {item.startDate.slice(0,10)}</div>
-
+                    <div className= "spotReviewName"> Start Date: {dateFormat(item.startDate, "mmmm dd, yyyy")}</div>
+                    <div className= "spotReviewName"> Start Date: {moment(item.startDate).format("YYYY-MM-DD")}</div>
                     <div className= "spotReviewName"> End Date: {item.endDate.slice(0,10)}</div>
 
                      <button className="user-delete-review-button" onClick= {() => deleteBookingHandler(item.id)}>Delete Booking</button>

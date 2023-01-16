@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-
 import { createBooking, getBookings } from '../../store/bookingsReducer';
+import "./BookingCard.css";
 
 const BookingCard = ({spotInfo, numberOfReviews, reviewNumber, spotId}) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    let [startDate, setStartDate] = useState("");
-    let [endDate, setEndDate] = useState("");
+    const moment = require("moment")
+    let [startDate, setStartDate] = useState(moment().format("YYYY-MM-DD"));
+    let [endDate, setEndDate] = useState(moment().format("YYYY-MM-DD"));
     const [validationErrors, setValidationErrors] = useState([]);
 
     console.log("this is StartDate", startDate)
@@ -56,15 +57,13 @@ const BookingCard = ({spotInfo, numberOfReviews, reviewNumber, spotId}) => {
                     <div className="number-of-reviews"> • {numberOfReviews} {reviewNumber} </div>
                             </div>
                         </div>
-                    </div>
-                    </div>
-                    <div className="Inner-Container">
+                        <div className="Inner-Container">
     <form
       className="spot-form" onSubmit={submitHandler}
     >
-      <div className="title-box">
+      {/* <div className="title-box">
       <h2 className="title-words">Book Your Spot</h2>
-      </div>
+      </div> */}
       <div className="errors">
         {validationErrors.length > 0 &&
           validationErrors.map((error) =>
@@ -97,24 +96,11 @@ const BookingCard = ({spotInfo, numberOfReviews, reviewNumber, spotId}) => {
           value={endDate}
         />
       </label>
-
-      </div>
-      <div className="button-container">
-      <button className="Create-Spot-button"
-        type="submit"
-        // disable={setValidationErrors.length > 0 ? true : false}
-          // disabled={!!validationErrors.length}
-      >
-        Book Dates
-      </button>
-      </div>
-    </form>
-      </div>
-      {/* <div className = "bookingpricecontainer">
+      <div className = "bookingpricecontainer">
                     <div className = "underlinethis">${spotInfo.price} x {(Math.abs(new Date(endDate) - new Date(startDate)))/86400000} nights</div>
                     <div>${spotInfo.price * (Math.abs(new Date(endDate) - new Date(startDate)))/86400000} </div>
-                </div> */}
-                {/* <div className = "bookingpricecontainer">
+                </div>
+                <div className = "bookingpricecontainer">
                     <div className = "underlinethis">Cleaning fee</div>
                     <div>$80</div>
                 </div>
@@ -122,11 +108,28 @@ const BookingCard = ({spotInfo, numberOfReviews, reviewNumber, spotId}) => {
                 <div className = "bookingpricecontainer">
                     <div className = "underlinethis">Service fee</div>
                     <div>$50 </div>
-                </div> */}
-        {/* <div className = "TotalContainer">
+                </div>
+        <div className = "TotalContainer">
                     <div className = "taxestotal">Total before taxes</div>
                     <div className = "taxestotal">${80 + 50 + spotInfo.price * (Math.abs(new Date(endDate) - new Date(startDate)))/86400000} </div>
-        </div> */}
+        </div>
+      </div>
+      <div className="button-container">
+      <button className="Create-Spot-button"
+        type="submit"
+        // disable={setValidationErrors.length > 0 ? true : false}
+          // disabled={!!validationErrors.length}
+      >
+        Reserve Dates
+      </button>
+      </div>
+    </form>
+      </div>
+
+                    </div>
+
+                    </div>
+
 </div>
 </>
     )
