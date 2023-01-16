@@ -79,13 +79,8 @@ let spotsOrNot
                     <div className= "spotReviewName"> Name: {item.Spot.name}</div>
                     <div className= "spotReviewName"> Address: {item.Spot.address}</div>
                     <div className= "spotReviewName"> City: {item.Spot.city}</div>
-                    <div className= "spotReviewName"> State: {item.Spot.state}</div>
-                    {/* {console.log("this is startdate", item.startDate)}
-                    {console.log("this is enddate", item.endDate)} */}
-                    <div className= "spotReviewName"> Start Date: {item.startDate.slice(0,10)}</div>
-                    <div className= "spotReviewName"> Start Date: {dateFormat(item.startDate, "mmmm dd, yyyy")}</div>
-                    <div className= "spotReviewName"> Start Date: {moment(item.startDate).format("YYYY-MM-DD")}</div>
-                    <div className= "spotReviewName"> End Date: {item.endDate.slice(0,10)}</div>
+                    <div className= "spotReviewName"> Checkin Date: {moment(item.startDate.slice(0,10)).format("dddd: MMMM Do, YYYY")}</div>
+                    <div className= "spotReviewName"> Checkout Date: {moment(item.endDate.slice(0,10)).format("dddd: MMMM Do, YYYY")}</div>
 
                      <button className="user-delete-review-button" onClick= {() => deleteBookingHandler(item.id)}>Delete Booking</button>
                      <button className="user-edit-review-button" onClick= {() => editBookingHandler(item.id)}>Edit Booking</button>

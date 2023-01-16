@@ -14,10 +14,10 @@ const dispatch = useDispatch();
     let currBooking = allBookings.filter(booking => booking.id === parseInt(bookingId));
     console.log("this is currBooking", currBooking)
     let sessionUser = useSelector(state => state.session.user);
-// console.log("this is currBooking.startDate", currBooking[0].startDate)
+console.log("this is currBooking.startDate", currBooking[0]?.startDate)
 
-    let [startDate, setStartDate] = useState(moment(currBooking[0]?.startDate).format("YYYY-MM-DD"));
-    let [endDate, setEndDate] = useState(currBooking[0]?.endDate);
+    let [startDate, setStartDate] = useState(moment(currBooking[0]?.startDate.slice(0,10)).format("YYYY-MM-DD"));
+    let [endDate, setEndDate] = useState(moment(currBooking[0]?.endDate.slice(0,10)).format("YYYY-MM-DD"));
 
     const [validationErrors, setValidationErrors] = useState([]);
 
