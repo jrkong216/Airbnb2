@@ -149,14 +149,20 @@ router.put('/:bookingId', async (req, res) =>{
 
         else {
 
-          findBooking.startDate = startDate,
-          findBooking.endDate = endDate,
+          const updatedBooking = await Booking.findByPk(bookingId)
+          console.log("this is updatedBooking", updatedBooking)
 
-          await findBooking.save()
-
-// Successful Response
-res.status(200)
-res.json(findBooking)
+    await updatedBooking.update({ startDate: startDate, endDate: endDate })
+    res.status(200)
+    res.json({
+      id: updatedBooking.id,
+      userId: updatedBooking.userId,
+      spotId: updatedBooking.spotId,
+      startDate: updatedBooking.startDate,
+      endDate: updatedBooking.endDate,
+      createdAt: updatedBooking.createdAt,
+      updatedAt: updatedBooking.updatedAt
+    })
         }
     } else {
         //* Error response: Couldn't find a Spot with the specified id
