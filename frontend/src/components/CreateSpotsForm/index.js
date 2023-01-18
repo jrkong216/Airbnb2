@@ -110,7 +110,7 @@ history.push(`/spots/${createdSpot.id}`)
     <div className="Outer-Container">
       <div className="Inner-Container">
     <form
-      className="spot-form" onSubmit={submitHandler}
+      className="create-spot-form" onSubmit={submitHandler}
     >
       <div className="title-box">
       <h2 className="title-words">Create a Spot</h2>

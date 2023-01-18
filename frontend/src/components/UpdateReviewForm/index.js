@@ -62,7 +62,7 @@ reviewedSpot = dispatch(UpdateReview(reviewId,payload))
     <div className="Outer-Container">
       <div className="Inner-Container">
     <form
-      className="review-form" onSubmit={submitHandler}
+      className="update-review-form" onSubmit={submitHandler}
     >
       <div className="title-box">
       <h2 className="title-words">Edit Review</h2>
@@ -83,7 +83,7 @@ reviewedSpot = dispatch(UpdateReview(reviewId,payload))
         />
       </label> */}
       <div className="write-review-container">
-      <h3>Edit your Review Below</h3>
+      {/* <h3>Edit your Review Below</h3> */}
       </div>
       <div className="review-container">
       <textarea className="input-box"

@@ -3,7 +3,7 @@
 .Outer-Update-Container{
     display: flex;
     justify-content: center;
-    padding-top: 2%;
+    padding-top: 1%;
     /* border-color: rgb(0, 255, 76);
     border-style: solid; */
 
@@ -18,6 +18,8 @@ border-color: rgb(0, 0, 0);
 /* padding: 10px; */
 width: 40%;
 border: none;
+/* border-color: rgb(255, 0, 187);
+border-style: solid; */
 }
 
 .title-update-box{

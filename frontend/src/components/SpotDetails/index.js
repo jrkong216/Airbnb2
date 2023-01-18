@@ -90,11 +90,11 @@ const GetSpotDetails = () => {
             <div className="two-button-container">
             <div className="Edit-a-Spot-button">
                     <NavLink to={`/spot/${spotId}/edit`}>
-                        <button className= "Edit-Delete-Button" type="submit">EDIT THIS SPOT</button>
+                        <button className= "Edit-Delete-Button" type="submit">Edit Spot</button>
                     </NavLink>
             </div>
             <div className= "Delete-spot-button">
-                <button className= "Edit-Delete-Button" onClick= {() => submitHandler()}>DELETE THIS SPOT</button>
+                <button className= "Edit-Delete-Button" onClick= {() => submitHandler()}>Delete Spot</button>
             </div>
             </div>
         )
