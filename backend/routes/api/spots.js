@@ -505,7 +505,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
             //* Error response: Booking already exists for the Spot
             res.status(400)
             res.json({
-                message: "Validation error",
+                message: "Sorry, End Date cannot be before Start Date",
                 statusCode: 400,
                 errors: {
                     "endDate": "endDate cannot be on or before startDate"
