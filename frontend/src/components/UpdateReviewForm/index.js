@@ -19,7 +19,7 @@ const { reviewId } = useParams()
 
 
   useEffect(() => {
-    dispatch(getAllReviews())
+    dispatch(getAllReviews(reviewId))
 }, [dispatch])
 
 useEffect(() => {
@@ -121,7 +121,7 @@ reviewedSpot = dispatch(UpdateReview(reviewId,payload))
         // disable={setValidationErrors.length > 0 ? true : false}
           // disabled={!!validationErrors.length}
       >
-        Update Review
+        Edit Review
       </button>
       </div>
     </form>

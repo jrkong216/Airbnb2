@@ -54,6 +54,7 @@ const GetUserDetails = () => {
 
 
         const editReviewHandler = async (id) => {
+            // console.log("this is id in editReviewHandler", id)
             history.push(`/current/user/reviews/${id}`);
 
         }
