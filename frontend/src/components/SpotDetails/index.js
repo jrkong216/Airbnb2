@@ -79,6 +79,11 @@ const GetSpotDetails = () => {
         }
     }
 
+    const reviewEditHandler = async (id) => {
+        // e.preventDefault()
+        history.push(`/current/user/reviews/${id}`);
+    }
+
     let editDeleteLinks;
     if(sessionUser && spotInfo.ownerId === sessionUser.id) {
         editDeleteLinks = (
@@ -218,8 +223,8 @@ const GetSpotDetails = () => {
 
                                 {/* <div className="itemReview"> {item.createdAt}</div> */}
                                 <div className="itemReview"> {item.review}</div>
-                                {sessionUser && sessionUserId === item.userId? <button className="Review-Delete-Button" onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> : null}
-
+                                {sessionUser && sessionUserId === item.userId? <button className="Review-Delete-Button" onClick= {() => reviewHandler(item.id, item.userId)}>Delete Review</button> : null}
+                                {sessionUser && sessionUserId === item.userId? <button className="Review-Edit-Button" onClick= {() => reviewEditHandler(item.id)}>Edit Review</button> : null}
 
 
                             </div>

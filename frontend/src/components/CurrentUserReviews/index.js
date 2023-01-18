@@ -80,7 +80,7 @@ let spotsOrNot
                 {reviewsBySpotId.map((item) =>
                 {return (
                     <div key= {item.id}>
-                    <div className= "spotReviewName"> Location: {item.Spot.name}</div>
+                    <div className= "spotReviewName"> Location: {item.Spot?.name}</div>
                     <div className="user-review-data-container">
                         <i className="fa-solid fa-star fa-xs"></i>
                     <div className= "spotStars"> {item.stars}</div>
