@@ -8,6 +8,7 @@ import { getAllReviews } from '../../store/reviewsReducer'
 import { DeleteReview } from '../../store/reviewsReducer'
 import airCover from './images/airCover.png'
 import "./SpotDetails.css"
+import BookingCard from '../BookingCard';
 
 
 const GetSpotDetails = () => {
@@ -23,7 +24,7 @@ const GetSpotDetails = () => {
     const history = useHistory()
     const spotInfo = useSelector(state => state.spots[spotId])
 
-    console.log("thi iss spotInfo", spotInfo)
+    // console.log("thi iss spotInfo", spotInfo)
     // console.log("this is sspotINFO IAMGE", spotInfo.SpotImages)
     // console.log("thiss is spotInfo Owner id", spotInfo.ownerId)
 
@@ -78,17 +79,22 @@ const GetSpotDetails = () => {
         }
     }
 
+    const reviewEditHandler = async (id) => {
+        // e.preventDefault()
+        history.push(`/current/user/reviews/${id}`);
+    }
+
     let editDeleteLinks;
     if(sessionUser && spotInfo.ownerId === sessionUser.id) {
         editDeleteLinks = (
             <div className="two-button-container">
             <div className="Edit-a-Spot-button">
                     <NavLink to={`/spot/${spotId}/edit`}>
-                        <button className= "Edit-Delete-Button" type="submit">EDIT THIS SPOT</button>
+                        <button className= "Edit-Delete-Button" type="submit">Edit Spot</button>
                     </NavLink>
             </div>
             <div className= "Delete-spot-button">
-                <button className= "Edit-Delete-Button" onClick= {() => submitHandler()}>DELETE THIS SPOT</button>
+                <button className= "Edit-Delete-Button" onClick= {() => submitHandler()}>Delete Spot</button>
             </div>
             </div>
         )
@@ -191,22 +197,7 @@ const GetSpotDetails = () => {
                 <h3 className="spotDescription"> {spotInfo.description}</h3>
                 </div>
                 </div>
-                <div className="middle-right-container">
-                    <div className="top-card-container">
-                        <div className="top-inner-card-container">
-                    <div className= "spot-card-price-container">
-                        <div className= "spot-card-price"> ${spotInfo.price} night</div>
-                        <div className="detail-top-info-container">
-                                <div className="spot-star">
-                                    <i className="fa-solid fa-star fa-xs"></i>
-                                </div>
-                    <div className="spot-rating">{spotInfo.avgStarRating}</div>
-                    <div className="number-of-reviews"> • {numberOfReviews} {reviewNumber} </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
+                <BookingCard spotInfo={spotInfo} numberOfReviews={numberOfReviews} reviewNumber={reviewNumber} spotId={spotId} />
                 </div>
                 <div className="detail-review-container">
                 {/* <h2>See Reviews Below!!</h2> */}
@@ -232,8 +223,8 @@ const GetSpotDetails = () => {
 
                                 {/* <div className="itemReview"> {item.createdAt}</div> */}
                                 <div className="itemReview"> {item.review}</div>
-                                {sessionUser && sessionUserId === item.userId? <button className="Review-Delete-Button" onClick= {() => reviewHandler(item.id, item.userId)}>DELETE THIS Review</button> : null}
-
+                                {sessionUser && sessionUserId === item.userId? <button className="Review-Delete-Button" onClick= {() => reviewHandler(item.id, item.userId)}>Delete Review</button> : null}
+                                {sessionUser && sessionUserId === item.userId? <button className="Review-Edit-Button" onClick= {() => reviewEditHandler(item.id)}>Edit Review</button> : null}
 
 
                             </div>

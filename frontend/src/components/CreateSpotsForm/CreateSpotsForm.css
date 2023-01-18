@@ -1,8 +1,8 @@
 .Outer-Container{
     display: flex;
     justify-content: center;
-    padding-top: 2%;
-    /* border-color: rgb(0, 255, 76);
+    padding-top: 1%;
+    /* border-color: rgb(255, 51, 0);
     border-style: solid; */
 
 }
@@ -15,6 +15,8 @@ border-color: rgb(0, 0, 0);
     border-radius: 25px;
      border-width: thin;
      border: none;
+         /* border-color: rgb(0, 255, 76);
+    border-style: solid; */
 }
 
 .title-box{
@@ -63,4 +65,12 @@ border-color: rgb(0, 0, 0);
     padding:10px;
     margin-top:2%;
     border: none
+}
+
+.create-spot-form{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+        /* border-color: rgb(255, 0, 247);
+    border-style: solid; */
 }

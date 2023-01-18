@@ -22,7 +22,7 @@ module.exports = {
       lng: -122.4730327,
       name: "App Academy",
       description: "This is not Dunder Mifflin",
-      price: 30000,
+      price: 300,
       createdAt: "2021-11-19 20:39:36",
       updatedAt: "2021-11-19 20:39:36",
     },
@@ -204,7 +204,7 @@ module.exports = {
       lng: -122.4730327,
       name: "UFC APEX",
       description: "Only Mark Zuckerberg can rent out the Apex.",
-      price: 9999,
+      price: 999,
       createdAt: "2021-11-19 20:39:36",
       updatedAt: "2021-11-19 20:39:36",
     }

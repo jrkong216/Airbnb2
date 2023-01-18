@@ -38,7 +38,7 @@ export const getAllReviews = (spotId) => async (dispatch) => {
         const reviews = await response.json();
         dispatch(getReviews(reviews.Reviews))
         //NEED TO DOUBLE CHECK IF key is "Reviews"
-        console.log("This is the spots from reducer", reviews)
+        // console.log("This is the spots from reducer", reviews)
         return response
     }
 }

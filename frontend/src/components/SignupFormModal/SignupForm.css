@@ -45,7 +45,9 @@ border-width: thin;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-
+    /* width: 100%;
+    border-color: rgb(255, 0, 247);
+    border-style: solid; */
 }
 
 .form-sign-inputs{
