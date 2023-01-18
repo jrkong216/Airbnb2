@@ -76,9 +76,9 @@ let spotsOrNot
                 {bookingsByUser.map((item) =>
                 {return (
                     <div key= {item.id}>
-                    <div className= "spotReviewName"> Name: {item.Spot.name}</div>
-                    <div className= "spotReviewName"> Address: {item.Spot.address}</div>
-                    <div className= "spotReviewName"> City: {item.Spot.city}</div>
+                    <div className= "spotReviewName"> Name: {item.Spot?.name}</div>
+                    <div className= "spotReviewName"> Address: {item.Spot?.address}</div>
+                    <div className= "spotReviewName"> City: {item.Spot?.city}</div>
                     <div className= "spotReviewName"> Checkin Date: {moment(item.startDate.slice(0,10)).format("dddd: MMMM Do, YYYY")}</div>
                     <div className= "spotReviewName"> Checkout Date: {moment(item.endDate.slice(0,10)).format("dddd: MMMM Do, YYYY")}</div>
 
