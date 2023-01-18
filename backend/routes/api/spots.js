@@ -377,7 +377,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 
     const findSpot = await Spot.findByPk(spotId)
 
-    console.log("this is findspot", findSpot)
+    // console.log("this is findspot", findSpot)
 
     const allBookings = await Booking.findAll({
         where: {spotId},
@@ -468,6 +468,8 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 
     if (findSpot) {
         //  check if a booking for a spot has already been made by userId
+
+
         for(let i = 0; i<allBookings.length; i++){
             if(providedStartDate >=Date.parse(allBookings[i].startDate) && providedStartDate<=Date.parse(allBookings[i].endDate)){
             res.status(403)
@@ -512,7 +514,21 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
                 }
             })
 
-        } else {
+        }
+        else if (providedEndDate === providedStartDate) {
+            //* Error response: Booking already exists for the Spot
+            res.status(400)
+            res.json({
+                message: "Sorry, You must stay at least 1 night",
+                statusCode: 400,
+                errors: {
+                    "sameDate": "startDate and endDate cannot equal"
+                }
+            })
+
+        }
+
+        else {
 
             const spotBooking = await Booking.create({
                 spotId: parseInt(req.params.spotId),
