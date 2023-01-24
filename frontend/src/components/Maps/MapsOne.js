@@ -2,23 +2,23 @@
 import React from 'react';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 
-const containerStyle = {
-  width: '100%',
-  height: '400px',
-};
-
-const center = {
-  lat: 37.774,
-  lng:-122.419
-};
-
-const Maps = ({ apiKey }) => {
+const Maps = ({ apiKey, spotInfo }) => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: apiKey,
   });
 
-  console.log("why is this reading here and not the index.js")
+  const containerStyle = {
+    width: '100%',
+    height: '400px',
+  };
+
+  const center = {
+    lat: spotInfo.lat,
+    lng: spotInfo.lng
+  };
+  console.log("this is center", center)
+
   return (
     <>
       {isLoaded && (

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getKey } from '../../store/maps';
 import MapsOne from './MapsOne.js';
 
-const MapContainer = () => {
+const MapContainer = ({spotInfo}) => {
   const key = useSelector((state) => state.maps.key);
   const dispatch = useDispatch();
 console.log("is this even printing?")
@@ -21,7 +21,7 @@ console.log("is this even printing?")
   console.log("THIS IS  KEY!!********", key)
 
   return (
-    <MapsOne apiKey={key} />
+    <MapsOne apiKey={key} spotInfo={spotInfo} />
   );
 };
 

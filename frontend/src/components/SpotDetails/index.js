@@ -237,7 +237,7 @@ const GetSpotDetails = () => {
                 </div>
                 <div className="map-info">General Location of Spot:</div>
                 <div className="google-map">
-                    <Maps/>
+                    <Maps spotInfo={spotInfo}/>
                 </div>
             </div>
             </div>

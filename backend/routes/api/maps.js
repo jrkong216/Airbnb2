@@ -1,6 +1,8 @@
 // backend/routes/api/maps.js
-const router = require('express').Router();
-const { googleMapsAPIKey } = require('../../config/index.js');
+// const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
+const { googleMapsAPIKey } = require('../../config');
 const { requireAuth } = require('../../utils/auth')
 
 
