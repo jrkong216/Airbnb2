@@ -8,7 +8,7 @@ import MapsOne from './MapsOne.js';
 const MapContainer = ({spotInfo}) => {
   const key = useSelector((state) => state.maps.key);
   const dispatch = useDispatch();
-console.log("is this even printing?")
+
   useEffect(() => {
     if (!key) {
       dispatch(getKey());
