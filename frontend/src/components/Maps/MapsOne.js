@@ -25,7 +25,7 @@ const Maps = ({ apiKey, spotInfo }) => {
     rotation: 0,
     scale: 2,
   }
-
+console.log("setIcon google error")
   return (
     <>
       {isLoaded && (
