@@ -18,7 +18,7 @@ const MapContainer = ({spotInfo}) => {
   if (!key) {
     return null;
   }
-  console.log("THIS IS  KEY!!********", key)
+  
 
   return (
     <MapsOne apiKey={key} spotInfo={spotInfo} />
