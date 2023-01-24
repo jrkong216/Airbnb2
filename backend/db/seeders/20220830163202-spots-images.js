@@ -12,7 +12,7 @@ module.exports = {
       },
       {
         spotId: 2,
-        url: 'https://thirdeyetraveller.com/wp-content/uploads/221b-Baker-Street-London-Sherlock-Holmes-Museum-2.jpg',
+        url: 'https://planetofhotels.com/guide/sites/default/files/styles/paragraph__hero_banner__hb_image__1880bp/public/hero_banner/sherlock-holmes.jpg',
         preview: true,
         //sherlock
       },
@@ -54,7 +54,7 @@ module.exports = {
       },
       {
         spotId: 9,
-        url: 'https://cdn.apartmenttherapy.info/image/upload/v1564776737/stock/MCDUPUP_EC041_1.jpg',
+        url: 'http://www.therealuphouse.com/wp-content/uploads/AAE03902-B98C-4D6B-8ABF-E0FD472BD771-1-scaled.jpg',
         preview: true,
         //up house
       },
@@ -66,25 +66,25 @@ module.exports = {
       },
       {
         spotId: 11,
-        url: 'https://cdn.vox-cdn.com/thumbor/7xduHxUGDbvuFRqIyENvDkU8Xek=/0x0:5000x3333/1200x800/filters:focal(2193x789:2993x1589)/cdn.vox-cdn.com/uploads/chorus_image/image/63571452/winterfell.0.jpg',
+        url: 'https://watchersonthewall.com/wp-content/uploads/2017/11/Winterfell-white-raven.jpg',
         preview: true,
         //house stark
       },
       {
         spotId: 12,
-        url: 'https://cdn.vox-cdn.com/thumbor/v03tex601sth-_P37rkRtm2Js_k=/88x0:4699x3458/1200x800/filters:focal(88x0:4699x3458)/cdn.vox-cdn.com/uploads/chorus_image/image/49343503/shutterstock_194315426.0.0.jpg',
+        url: 'https://cdn.abcotvs.com/dip/images/5238298_040819-kgo-oracle-arena-exterior-img.jpg?w=1600',
         preview: true,
         //oracle arena
       },
       {
         spotId: 13,
-        url: 'https://img.msg.com/wp-content/uploads/2021/02/BillyJoel_071818_1902_RT-1.jpg',
+        url: 'https://www.newyorkbyrail.com/wp-content/uploads/2018/10/MSG-Madison-Square-Garden.png',
         preview: true,
         //madinson square
       },
       {
         spotId: 14,
-        url: 'https://talksport.com/wp-content/uploads/sites/5/2020/04/APEX3.jpeg?strip=all&quality=100&w=1200&h=800&crop=1',
+        url: 'https://cdn.theathletic.com/app/uploads/2020/06/28145209/GettyImages-1252995877-scaled.jpg',
         preview: true,
         //ufc aapex
       },
