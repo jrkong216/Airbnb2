@@ -18,6 +18,7 @@ const Maps = ({ apiKey }) => {
     googleMapsApiKey: apiKey,
   });
 
+  console.log("why is this reading here and not the index.js")
   return (
     <>
       {isLoaded && (

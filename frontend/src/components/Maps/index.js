@@ -3,12 +3,12 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getKey } from '../../store/maps';
-import Maps from './Maps';
+import MapsOne from './MapsOne.js';
 
 const MapContainer = () => {
   const key = useSelector((state) => state.maps.key);
   const dispatch = useDispatch();
-
+console.log("is this even printing?")
   useEffect(() => {
     if (!key) {
       dispatch(getKey());
@@ -18,9 +18,10 @@ const MapContainer = () => {
   if (!key) {
     return null;
   }
+  console.log("THIS IS  KEY!!********", key)
 
   return (
-    <Maps apiKey={key} />
+    <MapsOne apiKey={key} />
   );
 };
 

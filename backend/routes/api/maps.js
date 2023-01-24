@@ -1,9 +1,11 @@
 // backend/routes/api/maps.js
 const router = require('express').Router();
-const { googleMapsAPIKey } = require('../../config');
+const { googleMapsAPIKey } = require('../../config/index.js');
+const { requireAuth } = require('../../utils/auth')
 
-router.post('/key', (req, res) => {
-  res.json({ googleMapsAPIKey });
+
+router.post('/key', requireAuth, async (req, res) => {
+  return res.json({ googleMapsAPIKey });
 });
 
 module.exports = router;
