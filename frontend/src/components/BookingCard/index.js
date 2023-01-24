@@ -12,8 +12,8 @@ const BookingCard = ({spotInfo, numberOfReviews, reviewNumber, spotId}) => {
     let [endDate, setEndDate] = useState(moment().format("YYYY-MM-DD"));
     const [validationErrors, setValidationErrors] = useState([]);
 
-    console.log("this is StartDate", startDate)
-    console.log("this is EndDate", endDate)
+    // console.log("this is StartDate", startDate)
+    // console.log("this is EndDate", endDate)
 
 
     const submitHandler = async (e) => {

@@ -9,6 +9,7 @@ import { DeleteReview } from '../../store/reviewsReducer'
 import airCover from './images/airCover.png'
 import "./SpotDetails.css"
 import BookingCard from '../BookingCard';
+import Maps from '../Maps';
 
 
 const GetSpotDetails = () => {
@@ -233,6 +234,10 @@ const GetSpotDetails = () => {
                                     <NavLink to={`/review/${spotId}/new`}>
                                     {sessionUserId  && sessionUserId  !== spotInfoOwnerId && !reviewOfUser ? seeCreateReviewButton : null}
                                     </NavLink>
+                </div>
+                <div className="map-info">Location of Spot:</div>
+                <div className="google-map">
+                    <Maps spotInfo={spotInfo}/>
                 </div>
             </div>
             </div>

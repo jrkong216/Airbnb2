@@ -5,7 +5,7 @@ import sessionReducer from './session.js'
 import spotsReducer from "./spotsReducer"
 import reviewsReducer from "./reviewsReducer"
 import bookingsReducer from './bookingsReducer.js';
-
+import maps from './maps.js';
 // `combineReducers` combines all the reducer functions into one big reducer
 // function, which is typically called `rootReducer`. This is the most important
 // part of this file. You will add your reducers here to work with your various
@@ -14,7 +14,8 @@ const rootReducer = combineReducers({
   session: sessionReducer,
   spots: spotsReducer,
   reviews: reviewsReducer,
-  bookings: bookingsReducer
+  bookings: bookingsReducer,
+  maps: maps
 });
 
 // `enhancer` allows you to alter the store and add functionality such as the

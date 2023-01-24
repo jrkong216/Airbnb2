@@ -9,6 +9,7 @@ const spotImagesRouter = require('./spotImages.js')
 const { restoreUser } = require("../../utils/auth.js");
 const reviewImagesRouter = require('./reviewImages.js')
 const { route } = require('./session.js');
+const mapsRouter = require('./maps');
 
 // Connect restoreUser middleware to the API router
   // If current user session is valid, set req.user to the user in the database
@@ -23,6 +24,7 @@ router.use('/spot-images', spotImagesRouter)
 router.use('/review-images', reviewImagesRouter)
 //per video first route by Alec
 router.use('/spots', spotsRouter);
+router.use('/maps', mapsRouter);
 
 // router.post('/test', (req, res) => {
 //   res.json({ requestBody: req.body });
