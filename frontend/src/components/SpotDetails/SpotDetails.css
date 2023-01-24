@@ -65,12 +65,14 @@
     border-color:rgb(255, 0, 115); */
     border-radius: 25px;
     overflow: hidden;
+    /* object-fit: contain; */
 }
 
 .spot-picture{
+    display: flex;
     width:100%;
     /* height: 300px; */
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .description-name-container{
@@ -260,6 +262,8 @@ font-weight: 900;
 .map-info{
     font-size:24px;
     font-weight: bold;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 
 
