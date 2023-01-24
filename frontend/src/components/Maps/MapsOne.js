@@ -1,6 +1,6 @@
 // frontend/src/components/Maps/Maps.js
 import React from 'react';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 const Maps = ({ apiKey, spotInfo }) => {
   const { isLoaded } = useJsApiLoader({
@@ -17,7 +17,14 @@ const Maps = ({ apiKey, spotInfo }) => {
     lat: spotInfo.lat,
     lng: spotInfo.lng
   };
-  console.log("this is center", center)
+
+  const svgMarker = {
+    fillColor: "red",
+    fillOpacity: 1,
+    strokeWeight: 0,
+    rotation: 0,
+    scale: 2,
+  }
 
   return (
     <>
@@ -25,8 +32,13 @@ const Maps = ({ apiKey, spotInfo }) => {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={10}
-        />
+          zoom={13}
+        >
+           <Marker
+      icon={svgMarker}
+      position={center}
+    />
+        </GoogleMap>
       )}
     </>
   );

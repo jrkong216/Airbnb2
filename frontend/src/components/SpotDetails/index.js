@@ -235,7 +235,7 @@ const GetSpotDetails = () => {
                                     {sessionUserId  && sessionUserId  !== spotInfoOwnerId && !reviewOfUser ? seeCreateReviewButton : null}
                                     </NavLink>
                 </div>
-                <div className="map-info">General Location of Spot:</div>
+                <div className="map-info">Location of Spot:</div>
                 <div className="google-map">
                     <Maps spotInfo={spotInfo}/>
                 </div>
