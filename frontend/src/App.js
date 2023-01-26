@@ -16,6 +16,7 @@ import CreateReviewForm from "./components/CreateReviewForm"
 import CurrentUserSpots from "./components/CurrentUserSpots"
 import CurrentUserReviews from "./components/CurrentUserReviews"
 import CurrentUserBookings from "./components/CurrentUserBookings"
+import Footer from "./Footer"
 
 
 function App() {
@@ -27,8 +28,10 @@ function App() {
 
   return (
     <>
+
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
+        <div>
         <Switch>
           <Route exact path="/">
             <Spots/>
@@ -61,6 +64,8 @@ function App() {
             <CurrentUserSpots/>
           </Route>
         </Switch>
+        <Footer/>
+</div>
       )}
     </>
   );
