@@ -461,10 +461,35 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
             { model: Spot, where: { id: spotId } }
         ]
     })
-    console.log("this is allBookings", allBookings)
+    // console.log("this is allBookings", allBookings)
 
     let providedStartDate = Date.parse(startDate)
     let providedEndDate = Date.parse(endDate)
+
+    if (providedEndDate < providedStartDate) {
+        //* Error response: Booking already exists for the Spot
+        res.status(400)
+        res.json({
+            message: "Sorry, End Date cannot be before Start Date",
+            statusCode: 400,
+            errors: {
+                "endDate": "endDate cannot be on or before startDate"
+            }
+        })
+
+    }
+    if (providedEndDate === providedStartDate) {
+        //* Error response: Booking already exists for the Spot
+        res.status(400)
+        res.json({
+            message: "Sorry, You must stay at least 1 night",
+            statusCode: 400,
+            errors: {
+                "sameDate": "startDate and endDate cannot equal"
+            }
+        })
+
+    }
 
     if (findSpot) {
         //  check if a booking for a spot has already been made by userId
