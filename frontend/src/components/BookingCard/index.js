@@ -34,12 +34,14 @@ const BookingCard = ({spotInfo, numberOfReviews, reviewNumber, spotId}) => {
     catch (res) {
         const data = await res.json();
         console.log("this is data", data)
-        const errors = [];
+        let errors = [];
         if (data && data.message) {
             errors.push(data.message);
         }
         setValidationErrors(errors);
+        errors = []
     }
+
 }
 
     return(
