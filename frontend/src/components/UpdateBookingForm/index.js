@@ -59,6 +59,7 @@ catch (res) {
       errors.push(data.message);
   }
   setValidationErrors(errors);
+  errors = []
 }
 }
 
