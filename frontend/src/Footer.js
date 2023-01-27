@@ -13,7 +13,7 @@ const Footer = () => (
          <a id="linkedin" className="links-linkedin" href="https://www.linkedin.com/in/jason-kong-39552922/" target="_blank">
         <i className="fa-brands fa-linkedin fa-xl"></i>
       </a>
-      <a id="personal" className="links-personal" href="https:jason-kong.com" target="_blank">
+      <a id="personal" className="links-personal" href="https://jason-kong.com" target="_blank">
           <i className="fa-solid fa-person fa-xl"></i>
         </a>
      </div>

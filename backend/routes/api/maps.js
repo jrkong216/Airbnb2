@@ -6,7 +6,7 @@ const { googleMapsAPIKey } = require('../../config');
 const { requireAuth } = require('../../utils/auth')
 
 
-router.post('/key', requireAuth, async (req, res) => {
+router.post('/key', async (req, res) => {
   return res.json({ googleMapsAPIKey });
 });
 

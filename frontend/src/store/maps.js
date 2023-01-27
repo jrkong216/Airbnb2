@@ -1,5 +1,5 @@
 // frontend/src/store/maps.js
-import { csrfFetch } from './csrf';
+
 
 const LOAD_API_KEY = 'maps/LOAD_API_KEY';
 
@@ -10,7 +10,7 @@ const loadApiKey = (key) => ({
 
 export const getKey = () => async (dispatch) => {
 
-  const res = await csrfFetch('/api/maps/key', {
+  const res = await ('/api/maps/key', {
     method: 'POST',
   });
   const data = await res.json();
