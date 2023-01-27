@@ -18,7 +18,7 @@ module.exports = {
       },
       {
         spotId: 3,
-        url: 'https://assets.bwbx.io/images/users/iqjWHBFdfxIU/ikkRKmrYDiv0/v0/1200x-1.jpg',
+        url: 'https://a.cdn-hotels.com/gdcs/production125/d1171/965955d8-0449-40c4-bdbf-7327d49f4014.jpg',
         preview: true,
         //golden
       },
@@ -54,7 +54,7 @@ module.exports = {
       },
       {
         spotId: 9,
-        url: 'http://www.therealuphouse.com/wp-content/uploads/AAE03902-B98C-4D6B-8ABF-E0FD472BD771-1-scaled.jpg',
+        url: 'https://static1.srcdn.com/wordpress/wp-content/uploads/2022/09/Up-Carl-Balloons-house.jpg',
         preview: true,
         //up house
       },
@@ -84,7 +84,7 @@ module.exports = {
       },
       {
         spotId: 14,
-        url: 'https://cdn.theathletic.com/app/uploads/2020/06/28145209/GettyImages-1252995877-scaled.jpg',
+        url: 'https://www.sportsvideo.org/wp-content/uploads/2019/06/UFC-APEX-4.jpg',
         preview: true,
         //ufc aapex
       },
