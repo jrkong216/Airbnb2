@@ -53,7 +53,7 @@ const submitHandler = async (e) => {
 
 let reviewedSpot;
 
-reviewedSpot = dispatch(UpdateReview(payload))
+reviewedSpot = dispatch(UpdateReview(payload)).then(()=> dispatch(getAllReviews()))
 
 //   history.push(`/spots/${spotId}`)
 

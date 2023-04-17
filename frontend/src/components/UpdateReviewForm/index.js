@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux"
-import {getAllReviews} from '../../store/reviewsReducer'
+import {getAllReviews, getUserReviews} from '../../store/reviewsReducer'
 import {UpdateReview} from '../../store/reviewsReducer'
 import "./UpdateReviewForm.css"
 
@@ -51,10 +51,9 @@ const submitHandler = async (e) => {
    }
 
 let reviewedSpot;
-
-reviewedSpot = dispatch(UpdateReview(reviewId,payload))
-
-  history.push(`/current/user/reviews`)
+console.log("this is reviewID", reviewId, "this is payload", payload)
+reviewedSpot = dispatch(UpdateReview(reviewId,payload)).then(()=> dispatch(getUserReviews())).then(history.push(`/current/user/reviews`))
+  // history.push(`/current/user/reviews`)
 
 }
 
