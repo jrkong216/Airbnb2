@@ -494,7 +494,6 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     if (findSpot) {
         //  check if a booking for a spot has already been made by userId
 
-
         for(let i = 0; i<allBookings.length; i++){
             if(providedStartDate >=Date.parse(allBookings[i].startDate) && providedStartDate<=Date.parse(allBookings[i].endDate)){
             res.status(403)
