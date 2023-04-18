@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { createBooking, getBookings } from '../../store/bookingsReducer';
 import "./BookingCard.css";
 
-const BookingCard = ({spotInfo, numberOfReviews, reviewNumber, spotId}) => {
+const BookingCard = ({spotInfo, numberOfReviews, reviewNumber, spotId, sessionUser}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const moment = require("moment")
@@ -15,9 +15,22 @@ const BookingCard = ({spotInfo, numberOfReviews, reviewNumber, spotId}) => {
     // console.log("this is StartDate", startDate)
     // console.log("this is EndDate", endDate)
 
-
+  console.log("this is spotInfo", spotInfo)
+  console.log("this is spotId", spotId)
+  console.log("this is sessionUser", sessionUser)
     const submitHandler = async (e) => {
         e.preventDefault()
+
+        console.log("this is spotInfo.ownerId", spotInfo.ownerId)
+        console.log("this is sessionUser.Id", sessionUser.id)
+        if(spotInfo.ownerId === sessionUser.id){
+          let errors = []
+          errors.push("You cannot Book your own Location")
+          setValidationErrors(errors)
+          errors = []
+          return null
+        }
+
 
         const payload = {
          startDate,

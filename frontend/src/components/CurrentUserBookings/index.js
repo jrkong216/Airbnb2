@@ -76,6 +76,8 @@ let spotsOrNot
                 {bookingsByUser.map((item) =>
                 {return (
                     <div key= {item.id}>
+                        <div className= "booking-spot-image-container">
+                                <img className ="booking-spot-image" src={item.Spot.previewImage}/></div>
                     <div className= "spotReviewName"> Name: {item.Spot?.name}</div>
                     <div className= "spotReviewName"> Address: {item.Spot?.address}</div>
                     <div className= "spotReviewName"> City: {item.Spot?.city}</div>
