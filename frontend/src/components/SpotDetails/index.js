@@ -198,7 +198,7 @@ const GetSpotDetails = () => {
                 <h3 className="spotDescription"> {spotInfo.description}</h3>
                 </div>
                 </div>
-                <BookingCard spotInfo={spotInfo} numberOfReviews={numberOfReviews} reviewNumber={reviewNumber} spotId={spotId} />
+                <BookingCard spotInfo={spotInfo} numberOfReviews={numberOfReviews} reviewNumber={reviewNumber} spotId={spotId} sessionUser={sessionUser} />
                 </div>
                 <div className="detail-review-container">
                 {/* <h2>See Reviews Below!!</h2> */}
@@ -235,7 +235,7 @@ const GetSpotDetails = () => {
                                     {sessionUserId  && sessionUserId  !== spotInfoOwnerId && !reviewOfUser ? seeCreateReviewButton : null}
                                     </NavLink>
                 </div>
-                <div className="map-info">Location of Spot:</div>
+                <div className="map-info">Where you will stay:</div>
                 <div className="google-map">
                     <Maps spotInfo={spotInfo}/>
                 </div>
